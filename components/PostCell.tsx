@@ -13,11 +13,25 @@ export default function PostsCell({ posts }: Posts) {
     flex-direction: column;
     gap: 4vh;
   `;
+  const Title = styled.h3`
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: 200ms;
+  `;
+  const ReadMore = styled.span`
+    font-weight: 600;
+    &:after {
+      color: ${(props) => props.theme.colors.info};
+    }
+  `;
 
-  const Post = styled.div`
-    color: white;
+  const Post = styled.article`
+    color: ${(props) => props.theme.colors.text};
     font-family: sans-serif;
     font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
 
     a {
       color: inherit;
@@ -27,32 +41,27 @@ export default function PostsCell({ posts }: Posts) {
     }
     &:hover {
       h3 {
-        color: #d5043c;
+        color: ${(props) => props.theme.colors.primary};
+      }
+      ${ReadMore}:after {
+        content: " 🡆";
       }
     }
-  `;
-
-  const Title = styled.h3`
-    font-size: 1.3rem;
-    font-weight: 600;
-  `;
-  const ReadMore = styled.span`
-    font-weight: 600;
   `;
 
   return (
     <Container>
       {posts.map(({ id, title, body }) => {
         return (
-          <Post key={id}>
-            <Link href="/">
-              <>
+          <Link href="/posts/teste-foda" key={id}>
+            <a>
+              <Post>
                 <Title>{title}</Title>
-                <span>{body}</span>
+                <p>{body}</p>
                 <ReadMore>Read More</ReadMore>
-              </>
-            </Link>
-          </Post>
+              </Post>
+            </a>
+          </Link>
         );
       })}
     </Container>

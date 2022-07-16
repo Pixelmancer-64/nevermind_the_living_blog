@@ -52,7 +52,11 @@ const SocialMediaIcon = styled.a`
   }
 `;
 
-const Template = ({ children }) => {
+interface TemplateProps<P = any> {
+  children: P;
+}
+
+const Template = ({ children }: TemplateProps) => {
   return (
     <>
       <Header>
@@ -72,7 +76,7 @@ const Template = ({ children }) => {
             </li>
             <li>
               <Link href="/">
-                <a>Galerry</a>
+                <a>Galery</a>
               </Link>
             </li>
           </ul>
