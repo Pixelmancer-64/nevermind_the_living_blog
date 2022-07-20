@@ -51,9 +51,9 @@ export default function PostsCell({ posts }: Posts) {
 
   return (
     <Container>
-      {posts.map(({ id, title, body }) => {
+      {posts.map(({ title, body, slug }) => {
         return (
-          <Link href="/posts/teste-foda" key={id}>
+          <Link href={`/posts/${slug}`} key={slug}>
             <a>
               <Post>
                 <Title>{title}</Title>

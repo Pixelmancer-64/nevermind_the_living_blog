@@ -4,6 +4,21 @@ import styled from "styled-components";
 import PostsCell from "../components/PostCell";
 import Link from "next/link";
 
+export async function getStaticProps() {
+  const files = require.context("./posts/", false, /.mdx$/);
+
+  const posts = await Promise.all(
+    files.keys().map(async (element: string) => {
+      const importMDX = await files(element);
+      importMDX.meta.slug = element.slice(0, -4);
+      return importMDX.meta;
+    })
+  );
+  return {
+    props: { posts },
+  };
+}
+
 const Container = styled.main`
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -43,34 +58,11 @@ const Category = styled.li`
   }
 `;
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }) => {
   return (
     <Container>
       <Posts>
-        <PostsCell
-          posts={[
-            {
-              id: 1,
-              title: "é um titulo tá vendo",
-              body: "There was a pandemonium of questioning, and only Henry Wheeler thought to rescue the fallen telescope and wipe it clean of mud. Curtis was past all coherence, and even isolated replies were almost too much for him. ",
-            },
-            {
-              id: 2,
-              title: "é um titulo tá vendo",
-              body: "There was a pandemonium of questioning, and only Henry Wheeler thought to rescue the fallen telescope and wipe it clean of mud. Curtis was past all coherence, and even isolated replies were almost too much for him. ",
-            },
-            {
-              id: 3,
-              title: "é um titulo tá vendo",
-              body: "There was a pandemonium of questioning, and only Henry Wheeler thought to rescue the fallen telescope and wipe it clean of mud. Curtis was past all coherence, and even isolated replies were almost too much for him. ",
-            },
-            {
-              id: 4,
-              title: "é um titulo tá vendo",
-              body: "There was a pandemonium of questioning, and only Henry Wheeler thought to rescue the fallen telescope and wipe it clean of mud. Curtis was past all coherence, and even isolated replies were almost too much for him. ",
-            },
-          ]}
-        />
+        <PostsCell posts={posts} />
       </Posts>
       <Featured>
         <TopCategories>
