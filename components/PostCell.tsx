@@ -21,7 +21,7 @@ export default function PostsCell({ posts }: Posts) {
   const ReadMore = styled.span`
     font-weight: 600;
     &:after {
-      color: ${(props) => props.theme.colors.info};
+      color: ${(props) => props.theme.colors.primary};
     }
   `;
 

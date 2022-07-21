@@ -47,7 +47,7 @@ const CategoryList = styled.ul`
 const Category = styled.li`
   & a {
     color: inherit;
-    background-color: ${(props) => props.theme.colors.info};
+    background-color: ${(props) => props.theme.colors.primary};
     border-radius: 15px;
     padding: 3px 12px;
     font-size: 13px;
