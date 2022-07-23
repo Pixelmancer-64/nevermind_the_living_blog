@@ -58,7 +58,7 @@ const Category = styled.li`
   }
 `;
 
-const Home: NextPage = ({ posts }) => {
+const Home: NextPage = ({ posts }: any) => {
   return (
     <Container>
       <Posts>

@@ -24,15 +24,15 @@ body {
 
     --font-family: 'Rubik', -apple-system, sans-serif;
 
-    --font-size-xs: 0.75rem;   // 12
-    --font-size-sm: 0.875rem;  // 14
-    --font-size-md: 1rem;      // 16
-    --font-size-lg: 1.125rem;  // 18
-    --font-size-xl: 1.3125rem; // 21
-    --font-size-2xl: 1.5rem;   // 24
-    --font-size-3xl: 2rem;     // 32
-    --font-size-4xl: 2.652rem; // 42
-    --font-size-5xl: 4rem;     // 64
+    --font-size-xs: 0.75rem;    // 12
+    --font-size-sm: 0.875rem;   // 14
+    --font-size-md: 1rem;       // 16
+    --font-size-lg: 1.1875rem;  // 19
+    --font-size-xl: 1.3125rem;  // 21
+    --font-size-2xl: 1.5rem;    // 24
+    --font-size-3xl: 2rem;      // 32
+    --font-size-4xl: 2.652rem;  // 42
+    --font-size-5xl: 4rem;      // 64
 }
 
 body {
@@ -96,7 +96,8 @@ ul, ol{
 }
 
 body{
-    background-color: #182635;
+  transition: color 350ms ease 0s, background 350ms ease 0s;
+  background-color: ${(props) => props.theme.colors.background};
 }
 `;
 

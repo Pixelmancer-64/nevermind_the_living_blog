@@ -1,53 +1,44 @@
 import Post from "../../components/layouts/post";
-import Banner from "../../components/banner.tsx";
+import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
 
 export const meta = {
   date: "64",
-  title: "FODA PRA CARALHO",
-  body: "SOU FODA MERMO, NA CAMA EU TE ESCULACHO",
+  title: "FODA PRA #######",
+  body: "realmente está funcionando",
   url: "/teste.png",
-  alt: "test de alt"
+  alt: "test de alt",
+  publishedOn: "TODAY",
+  lastUpdatedOn: "TOMORROW",
 };
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
-<Banner url={meta.url} alt={meta.alt}/>
+<Banner url={meta.url} alt={meta.alt} />
+# Olha, funciona mesmo
+<Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
+## funcionando como nunca, que legal
 
-# OLHA FUNCIONA
+HELLO WORLD, aqui está um linka para o [ROOT](/)
 
-## funcionando
-
-HELLO WORLD
-
-[LINK](https://mdxjs.com)
-
-> Esse aqui é uma citação foda...
-
-Some `backticks` for inline.
+Não entendi muito esse `backticks`.
 
 ```
 
-backtick.fences("for blocks");
+Aqui era para ser uma seção de código, dahora
 
 ```
 
-some _slaoq_
+Letra _tombada_
 
-Não sei oq significa isso
+lá bem um hr
 
----
+## <br/>
 
-blz
+<br />
 
 ![Texto alternativo](/vercel.svg)
 
-- lista é bem bonitinho de fazer
-
-1. caraa que foda
-
-Two **asterisks** for strong.
-
-
+## Lá vem um monte de **Lorem Ipsum**
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum neque non lacus tempus, sit amet efficitur sem volutpat. Aenean quis enim enim. Pellentesque mollis orci ac mi pretium viverra. Nunc fringilla mi nisl, ut venenatis nulla tempus non. Proin id laoreet libero. Vivamus rutrum ex et ex accumsan, sit amet egestas orci condimentum. Ut at tincidunt ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus est id tellus viverra, sed gravida odio aliquet. In hac habitasse platea dictumst. Sed ut fermentum lorem. Nulla nisi metus, lobortis in rutrum et, malesuada nec dui.
 
@@ -57,9 +48,7 @@ Vestibulum vel dolor ante. Vestibulum varius fringilla sollicitudin. Morbi quis 
 
 Cras pharetra a ligula non pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam id ligula diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam sodales feugiat velit, ut porttitor lacus commodo efficitur. Integer non diam vel ligula fermentum dictum. Vivamus ante ligula, euismod non purus ac, dignissim tempor dolor. Pellentesque non ultrices ante, id varius est. Maecenas blandit enim ut tellus sollicitudin, vel convallis arcu interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id semper dui. Vivamus et dapibus elit. Nam magna lectus, iaculis ornare magna quis, faucibus vehicula magna.
 
-Aenean porttitor placerat nulla, in aliquet diam ultrices non. Duis nibh lectus, lobortis id leo sed, molestie pulvinar lacus. In eros tortor, efficitur id aliquam in, accumsan a justo. Ut in bibendum massa, quis hendrerit ex. Ut quis diam nulla. Phasellus ullamcorper ante vel mollis ornare. Ut at semper magna. 
-
-
+Aenean porttitor placerat nulla, in aliquet diam ultrices non. Duis nibh lectus, lobortis id leo sed, molestie pulvinar lacus. In eros tortor, efficitur id aliquam in, accumsan a justo. Ut in bibendum massa, quis hendrerit ex. Ut quis diam nulla. Phasellus ullamcorper ante vel mollis ornare. Ut at semper magna.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum neque non lacus tempus, sit amet efficitur sem volutpat. Aenean quis enim enim. Pellentesque mollis orci ac mi pretium viverra. Nunc fringilla mi nisl, ut venenatis nulla tempus non. Proin id laoreet libero. Vivamus rutrum ex et ex accumsan, sit amet egestas orci condimentum. Ut at tincidunt ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus est id tellus viverra, sed gravida odio aliquet. In hac habitasse platea dictumst. Sed ut fermentum lorem. Nulla nisi metus, lobortis in rutrum et, malesuada nec dui.
 
@@ -69,4 +58,4 @@ Vestibulum vel dolor ante. Vestibulum varius fringilla sollicitudin. Morbi quis 
 
 Cras pharetra a ligula non pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam id ligula diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam sodales feugiat velit, ut porttitor lacus commodo efficitur. Integer non diam vel ligula fermentum dictum. Vivamus ante ligula, euismod non purus ac, dignissim tempor dolor. Pellentesque non ultrices ante, id varius est. Maecenas blandit enim ut tellus sollicitudin, vel convallis arcu interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id semper dui. Vivamus et dapibus elit. Nam magna lectus, iaculis ornare magna quis, faucibus vehicula magna.
 
-Aenean porttitor placerat nulla, in aliquet diam ultrices non. Duis nibh lectus, lobortis id leo sed, molestie pulvinar lacus. In eros tortor, efficitur id aliquam in, accumsan a justo. Ut in bibendum massa, quis hendrerit ex. Ut quis diam nulla. Phasellus ullamcorper ante vel mollis ornare. Ut at semper magna. 
+Aenean porttitor placerat nulla, in aliquet diam ultrices non. Duis nibh lectus, lobortis id leo sed, molestie pulvinar lacus. In eros tortor, efficitur id aliquam in, accumsan a justo. Ut in bibendum massa, quis hendrerit ex. Ut quis diam nulla. Phasellus ullamcorper ante vel mollis ornare. Ut at semper magna.

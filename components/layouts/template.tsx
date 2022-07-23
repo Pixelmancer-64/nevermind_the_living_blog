@@ -1,5 +1,15 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { useState } from "react";
+
+function useToggle(defaultValue: any) {
+  const [value, setValue] = useState(defaultValue);
+  function toggle() {
+    setValue((value: boolean) => !value);
+  }
+
+  return [value, toggle];
+}
 
 const Header = styled.header`
   display: flex;
@@ -19,9 +29,12 @@ const LogoWrapper = styled.div`
   align-items: center;
   gap: 8px;
   & img {
-    filter: brightness(0) invert(1);
+    filter: ${(props) => {
+      if (props.theme.name == "dark") return "brightness(0) invert(1)";
+      return "brightness(0) invert(0)";
+    }};
   }
-  & span{
+  & span {
     font-size: var(--font-size-3xl);
   }
 `;
@@ -61,9 +74,10 @@ const SocialMediaIcon = styled.a`
 
 interface TemplateProps<P = any> {
   children: P;
+  toggleDarkMode(): boolean;
 }
 
-const Template = ({ children }: TemplateProps) => {
+const Template = ({ children, toggleDarkMode }: TemplateProps) => {
   return (
     <>
       <Header>
@@ -91,6 +105,7 @@ const Template = ({ children }: TemplateProps) => {
             </li>
           </ul>
         </Navbar>
+        <button onClick={() => toggleDarkMode()}>BORA</button>
       </Header>
       {children}
       <Footer>

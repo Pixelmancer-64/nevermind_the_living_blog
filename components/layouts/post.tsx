@@ -7,14 +7,14 @@ const Container = styled.main`
   width: 100%;
   max-width: 1150px;
   margin: 32px auto;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const Content = styled.article`
-  flex: 1 1 806.4px;
-  max-width: min(806.4px, 100%);
-  /* box-shadow: 0 0 0 1px rgba(23,23,23,.1); */
-  background-color: #FFFFFF;
-  padding: 48px 32px;
+  flex: 1 1 820px;
+  max-width: min(820px, 100%);
+  background-color: ${(props) => props.theme.colors.backgroundPost};
+  padding: 32px;
 
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
     0.375rem;
@@ -28,20 +28,26 @@ const Aside = styled.aside`
 `;
 
 const H1 = styled.h1`
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-4xl);
   margin-top: 32px;
   color: ${(props) => props.theme.colors.tertiary};
 `;
 
 const H2 = styled.h2`
+  font-size: var(--font-size-3xl);
   color: ${(props) => props.theme.colors.tertiary};
   margin-top: 48px;
   margin-bottom: 32px;
 `;
 
+const P = styled.p`
+  font-size: var(--font-size-lg);
+`;
+
 const components = {
   h1: H1,
   h2: H2,
+  p: P,
   // …
 };
 
