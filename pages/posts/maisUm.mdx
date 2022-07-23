@@ -1,14 +1,21 @@
 import Post from "../../components/layouts/post";
+import Banner from "../../components/banner.tsx";
 
 export const meta = {
   date: "64",
   title: "FODA PRA CARALHO",
   body: "SOU FODA MERMO, NA CAMA EU TE ESCULACHO",
+  url: "/teste.png",
+  alt: "test de alt"
 };
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
+<Banner url={meta.url} alt={meta.alt}/>
+
 # OLHA FUNCIONA
+
+## funcionando
 
 HELLO WORLD
 
@@ -18,8 +25,10 @@ HELLO WORLD
 
 Some `backticks` for inline.
 
-```js
+```
+
 backtick.fences("for blocks");
+
 ```
 
 some _slaoq_
@@ -37,3 +46,27 @@ blz
 1. caraa que foda
 
 Two **asterisks** for strong.
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum neque non lacus tempus, sit amet efficitur sem volutpat. Aenean quis enim enim. Pellentesque mollis orci ac mi pretium viverra. Nunc fringilla mi nisl, ut venenatis nulla tempus non. Proin id laoreet libero. Vivamus rutrum ex et ex accumsan, sit amet egestas orci condimentum. Ut at tincidunt ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus est id tellus viverra, sed gravida odio aliquet. In hac habitasse platea dictumst. Sed ut fermentum lorem. Nulla nisi metus, lobortis in rutrum et, malesuada nec dui.
+
+Donec volutpat mauris odio, sit amet pulvinar tellus fringilla quis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas nec cursus tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris eget auctor sapien. Etiam non blandit ex. Cras accumsan, diam ac maximus ullamcorper, lacus purus cursus magna, vitae maximus lorem urna vel augue.
+
+Vestibulum vel dolor ante. Vestibulum varius fringilla sollicitudin. Morbi quis feugiat tellus, scelerisque bibendum urna. Vestibulum nisi tortor, placerat sed enim vel, ultricies tincidunt eros. Morbi ut purus urna. Fusce eu tempus nisi. Donec est nisl, ornare ut nisl eu, scelerisque porta felis. Suspendisse tempor sem vitae ante congue, at mollis sapien placerat.
+
+Cras pharetra a ligula non pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam id ligula diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam sodales feugiat velit, ut porttitor lacus commodo efficitur. Integer non diam vel ligula fermentum dictum. Vivamus ante ligula, euismod non purus ac, dignissim tempor dolor. Pellentesque non ultrices ante, id varius est. Maecenas blandit enim ut tellus sollicitudin, vel convallis arcu interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id semper dui. Vivamus et dapibus elit. Nam magna lectus, iaculis ornare magna quis, faucibus vehicula magna.
+
+Aenean porttitor placerat nulla, in aliquet diam ultrices non. Duis nibh lectus, lobortis id leo sed, molestie pulvinar lacus. In eros tortor, efficitur id aliquam in, accumsan a justo. Ut in bibendum massa, quis hendrerit ex. Ut quis diam nulla. Phasellus ullamcorper ante vel mollis ornare. Ut at semper magna. 
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum neque non lacus tempus, sit amet efficitur sem volutpat. Aenean quis enim enim. Pellentesque mollis orci ac mi pretium viverra. Nunc fringilla mi nisl, ut venenatis nulla tempus non. Proin id laoreet libero. Vivamus rutrum ex et ex accumsan, sit amet egestas orci condimentum. Ut at tincidunt ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dapibus est id tellus viverra, sed gravida odio aliquet. In hac habitasse platea dictumst. Sed ut fermentum lorem. Nulla nisi metus, lobortis in rutrum et, malesuada nec dui.
+
+Donec volutpat mauris odio, sit amet pulvinar tellus fringilla quis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas nec cursus tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris eget auctor sapien. Etiam non blandit ex. Cras accumsan, diam ac maximus ullamcorper, lacus purus cursus magna, vitae maximus lorem urna vel augue.
+
+Vestibulum vel dolor ante. Vestibulum varius fringilla sollicitudin. Morbi quis feugiat tellus, scelerisque bibendum urna. Vestibulum nisi tortor, placerat sed enim vel, ultricies tincidunt eros. Morbi ut purus urna. Fusce eu tempus nisi. Donec est nisl, ornare ut nisl eu, scelerisque porta felis. Suspendisse tempor sem vitae ante congue, at mollis sapien placerat.
+
+Cras pharetra a ligula non pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam id ligula diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam sodales feugiat velit, ut porttitor lacus commodo efficitur. Integer non diam vel ligula fermentum dictum. Vivamus ante ligula, euismod non purus ac, dignissim tempor dolor. Pellentesque non ultrices ante, id varius est. Maecenas blandit enim ut tellus sollicitudin, vel convallis arcu interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id semper dui. Vivamus et dapibus elit. Nam magna lectus, iaculis ornare magna quis, faucibus vehicula magna.
+
+Aenean porttitor placerat nulla, in aliquet diam ultrices non. Duis nibh lectus, lobortis id leo sed, molestie pulvinar lacus. In eros tortor, efficitur id aliquam in, accumsan a justo. Ut in bibendum massa, quis hendrerit ex. Ut quis diam nulla. Phasellus ullamcorper ante vel mollis ornare. Ut at semper magna. 
