@@ -1,4 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
+import Link from "next/link";
 import styled from "styled-components";
 
 const Container = styled.main`
@@ -15,7 +16,6 @@ const Content = styled.article`
   max-width: min(820px, 100%);
   background-color: ${(props) => props.theme.colors.backgroundPost};
   padding: 32px;
-
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
     0.375rem;
 `;
@@ -40,6 +40,14 @@ const H2 = styled.h2`
   margin-bottom: 32px;
 `;
 
+const A = ({ href, children }: any) => {
+  return (
+    <Link href={href} className="anchor-link">
+      <a>§ {children} </a>
+    </Link>
+  );
+};
+
 const P = styled.p`
   font-size: var(--font-size-lg);
 `;
@@ -48,7 +56,7 @@ const components = {
   h1: H1,
   h2: H2,
   p: P,
-  // …
+  a: A,
 };
 
 interface PostProps<P = any> {
