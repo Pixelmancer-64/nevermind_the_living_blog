@@ -6,8 +6,10 @@ const Light = {
     tertiary: "rgb(15, 73, 197)",
     text: "black",
     textLight: "hsl(0deg, 0%, 100%)",
-    background: "#FFF",
-    backgroundPost: "#dad8d8",
+    background: {
+      primary: "#EEE",
+      secondary: "#DDD",
+    },
     info: "hsl(230deg, 100%, 69%)",
     sucess: "hsl(160deg, 100%, 40%)",
     error: "hsl(340deg, 95%, 60%)",

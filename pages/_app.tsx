@@ -16,7 +16,7 @@ function useToggle(defaultValue: any) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isDark, toggleIsDark] = useToggle(true);
+  const [isDark, toggleIsDark] = useToggle(false);
   return (
     <>
       <ThemeProvider theme={isDark ? dark : light}>

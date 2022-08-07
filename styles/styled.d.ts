@@ -8,9 +8,10 @@ declare module 'styled-components'{
       secondary: string,
       tertiary: string,
       text: string,
-      textLight: string,
-      background: string,
-      backgroundPost: string,
+      background: {
+        primary: string,
+        secondary: string
+      },
       info: string,
       sucess: string,
       error: string,

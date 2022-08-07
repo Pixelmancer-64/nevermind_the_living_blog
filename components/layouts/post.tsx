@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Container = styled.main`
   display: flex;
   justify-content: center;
+  flex-direction: row-reverse;
   width: 100%;
   max-width: 1150px;
   margin: 32px auto;
@@ -14,7 +15,7 @@ const Container = styled.main`
 const Content = styled.article`
   flex: 1 1 820px;
   max-width: min(820px, 100%);
-  background-color: ${(props) => props.theme.colors.backgroundPost};
+  background-color: ${(props) => props.theme.colors.background.secondary};
   padding: 32px;
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
     0.375rem;
@@ -23,8 +24,11 @@ const Content = styled.article`
 const Aside = styled.aside`
   flex: 0 1 250px;
   max-height: calc(55vh);
-  margin-left: auto;
-  background-color: lightblue;
+  margin-right: auto;
+  border: 15px solid ${(props) => props.theme.colors.background.secondary};
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const H1 = styled.h1`

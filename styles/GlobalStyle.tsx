@@ -72,10 +72,14 @@ h4,
 h5,
 h6 {
     overflow-wrap: break-word;
+    color: ${(props) => props.theme.colors.text};
+
 }
 
 h1, h2, h3, h4, h5, h6, strong{
     font-weight: var(--font-weight-bold);
+    color: ${(props) => props.theme.colors.text};
+
 }
 
 #root,
@@ -97,7 +101,7 @@ ul, ol{
 
 body{
   transition: color 350ms ease 0s, background 350ms ease 0s;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors.background.primary};
 }
 `;
 

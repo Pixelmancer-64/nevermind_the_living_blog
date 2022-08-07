@@ -7,6 +7,7 @@ const withMDX = require("@next/mdx")({
     providerImportSource: "@mdx-js/react",
   },
 });
+
 module.exports = withMDX({
   // Append the default value with md extensions
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
@@ -26,4 +27,10 @@ module.exports = withMDX({
       },
     ],
   },
+  // STYLED-COMPONENTS
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  },
+  
 });
