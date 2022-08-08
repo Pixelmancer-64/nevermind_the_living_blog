@@ -197,10 +197,9 @@ const Post = ({ children, meta }: PostProps) => {
   useEffect(() => {
     const elements = [...document.querySelectorAll("h1, h2, h3, h4, h5, h6")];
     setUnsorted(elements);
-
     let sorted: any[] = [];
 
-    for (let i = 0; i < elements.length - 1; ) {
+    for (let i = 0; i < elements.length; ) {
       if (
         elements[i - 1] != undefined &&
         parseInt(elements[i - 1].localName.slice(-1)) <

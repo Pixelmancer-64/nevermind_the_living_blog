@@ -36,7 +36,7 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="https://sotiris64.github.io/animations/">
                 <a>Galery</a>
               </Link>
             </li>
