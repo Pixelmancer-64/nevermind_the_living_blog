@@ -43,7 +43,7 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
           </ul>
         </Navbar>
 
-        <button onClick={() => toggleDarkMode()}>LOREM</button>
+        <button onClick={() => toggleDarkMode()}>TEMA</button>
       </Header>
       
       {children}

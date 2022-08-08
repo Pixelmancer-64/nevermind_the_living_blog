@@ -102,7 +102,17 @@ ul, ol{
 body{
   transition: color 350ms ease 0s, background 350ms ease 0s;
   background-color: ${(props) => props.theme.colors.background.primary};
+
+.toggled{
+    color: ${(props)=> props.theme.colors.info};
+
+    li {
+        opacity: 1;
+    }
+}
 }
 `;
+
+
 
 export default GlobalStyle;
