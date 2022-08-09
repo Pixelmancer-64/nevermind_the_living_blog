@@ -5,7 +5,7 @@ display: grid;
 grid-template-columns: 2fr 1fr;
 padding: 3vh 3vw;
 background-color: ${(props) => props.theme.colors.background.secondary};
-column-gap: 12rem;
+column-gap: 48px;
 `;
 export const Posts = styled.div``;
 export const Featured = styled.div`

@@ -2,6 +2,7 @@ import { MDXProvider } from "@mdx-js/react";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+// import Highlight, { defaultProps } from "prism-react-renderer";
 
 const Container = styled.main`
   display: flex;
@@ -56,6 +57,7 @@ const InnerOl = styled.ol`
 
 const Summary = styled.span`
   color: ${(props) => props.theme.colors.tertiary};
+  font-size: var(--font-size-2xl);
 `;
 
 const Li = styled.li`
