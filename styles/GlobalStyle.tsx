@@ -63,6 +63,8 @@ select {
 }
 button {
   background: none;
+  cursor: pointer;
+  border: none;
 }
 p,
 h1,
