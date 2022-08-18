@@ -1,77 +1,16 @@
 import { MDXProvider } from "@mdx-js/react";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import styled from "styled-components";
+import {
+  AsideContainer,
+  Container,
+  Content,
+  InnerOl,
+  Li,
+  OuterOl,
+  Summary,
+} from "../styled/styled-post";
+import { HeadingH1, HeadingH2, P, A } from "../styled/styled-mdx-tags";
 // import Highlight, { defaultProps } from "prism-react-renderer";
-
-const Container = styled.main`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  width: 100%;
-  max-width: 1150px;
-  margin: 32px auto;
-  color: ${(props) => props.theme.colors.text};
-`;
-
-const Content = styled.article`
-  flex: 1 1 820px;
-  max-width: min(820px, 100%);
-  /* background-color: ${(props) => props.theme.colors.background.secondary}; */
-  padding: 32px;
-  border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
-    0.375rem;
-
-  @media (min-width: 1100px) {
-    margin-left: auto;
-  }
-`;
-
-const AsideContainer = styled.aside`
-  position: sticky;
-  top: 32px;
-  flex: 0 1 200px;
-  max-height: 55vh;
-  margin-left: auto;
-  @media (max-width: 1100px) {
-    display: none;
-  }
-`;
-
-const OuterOl = styled.ol`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  a {
-    color: inherit;
-  }
-`;
-const InnerOl = styled.ol`
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  li {
-    padding-left: 16px;
-  }
-`;
-
-const Summary = styled.span`
-  color: ${(props) => props.theme.colors.tertiary};
-  font-size: var(--font-size-2xl);
-`;
-
-const Li = styled.li`
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-light);
-
-  opacity: 0.7;
-  transition: opacity 400ms ease 0s;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-`;
 
 interface ContentLinkProps {
   children: any;
@@ -98,7 +37,7 @@ const Aside = ({ headings = [], unsorted = [] }: AsideProps) => {
         for (let i = unsorted.length - 1; i >= 0; i--) {
           if (
             window.scrollY >
-            unsorted[i].offsetTop + unsorted[i].offsetHeight - 80
+            unsorted[i].offsetTop + unsorted[i].offsetHeight - 100
           ) {
             document
               .getElementById("ContentLink-" + unsorted[i].id)
@@ -145,39 +84,6 @@ const Aside = ({ headings = [], unsorted = [] }: AsideProps) => {
   );
 };
 
-const H1 = styled.h1`
-  font-size: var(--font-size-4xl);
-  margin-top: 32px;
-  color: ${(props) => props.theme.colors.tertiary};
-`;
-
-const H2 = styled.h2`
-  font-size: var(--font-size-3xl);
-  color: ${(props) => props.theme.colors.tertiary};
-  margin-top: 48px;
-  margin-bottom: 32px;
-`;
-
-const HeadingH1 = ({ children }: any) => {
-  return <H1 id={children}>{children}</H1>;
-};
-
-const HeadingH2 = ({ children }: any) => {
-  return <H2 id={children}>{children}</H2>;
-};
-
-const A = ({ href, children }: any) => {
-  return (
-    <Link href={href}>
-      <a>§{children}</a>
-    </Link>
-  );
-};
-
-const P = styled.p`
-  font-size: var(--font-size-lg);
-`;
-
 const components = {
   h1: HeadingH1,
   h2: HeadingH2,
@@ -187,12 +93,9 @@ const components = {
 
 interface PostProps<P = any> {
   children: P;
-  meta: {
-    date: string;
-  };
 }
 
-const Post = ({ children, meta }: PostProps) => {
+const Post = ({ children }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
   const [unsorted, setUnsorted] = useState<any[]>([]);
 

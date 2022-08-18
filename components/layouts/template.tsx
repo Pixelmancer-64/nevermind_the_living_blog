@@ -7,6 +7,7 @@ import {
   Ps,
   RandomLinks,
   SocialMediaIcon,
+  ThemeSwitcher
 } from "../styled/styled-template";
 
 interface TemplateProps<P = any> {
@@ -43,7 +44,7 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
           </ul>
         </Navbar>
 
-        <button onClick={() => toggleDarkMode()}>TEMA</button>
+        <ThemeSwitcher onClick={() => toggleDarkMode()}>TEMA</ThemeSwitcher>
       </Header>
       
       {children}

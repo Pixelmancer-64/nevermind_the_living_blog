@@ -6,6 +6,10 @@ min-height: 100%;
 flex-direction: column;
 gap: 4vh;
 `;
+export const Banner = styled.img`
+  
+  max-width: 540px;
+`
 export const Title = styled.h3`
 font-size: 1.3rem;
 font-weight: 600;

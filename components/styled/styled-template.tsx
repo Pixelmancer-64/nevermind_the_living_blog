@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const ThemeSwitcher = styled.button`
+  border: 3px solid ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.text};
+  padding: 4px;
+`
 export const Header = styled.header`
   display: flex;
   width: 100%;
@@ -26,6 +31,7 @@ export const Header = styled.header`
 export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
+  gap: 4px;
   & img {
     width: 50px;
     filter: ${(props) => {

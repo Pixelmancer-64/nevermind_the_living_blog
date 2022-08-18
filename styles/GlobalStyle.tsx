@@ -72,7 +72,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+button {
     overflow-wrap: break-word;
     color: ${(props) => props.theme.colors.text};
 
@@ -102,7 +103,6 @@ ul, ol{
 }
 
 body{
-  transition: color 350ms ease 0s, background 350ms ease 0s;
   background-color: ${(props) => props.theme.colors.background.primary};
 
 .toggled{
