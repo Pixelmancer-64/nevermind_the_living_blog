@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
-import dark from "../styles/themes/dark";
-import light from "../styles/themes/light";
+import { Theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import Template from "../components/layouts/template";
 import GlobalStyle from "../styles/GlobalStyle";
@@ -35,39 +34,48 @@ class LocalStorage {
   }
 }
 
-function useToggle(defaultValue: any) {
+function useToggle(defaultValue: any = "") {
   const [value, setValue] = useState(defaultValue);
-  function toggle() {
-    setValue((value: boolean) => !value);
-    LocalStorage.set("theme", !value ? "dark" : "light");
+
+  function toggle(newValue: any) {
+    setValue(newValue);
+    LocalStorage.set("theme", newValue);
   }
 
   return [value, toggle];
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [isDark, toggleIsDark] = useToggle(false);
-  useEffect(() => {
-    // getComputedStyle(document.querySelector("body")).setProperty(
-    //   "--getComputedStyle",
-    //   "color 350ms ease 0s, background 350ms ease 0s"
-    // );
+declare global {
+  interface Window {
+    __theme: any;
+    __setPreferredTheme: any;
+  }
+}
 
-    const isDarkTheme = LocalStorage.getData("theme") == "dark" ? true : false;
-    if (isDarkTheme) {
-      toggleIsDark();
-      const body = document.querySelector("body");
-      if (body)
-        body.style.transition = "color 350ms ease 0s, background 350ms ease 0s";
-    }
+function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, toggleTheme] = useState<any>();
+
+  useEffect(() => {
+    toggleTheme(window.__theme);
+    window.__setPreferredTheme(window.__theme);
   }, []);
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <>
-      <ThemeProvider theme={isDark ? dark : light}>
+      <ThemeProvider  theme={Theme}>
         <GlobalStyle />
-        <Template toggleDarkMode={toggleIsDark}>
-          <Component {...pageProps} />
+        <Template
+          toggleDarkMode={() => {
+            window.__setPreferredTheme(theme == "dark" ? "light" : "dark");
+            toggleTheme(theme == "dark" ? "light" : "dark");
+            return true;
+          }}
+        >
+          <Component currenteTheme={theme} {...pageProps} />
         </Template>
       </ThemeProvider>
     </>

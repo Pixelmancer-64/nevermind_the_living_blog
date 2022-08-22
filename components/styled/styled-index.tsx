@@ -4,7 +4,7 @@ export const Container = styled.main`
 display: grid;
 grid-template-columns: 2fr 1fr;
 padding: 3vh 3vw;
-background-color: ${(props) => props.theme.colors.background.secondary};
+background-color: var(--background-secondary);
 column-gap: 48px;
 `;
 export const Posts = styled.div``;
@@ -14,10 +14,10 @@ flex-direction: column;
 gap: 4rem;
 `;
 export const TopCategories = styled.div`
-color: ${(props) => props.theme.colors.text};
+color: var(--text);
 `;
 export const PopularContent = styled.div`
-color: ${(props) => props.theme.colors.text};
+color: var(--text);
 flex-grow: 1;
 `;
 export const CategoryList = styled.ul`
@@ -28,7 +28,7 @@ flex-wrap: wrap;
 export const Category = styled.li`
 & a {
   color: inherit;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: var(--primary);
   border-radius: 15px;
   padding: 3px 12px;
   font-size: 13px;

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -18,6 +19,20 @@ body {
 }
 
 :root {
+    ${lightTheme}
+
+    // override with dark theme values if theme data attribute is set to dark
+    [data-theme="dark"] {
+    ${darkTheme}
+    }
+
+    // support no JavaScript scenario by using media query
+    &.no-js {
+    @media (prefers-color-scheme: dark) {
+        ${darkTheme}
+    }
+    }
+
     --font-weight-bold: 600;
     --font-weight-medium: 500;
     --font-weight-light: 400;
@@ -75,13 +90,13 @@ h5,
 h6,
 button {
     overflow-wrap: break-word;
-    color: ${(props) => props.theme.colors.text};
+    color: var(--text);
 
 }
 
 h1, h2, h3, h4, h5, h6, strong{
     font-weight: var(--font-weight-bold);
-    color: ${(props) => props.theme.colors.text};
+    color: var(--text);
 
 }
 
@@ -103,10 +118,11 @@ ul, ol{
 }
 
 body{
-  background-color: ${(props) => props.theme.colors.background.primary};
+  /* transition: color 350ms ease 0s, background 350ms ease 0s; */
+  background-color: var(--background-primary);
 
 .toggled{
-    color: ${(props)=> props.theme.colors.info};
+    color: var(--info);
 
     li {
         opacity: 1;
@@ -114,7 +130,5 @@ body{
 }
 }
 `;
-
-
 
 export default GlobalStyle;

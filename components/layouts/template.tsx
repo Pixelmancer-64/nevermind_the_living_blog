@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DefaultTheme } from "styled-components/native";
 import {
   Footer,
   Header,
@@ -14,6 +15,7 @@ interface TemplateProps<P = any> {
   children: P;
   toggleDarkMode(): boolean;
 }
+
 
 const Template = ({ children, toggleDarkMode }: TemplateProps) => {
   return (

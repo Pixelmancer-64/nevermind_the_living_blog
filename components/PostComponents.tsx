@@ -8,7 +8,7 @@ const Image = styled.img`
 `;
 
 const Extra_Info_Container = styled.div`
-  color: ${(props) => props.theme.colors.text};
+  color: var(--text);
 `;
 
 export const Extra_Info = ({ publishedOn, lastUpdatedOn }: any) => {

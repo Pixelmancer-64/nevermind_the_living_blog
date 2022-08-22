@@ -4,12 +4,12 @@ import Link from "next/link";
 export const H1 = styled.h1`
   font-size: var(--font-size-4xl);
   margin-top: 32px;
-  color: ${(props) => props.theme.colors.tertiary};
+  color: var(--terciary);
 `;
 
 export const H2 = styled.h2`
   font-size: var(--font-size-3xl);
-  color: ${(props) => props.theme.colors.tertiary};
+  color: var(--terciary);
   margin-top: 48px;
   margin-bottom: 32px;
 `;

@@ -18,12 +18,12 @@ transition: 200ms;
 export const ReadMore = styled.span`
 font-weight: 600;
 &:after {
-  color: ${(props) => props.theme.colors.primary};
+  color: var(--primary);
 }
 `;
 
 export const Post = styled.article`
-color: ${(props) => props.theme.colors.text};
+color: var(--text);
 font-family: sans-serif;
 font-weight: 400;
 display: flex;
@@ -38,7 +38,7 @@ a {
 }
 &:hover {
   h3 {
-    color: ${(props) => props.theme.colors.primary};
+    color: var(--primary);
   }
   ${ReadMore}:after {
     content: " 🡆";

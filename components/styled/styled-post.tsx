@@ -8,13 +8,12 @@ export const Container = styled.main`
   width: 100%;
   max-width: 1150px;
   margin: 32px auto;
-  color: ${(props) => props.theme.colors.text};
+  color: var(--text);
 `;
 
 export const Content = styled.article`
   flex: 1 1 820px;
   max-width: min(820px, 100%);
-  /* background-color: ${(props) => props.theme.colors.background.secondary}; */
   padding: 32px;
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
     0.375rem;
@@ -53,7 +52,7 @@ export const InnerOl = styled.ol`
 `;
 
 export const Summary = styled.span`
-  color: ${(props) => props.theme.colors.tertiary};
+  color: var(--tertiary);
   font-size: var(--font-size-2xl);
 `;
 

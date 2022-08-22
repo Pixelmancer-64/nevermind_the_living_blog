@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ThemeSwitcher = styled.button`
-  border: 3px solid ${(props) => props.theme.colors.text};
-  color: ${(props) => props.theme.colors.text};
+  border: 3px solid var(--text);
+  color: var(--text);
   padding: 4px;
 `
 export const Header = styled.header`
@@ -11,7 +11,7 @@ export const Header = styled.header`
   margin: 16px auto;
   padding: 0 32px;
   align-items: center;
-  color: ${(props) => props.theme.colors.text};
+  color: var(--text);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-medium);
 
@@ -34,10 +34,6 @@ export const LogoWrapper = styled.div`
   gap: 4px;
   & img {
     width: 50px;
-    filter: ${(props) => {
-      if (props.theme.name == "dark") return "brightness(0) invert(1)";
-      return "brightness(0) invert(0)";
-    }};
   }
   & span {
     font-size: var(--font-size-3xl);
@@ -56,7 +52,7 @@ export const Navbar = styled.nav`
     color: inherit;
   }
   a:hover {
-    color: ${(props) => props.theme.colors.primary};
+    color: var(--primary);
   }
 `;
 
@@ -65,7 +61,7 @@ export const Footer = styled.footer`
   grid-template-columns: 1fr 2fr;
   margin-top: 16px;
   padding: 16px 32px;
-  background-color: ${(props) => props.theme.colors.background.secondary};
+  background-color: var(--background-secondary);
 `;
 export const RandomLinks = styled.div`
   display: flex;
