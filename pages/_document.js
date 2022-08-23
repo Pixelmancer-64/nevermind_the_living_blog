@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -45,7 +44,7 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
-          <script type="text/javascript" src="./headTheme.js" />
+          <script type="text/javascript" src="/headTheme.js" />
 
           <Main />
           <NextScript />

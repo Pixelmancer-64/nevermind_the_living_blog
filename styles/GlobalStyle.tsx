@@ -108,7 +108,7 @@ html {
     scroll-behavior: smooth;
 }
 ul, ol{
-  list-style: none;
+    list-style: none;
 }
 
 #__next{
@@ -118,8 +118,11 @@ ul, ol{
 }
 
 body{
-  /* transition: color 350ms ease 0s, background 350ms ease 0s; */
-  background-color: var(--background-primary);
+    --transitionActive: color 350ms ease 0s, background 350ms ease 0s;
+    --transitionInactive: none;
+
+    transition: var(--transitionInactive);
+    background-color: var(--background-primary);
 
 .toggled{
     color: var(--info);

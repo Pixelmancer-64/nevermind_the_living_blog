@@ -58,6 +58,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     toggleTheme(window.__theme);
     window.__setPreferredTheme(window.__theme);
+    const body = document.querySelector("body");
+    if (body) body.style.transition = "var(--transitionActive)";
   }, []);
 
   useEffect(() => {
@@ -66,7 +68,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <ThemeProvider  theme={Theme}>
+      <ThemeProvider theme={Theme}>
         <GlobalStyle />
         <Template
           toggleDarkMode={() => {
