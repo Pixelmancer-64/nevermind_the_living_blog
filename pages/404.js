@@ -101,7 +101,7 @@ const Post = () => {
                 setSwitch(true);
               }}
             >
-              <img src="/iconmonstr-flashlight-5.svg"/>
+              <img src="/icons/flashlight.svg"/>
             </Switch>
           </Lighthouse>
         )}

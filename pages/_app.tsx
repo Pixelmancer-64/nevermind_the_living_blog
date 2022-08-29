@@ -1,3 +1,5 @@
+import "@code-hike/mdx/dist/index.css"
+
 import type { AppProps } from "next/app";
 import { Theme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -77,7 +79,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             return true;
           }}
         >
-          <Component currenteTheme={theme} {...pageProps} />
+          <Component {...pageProps} />
         </Template>
       </ThemeProvider>
     </>

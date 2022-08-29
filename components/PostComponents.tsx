@@ -9,6 +9,7 @@ const Image = styled.img`
 
 const Extra_Info_Container = styled.div`
   color: var(--text);
+  margin-bottom: 32px;
 `;
 
 export const Extra_Info = ({ publishedOn, lastUpdatedOn }: any) => {

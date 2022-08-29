@@ -57,6 +57,11 @@ body {
 }
 a {
     text-decoration: none;
+    color: inherit;
+    transition: 160ms ;
+    &:hover{
+      color: var(--primary);
+    }
 }
 img,
 picture,
@@ -131,6 +136,18 @@ body{
         opacity: 1;
     }
 }
+
+.ch-editor-button, .ch-code-button{
+    visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 200ms linear;
+}
+
+.ch-codegroup:hover .ch-editor-button, .ch-code:hover .ch-code-button {
+    visibility: visible;
+  opacity: 1;
+}
+
 }
 `;
 

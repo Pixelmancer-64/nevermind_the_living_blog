@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { DefaultTheme } from "styled-components/native";
 import {
   Footer,
   Header,
@@ -8,7 +7,7 @@ import {
   Ps,
   RandomLinks,
   SocialMediaIcon,
-  ThemeSwitcher
+  ThemeSwitcher,
 } from "../styled/styled-template";
 
 interface TemplateProps<P = any> {
@@ -16,15 +15,18 @@ interface TemplateProps<P = any> {
   toggleDarkMode(): boolean;
 }
 
-
 const Template = ({ children, toggleDarkMode }: TemplateProps) => {
   return (
     <>
       <Header>
-        <LogoWrapper>
-          <img src="/favicon.png"></img>
-          <span>Lorem</span>
-        </LogoWrapper>
+        <Link href="/">
+          <a>
+            <LogoWrapper>
+              <img src="/icons/favicon.png" />
+              <span>Lorem</span>
+            </LogoWrapper>
+          </a>
+        </Link>
 
         <Navbar>
           <ul>
@@ -48,19 +50,21 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
 
         <ThemeSwitcher onClick={() => toggleDarkMode()}>TEMA</ThemeSwitcher>
       </Header>
-      
+
       {children}
       <Footer>
-        <Ps><p>Footer</p></Ps>
+        <Ps>
+          <p>© 2020-present Hugo Billé Martins. All Rights Reserved.</p>
+        </Ps>
         <RandomLinks>
-          <SocialMediaIcon href="/">
-            <img src="/favicon.png" alt="github icon" />
+          <SocialMediaIcon href="https://github.com/Sotiris64">
+            <img src="/icons/github.svg" alt="github icon" />
           </SocialMediaIcon>
-          <SocialMediaIcon href="/">
-            <img src="/favicon.png" alt="instagram icon" />
+          <SocialMediaIcon href="https://www.instagram.com/_pixelmancer/">
+            <img src="/icons/instagram.svg" alt="instagram icon" />
           </SocialMediaIcon>
-          <SocialMediaIcon href="/">
-            <img src="/favicon.png" alt="personal website icon" />
+          <SocialMediaIcon href="https://www.linkedin.com/in/hugo-bill%C3%A9-martins-47615222a/">
+            <img src="/icons/linkedin.svg" alt="linkedin icon" />
           </SocialMediaIcon>
         </RandomLinks>
       </Footer>

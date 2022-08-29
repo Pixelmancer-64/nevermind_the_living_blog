@@ -1,7 +1,10 @@
+const { remarkCodeHike } = require("@code-hike/mdx");
+const theme = require("shiki/themes/dracula.json");
+
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [[remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }]],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
     providerImportSource: "@mdx-js/react",

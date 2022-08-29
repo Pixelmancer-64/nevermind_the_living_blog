@@ -32,24 +32,24 @@ interface AsideProps {
 const Aside = ({ headings = [], unsorted = [] }: AsideProps) => {
   useEffect(() => {
     if (unsorted.length > 0) {
-      let lastOne = 0;
       window.addEventListener("scroll", function () {
         for (let i = unsorted.length - 1; i >= 0; i--) {
-          if (
-            window.scrollY >
-            unsorted[i].offsetTop + unsorted[i].offsetHeight - 100
-          ) {
+          if (window.scrollY > unsorted[i].offsetTop - 10) {
             document
               .getElementById("ContentLink-" + unsorted[i].id)
               ?.classList.add("toggled");
-            if (i < lastOne) {
-              document
-                .getElementById("ContentLink-" + unsorted[lastOne].id)
-                ?.classList.remove("toggled");
-            }
 
-            lastOne = i;
-            break;
+            // if (i < lastOne) {
+            //   document
+            //     .getElementById("ContentLink-" + unsorted[lastOne].id)
+            //     ?.classList.remove("toggled");
+            // }
+
+            // break;
+          } else {
+            document
+              .getElementById("ContentLink-" + unsorted[i].id)
+              ?.classList.remove("toggled");
           }
         }
       });
@@ -127,6 +127,9 @@ const Post = ({ children }: PostProps) => {
     }
 
     setHeadings(sorted);
+    // for (let e of unsorted) {
+    //   console.log(e.offsetTop, e.offsetHeight);
+    // }
   }, []);
 
   return (

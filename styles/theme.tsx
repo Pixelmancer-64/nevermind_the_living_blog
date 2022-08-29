@@ -48,6 +48,7 @@ export const darkTheme = css`
   --sucess: ${({ theme }) => theme.dark.colors.sucess};
   --error: ${({ theme }) => theme.dark.colors.error};
   --alert: ${({ theme }) => theme.dark.colors.alert};
+  --inverse: brightness(0) invert(1);
 `;
 
 export const lightTheme = css`
@@ -61,4 +62,5 @@ export const lightTheme = css`
   --sucess: ${({ theme }) => theme.light.colors.sucess};
   --error: ${({ theme }) => theme.light.colors.error};
   --alert: ${({ theme }) => theme.light.colors.alert};
+  --inverse: brightness(0) invert(0);
 `;

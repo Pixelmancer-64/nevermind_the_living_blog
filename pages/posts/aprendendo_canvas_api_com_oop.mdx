@@ -1,0 +1,141 @@
+import Post from "../../components/layouts/post";
+import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
+
+export const meta = {
+  date: "29/08/2022",
+  title: "Aprendendo a atulizar o Canvas API com OOP",
+  body: "O Canvas API é uma ferramenta poderosa que poucos dominam. Além de ser útil para fazer desenhos e 'Generative Art', ela também é uma ótima forma de aprender a programar utilizando conceitos de programação orientada a objetos",
+  url: "/banners/sandpiles.png",
+  alt: "Generative art, Sandpiles fractal",
+  publishedOn: "29/08/2022",
+  lastUpdatedOn: "",
+};
+
+export default ({ children }) => <Post>{children}</Post>;
+
+<Banner url={meta.url} alt={meta.alt} />
+# O que é o Canvas API?
+<Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
+
+O Canvas API permite de maneira muito fácil criar desenhos
+tanto em 2D quanto em 3D. Esse tutorial pretende apenas
+introduzir como utilizar essa ferramenta tão útil em 2D, e claro,
+utilizando conceitos de OOP.
+
+# O que é possível fazer?
+
+Quando falamos de "desenhos" automaticamente lembramos de um papel
+e uma caneta; nesse caso também não é muito diferente, usamos funções
+como _`fillRect()`_ e _`arc()`_ para desenhar formas geométricas básicas que,
+em conjunto, podem formar qualquer desenho.
+
+<br />
+Porém, é óbvio que esses tipos de desenhos não são exatamente "humanos", costumam
+ser simétricos e "muito perfeitos", características de desenhos feitos usando código
+("conhecido também por Generative Art").
+<br />
+Um exemplo desses desenhos é o banner dessa publicação, que é um fractal feito utilizando
+o Canvas API, definitivamente muito perfeito para ser feito por uma pessoa. Se tiver
+interesse, recomendo acessar minha [galeria](https://sotiris64.github.io/animations)
+com todos os meus projetos utilizando o canvas.
+
+# Estrutura inicial
+
+Para começar a trabalhar com o canvas, precisamos antes criar um elemento
+_`<canvas>`_ no nosso html. Também é importante já criarmos algumas regras no nosso css
+para tirar o margim e o padding padrão dos naveagdores, o famoso reset.
+
+<CH.Code>
+
+```html index.html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lorem Ipsum</title>
+  </head>
+
+  <body>
+    <main>
+      <canvas id="canvas"></canvas>
+    </main>
+  </body>
+
+  <script src="./scripts.js"></script>
+</html>
+```
+
+```css style.css
+* {
+  margin: 0;
+  padding: 0;
+}
+```
+
+```js scripts.js
+console.log("hello world");
+```
+
+</CH.Code>
+
+## Criando o contexto
+
+Agora sim podemos começar! O primeiro passo para usarmos
+o Canvas API é pegar pelo DOM o elemento _`<canvas>`_ que criamos
+no HTML. Podemos fazer isso com o _`querySelector('canvas')`_ ou _`getElementByID('canvas')`_,
+as duas maneiras irão funcionar. Com o elemento em mãos, podemos chamar o método _`getContext('2d')`_,
+que criará um objeto _CanvasRenderingContext2D_, que contém todas as funções que precisamos para
+desenhar no nosso canvas. lembrando que também existe o Context3D, que usamos
+para desenhar em... _3D_!
+
+```js scripts.js
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+```
+
+## Desenhando pela primeira vez
+
+Agora que temos nosso _ctx_, podemos finalmente começar a desenhar!
+Para desenhar um quadro, utilizamos o método _`fillRect()`_ do ctx; essa função
+recebe 4 valores, os dois primeiros são as coordenadas _x, y_ e os outros dois são
+a _altura e largura_ do quadrado. Nesse primeiro exemplo vou desenhar um quadro com lado 100
+na posição 0,0.
+
+_Mas pera ai_, ainda não escolhemos a cor do quadrado! Estamos falando para
+o ctx criar um quadrado mas nem falamos com que "tinta". Para isso, colocamos alguma cor
+na propriedade _`fillStyle`_ do ctx. Pode ser rgb, rgba, hsl, hex ou mesmo o nome quinem no css...
+
+```js scripts.js
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+ctx.fillStyle = "red";
+ctx.fillRect(0, 0, 100, 100);
+```
+
+E olha lá nosso quadrado vermelho!
+![Quadrado vermelho](/content/aprendendo_canvas_api_com_oop/canvas1.png)
+
+## Onde que é esse tal 0,0?
+
+Diferente de um plano cartesiano, o ponto de origem do canvas, por padrão (podemos mudar isso depois),
+é o quando superior esquerdo da tela. Por isso que o quadrado está bem no cantinho esquerdo do nosso canvas.
+
+# Movendo o quadrado
+
+Para mover esse quadrado precisamos de duas coisas:
+
+1. Saber a posição dele em todos os momentos para que possamos aumentar ou diminuir esse valor
+2. Criar um loop infinito para criar a animação
+
+O primeiro problema é fácil de resolver, só precisamos criar uma variável
+x e y para guardar a posição do quadrado.
+Esse "loop infinito" também é fácil de resolver, vamos ver isso logo já.
+Primeiro, precisamos fazer o canvas preencher a tela inteira para que haja mais espaço
+para desenhar.
+
+## Canvas preenchendo toda a tela
+
+O jeito mais fácil de fazer isso 
+
