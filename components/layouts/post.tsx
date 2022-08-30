@@ -10,73 +10,61 @@ import {
   Summary,
 } from "../styled/styled-post";
 import { HeadingH1, HeadingH2, P, A } from "../styled/styled-mdx-tags";
-// import Highlight, { defaultProps } from "prism-react-renderer";
 
 interface ContentLinkProps {
   children: any;
+  padding: number;
 }
 
-const ContentLink = ({ children }: ContentLinkProps) => {
+const ContentLink = ({ children, padding }: ContentLinkProps) => {
   return (
     <a id={"ContentLink-" + children} href={"#" + children}>
-      <Li>{children}</Li>
+      <Li padding={padding}>{children}</Li>
     </a>
   );
 };
 
 interface AsideProps {
   headings: any[];
-  unsorted: any[];
 }
 
-const Aside = ({ headings = [], unsorted = [] }: AsideProps) => {
+const Aside = ({ headings = [] }: AsideProps) => {
   useEffect(() => {
-    if (unsorted.length > 0) {
+    if (headings.length > 0) {
       window.addEventListener("scroll", function () {
-        for (let i = unsorted.length - 1; i >= 0; i--) {
-          if (window.scrollY > unsorted[i].offsetTop - 10) {
+        for (let i = headings.length - 1; i >= 0; i--) {
+          if (window.scrollY > headings[i].offsetTop - 10) {
             document
-              .getElementById("ContentLink-" + unsorted[i].id)
+              .getElementById("ContentLink-" + headings[i].id)
               ?.classList.add("toggled");
-
             // if (i < lastOne) {
             //   document
             //     .getElementById("ContentLink-" + unsorted[lastOne].id)
             //     ?.classList.remove("toggled");
             // }
-
             // break;
           } else {
             document
-              .getElementById("ContentLink-" + unsorted[i].id)
+              .getElementById("ContentLink-" + headings[i].id)
               ?.classList.remove("toggled");
           }
         }
       });
     }
-  }, [unsorted]);
+  }, [headings]);
 
   return (
     <AsideContainer>
       <Summary>Summary</Summary>
       <OuterOl>
         {headings.map((e, index) => {
-          if (Array.isArray(e)) {
-            return (
-              <InnerOl key={`ol-${index}`}>
-                {e.map((el, ind) => {
-                  return (
-                    <ContentLink key={`${index}-${ind}`}>
-                      {el.innerText}
-                    </ContentLink>
-                  );
-                })}
-              </InnerOl>
-            );
-          }
-          const num = e.localName;
           return (
-            <ContentLink key={`${num}-${index}`}>{e.innerText}</ContentLink>
+            <ContentLink
+              padding={parseInt(e.localName.charAt(1))}
+              key={`${e.localName}-${index}`}
+            >
+              {e.innerText}
+            </ContentLink>
           );
         })}
       </OuterOl>
@@ -97,47 +85,16 @@ interface PostProps<P = any> {
 
 const Post = ({ children }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
-  const [unsorted, setUnsorted] = useState<any[]>([]);
 
   useEffect(() => {
-    const elements = [...document.querySelectorAll("h1, h2, h3, h4, h5, h6")];
-    setUnsorted(elements);
-    let sorted: any[] = [];
-
-    for (let i = 0; i < elements.length; ) {
-      if (
-        elements[i - 1] != undefined &&
-        parseInt(elements[i - 1].localName.slice(-1)) <
-          parseInt(elements[i].localName.slice(-1))
-      ) {
-        let aux = [];
-        while (
-          i < elements.length - 1 &&
-          parseInt(elements[i - 1].localName.slice(-1)) <=
-            parseInt(elements[i].localName.slice(-1))
-        ) {
-          aux.push(elements[i]);
-          i++;
-        }
-        sorted.push(aux);
-      } else {
-        sorted.push(elements[i]);
-        i++;
-      }
-    }
-
-    setHeadings(sorted);
-    // for (let e of unsorted) {
-    //   console.log(e.offsetTop, e.offsetHeight);
-    // }
+    setHeadings([...document.querySelectorAll("h1, h2, h3, h4, h5, h6")]);
   }, []);
-
   return (
     <Container>
       <Content>
         <MDXProvider components={components}>{children}</MDXProvider>
       </Content>
-      <Aside headings={headings} unsorted={unsorted}></Aside>
+      <Aside headings={headings}></Aside>
     </Container>
   );
 };

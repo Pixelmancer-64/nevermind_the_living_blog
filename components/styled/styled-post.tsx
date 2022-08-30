@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.main`
   display: flex;
   justify-content: center;
@@ -56,10 +55,14 @@ export const Summary = styled.span`
   font-size: var(--font-size-2xl);
 `;
 
-export const Li = styled.li`
+interface LiProps {
+  padding: number;
+}
+
+export const Li = styled.li<LiProps>`
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
-
+  padding-left: ${(p) => `${(p.padding - 1) * 16}px`};
   opacity: 0.7;
   transition: opacity 400ms ease 0s;
 

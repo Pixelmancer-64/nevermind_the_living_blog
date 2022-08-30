@@ -4,7 +4,9 @@ const theme = require("shiki/themes/dracula.json");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [[remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }]],
+    remarkPlugins: [
+      [remarkCodeHike, { theme, lineNumbers: true, showCopyButton: true }],
+    ],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
     providerImportSource: "@mdx-js/react",
@@ -31,9 +33,9 @@ module.exports = withMDX(
         },
       ],
     },
-    // STYLED-COMPONENTS
   },
   {
+    // distDir: "/pages/posts",
     reactStrictMode: true,
     compiler: {
       styledComponents: true,
