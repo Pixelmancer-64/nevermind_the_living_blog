@@ -12,20 +12,8 @@ import {
   TopCategories,
 } from "../components/styled/styled-index";
 
-function importAll(r: any) {
-  return r.keys().map((fileName:any) => ({
-    link: fileName.substr(1).replace(/\/index\.mdx$/, ""),
-    module: r(fileName)
-  }));
-}
-
 const getStaticProps = async () => {
   const files = require.context("./posts/", false, /.mdx$/);
-  const postss = importAll(
-    require.context("./posts/", true, /\.mdx$/)
-  );
-  // console.log(files)
-  // console.log(postss)
   const posts = await Promise.all(
     files.keys().map(async (element: string) => {
       const importMDX = await files(element);

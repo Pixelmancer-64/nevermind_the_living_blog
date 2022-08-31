@@ -36,17 +36,6 @@ class LocalStorage {
   }
 }
 
-function useToggle(defaultValue: any = "") {
-  const [value, setValue] = useState(defaultValue);
-
-  function toggle(newValue: any) {
-    setValue(newValue);
-    LocalStorage.set("theme", newValue);
-  }
-
-  return [value, toggle];
-}
-
 declare global {
   interface Window {
     __theme: any;

@@ -5,6 +5,12 @@ const Image = styled.img`
     0.375rem;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  margin: auto;
+  min-width: 100%;
+  /* max-width: 100%; */
+  /* min-height: 100%; */
+  max-height: 100%;
+  border-radius: 3px;
 `;
 
 const Extra_Info_Container = styled.div`
@@ -19,6 +25,7 @@ export const Extra_Info = ({ publishedOn, lastUpdatedOn }: any) => {
         Published on <span>{publishedOn}</span>
         {lastUpdatedOn && <span> · Updated on {lastUpdatedOn}</span>}
       </p>
+      <p>Written by - Hugo Billé Martins</p>
     </Extra_Info_Container>
   );
 };

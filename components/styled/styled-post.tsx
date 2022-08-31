@@ -11,8 +11,8 @@ export const Container = styled.main`
 `;
 
 export const Content = styled.article`
-  flex: 1 1 820px;
-  max-width: min(820px, 100%);
+  flex: 1 1 720px;
+  max-width: min(720px, 100%);
   padding: 32px;
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
     0.375rem;
@@ -24,8 +24,12 @@ export const Content = styled.article`
 
 export const AsideContainer = styled.aside`
   position: sticky;
-  top: 32px;
-  flex: 0 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  top: 0px;
+  padding: 32px;
+  flex: 0 1 250px;
   max-height: 55vh;
   margin-left: auto;
   @media (max-width: 1100px) {
@@ -36,17 +40,12 @@ export const AsideContainer = styled.aside`
 export const OuterOl = styled.ol`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  li {
+    line-height: 1.1rem;
+  }
+  gap: 8px;
   a {
     color: inherit;
-  }
-`;
-export const InnerOl = styled.ol`
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  li {
-    padding-left: 16px;
   }
 `;
 

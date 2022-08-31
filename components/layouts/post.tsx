@@ -4,12 +4,11 @@ import {
   AsideContainer,
   Container,
   Content,
-  InnerOl,
   Li,
   OuterOl,
   Summary,
 } from "../styled/styled-post";
-import { HeadingH1, HeadingH2, P, A } from "../styled/styled-mdx-tags";
+import { HeadingH1, HeadingH2, P, A, Img } from "../styled/styled-mdx-tags";
 
 interface ContentLinkProps {
   children: any;
@@ -37,12 +36,6 @@ const Aside = ({ headings = [] }: AsideProps) => {
             document
               .getElementById("ContentLink-" + headings[i].id)
               ?.classList.add("toggled");
-            // if (i < lastOne) {
-            //   document
-            //     .getElementById("ContentLink-" + unsorted[lastOne].id)
-            //     ?.classList.remove("toggled");
-            // }
-            // break;
           } else {
             document
               .getElementById("ContentLink-" + headings[i].id)
@@ -77,6 +70,7 @@ const components = {
   h2: HeadingH2,
   p: P,
   a: A,
+  img: Img
 };
 
 interface PostProps<P = any> {
@@ -89,6 +83,7 @@ const Post = ({ children }: PostProps) => {
   useEffect(() => {
     setHeadings([...document.querySelectorAll("h1, h2, h3, h4, h5, h6")]);
   }, []);
+
   return (
     <Container>
       <Content>

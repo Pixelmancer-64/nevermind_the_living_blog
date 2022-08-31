@@ -137,5 +137,236 @@ para desenhar.
 
 ## Canvas preenchendo toda a tela
 
-O jeito mais fácil de fazer isso 
+O jeito mais fácil de fazer isso é utilizando as propriedades
+width e height do canvas. Vamos definir que seu tamanho seja igual
+ao _`window.innerWidth`_ e _`window.innerHeight`_.
 
+```js scripts.js
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
+ctx.fillStyle = "red";
+ctx.fillRect(0, 0, 100, 100);
+```
+
+## Atualizando a posição
+
+Vamos criar uma variável x e y para guardar a posição do quadrado
+e aumentar esses valores a cada frame da animação. Para criar uma animação
+utilizados a função _`requestAnimationFrame()`_, que vai executar uma função em
+recursão mas respeitando o limite de 60 frames por segundo ou mais, dependendo do seu monitor e poder de processamento do computador.
+
+<br />
+Meio difícil de entender, certo? Vamos colocar isso em prática. Vamos criar uma função
+_`animacao()`_ e dentro dela vamos chamar _`requestAnimationFrame(animacao)`_.
+
+```js scripts.js
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
+ctx.fillStyle = "red";
+
+let x = 100;
+let y = 100;
+
+function animacao() {
+  requestAnimationFrame(animacao);
+  ctx.fillRect(x, y, 100, 100);
+  x++;
+  y++;
+}
+
+animacao();
+```
+
+O que está acontecendo aqui é o seguinte: chamamos _`animacao()`_ pela primeira vez na linha 17, e devido ao _`requestAnimationFrame(animacao)`_, essa função será executada em todo o frame da aniação, se possível. Nesse caso, a função _`animacao()`_ está desenhando o quadrado e logo depois adicionando 1 em x e y.
+
+<br />
+Se você tentar executar esse código, você vai obter algo assim: ![Quadrado vermelho
+se movendo na diagonal](/content/aprendendo_canvas_api_com_oop/canvas2.png) Resultado
+meio estranho... O que está acontecendo? Basicamente, estamos desenhando todo o frama
+da animação mas não estamos limpando a tinta dos desenhos. Para resolver isso, precisamos
+usar o método _`clearRect()`_ do ctx. Ele recebe 4 argumentos: x e y inicial e x
+e y final, formando uma área que será limpa. No nosso caso, queremos limpar a tela
+toda então passamos 0,0 como valores iniciais e canvas.width e canvas.height como
+valores finais. Vale lembrar que precisamos limpar o canvas antes de *todos os frames*.
+```js scripts.js const canvas = document.querySelector("canvas"); canvas.width =
+window.innerWidth; canvas.height = window.innerHeight; const ctx = canvas.getContext("2d");
+ctx.fillStyle = "red";
+
+let x = 100;
+let y = 100;
+
+function animacao() {
+requestAnimationFrame(animacao);
+ctx.clearRect(0,0,canvas.width, canvas.height)
+ctx.fillRect(x, y, 100, 100);
+x++;
+y++;
+}
+
+animacao();
+
+````
+
+# Abstração com OOP
+Por enquanto foi tudo bem fácil, desenhar um único quadrado que se move na diagonal foi uma tarefa bem rápida. Mas e se, ao invés de um único quadrado, fossem *1000*? Seria bem inconveniente criar 1000 variáveis x e y. A forma que vamos solucionar esse problema é utilizando classes que, além de deixar bem claro o que cada função faz, permite a gente criar inúmeros quadrados de maneira bem fácil.
+<br/>
+Vamos começar criando uma classe Quadrado (é costume que nome de classes comecem com letra maiúscula). Essa classe vai armazenar 4 valores por enquanto: coordenadas x e y, tamanho e cor. Toda classe tem disponível a função _`constructor()`_, que é iniciada assim que criamos uma instância (não se preocupe com essa palavra, já vamos chegar nela) dessa classe.
+<br />
+Precisamos guardar os valores que recebemos no constructor para que possamos utiliza-los fora dessa função e modifica-los. Para isso, usamos a keyword _`this`_, que de modo bem simples se refere ao espaço que estamos no momento; ao usar o this dentro da classe Quadrado, dizemos que queremos definir as propriedade do Quadrado.
+
+```js scripts.js
+class Quadrado {
+  constructor(x, y, tamanho, cor){
+    this.x = x;
+    this.y = y;
+    this.tamanho = tamanho;
+    this.cor = cor;
+  }
+}
+````
+
+# Criando uma instância
+
+Ok, agora que temos nossa classe, podemos criar uma instância dela, que é simplesmente uma cópia. Podemos criar x instância de uma classe com a keyword _`new`_. Vamos criar uma variável
+"quadradoVermelho" e salvar nela uma instância de Quadrado.
+
+```js scripts.js
+class Quadrado {
+  constructor(x, y, tamanho, cor) {
+    this.x = x;
+    this.y = y;
+    this.tamanho = tamanho;
+    this.cor = cor;
+  }
+}
+
+const quadradoVermelho = new Quadrado(0, 0, 100, "red");
+```
+
+Pronto! criamos uma instância do quadradoVermelho. Por enquanto essa classe é meio inútil porque ela não tem nenhum método, mas sua estrutura já está pronta.
+
+<br />O que seria muito útil para a gente agora seria criar uma método
+_`desenhar()`_ para a classe Quadrado. Sempre que quisermos desenhar o
+_`quadradoVermelho`_ podemos simplesmente fazer _`quadradoVermelho.desenhar()`_.
+
+```js scripts.js
+class Quadrado {
+  constructor(x, y, tamanho, cor) {
+    this.x = x;
+    this.y = y;
+    this.tamanho = tamanho;
+    this.cor = cor;
+  }
+  desenhar() {
+    ctx.fillStyle = this.cor;
+    ctx.fillRect(this.x, this.y, this.tamanho, this.tamanho);
+  }
+}
+
+const quadradoVermelho = new Quadrado(0, 0, 100, "red");
+```
+
+Sempre que for necessário acessar as propriedades do Quadrado, podemos utilizar o _`this`_.
+
+Agora, utilizando o que aprendemos para fazer a mesma coisa de antes, teríamos:
+
+```js scripts.js
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
+
+class Quadrado {
+  constructor(x, y, tamanho, cor) {
+    this.x = x;
+    this.y = y;
+    this.tamanho = tamanho;
+    this.cor = cor;
+  }
+
+  desenhar() {
+    ctx.fillStyle = this.cor;
+    ctx.fillRect(this.x, this.y, this.tamanho, this.tamanho);
+  }
+}
+
+const quadradoVermelho = new Quadrado(0, 0, 100, "red");
+quadradoVermelho.desenhar();
+```
+
+Tivemos mais trabalho para começar a desenhar mas agora, se quisermos desenhar milhares de quadrados, ficou infinitamente mais fácil. Além disso, ficou mais fácil de adicionar novas funcionalidades para o Quadrado; se você quiser adicionar a funcionalidade de "mover" para o quadradoVermelho, é só você ir criar um novo método que faça isso. O objetivo do OOP é facilitar criar novas funcionalidade e deixar mais simples para que outras pessoas utilizam essas funções: não fica super fácil de entender o que _`quadradoVermelho.desenhar()`_ faz?
+
+# Desenhando 1000 quadrados
+
+Para começar essa empreitada, precisamos criar um vetor que vai armazenar todas essas instâncias. Vamos chamar esse vetor de quadrados e ir empurrando quadrados em posições aleatória para esse vetor
+
+```js scripts.js focus=20:26
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
+
+class Quadrado {
+  constructor(x, y, tamanho, cor) {
+    this.x = x;
+    this.y = y;
+    this.tamanho = tamanho;
+    this.cor = cor;
+  }
+
+  desenhar() {
+    ctx.fillStyle = this.cor;
+    ctx.fillRect(this.x, this.y, this.tamanho, this.tamanho);
+  }
+}
+
+let quadrados = [];
+
+for (let i = 0; i < 1000; i++) {
+  quadrados.push(
+    new Quadrado(Math.random() * 100, Math.random() * 100, 10, "red")
+  );
+}
+```
+
+Agora que temos esse vetor, podemos iterar por ele com um _`Array.forEach()`_, um loop normal ou um for loop. Fica a seu critério qual usar, o importante é percorrer cada instância salva no vetor quadrados e chamar a função desenhar.
+
+```js scripts.js focus=28:30
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
+
+class Quadrado {
+  constructor(x, y, tamanho, cor) {
+    this.x = x;
+    this.y = y;
+    this.tamanho = tamanho;
+    this.cor = cor;
+  }
+
+  desenhar() {
+    ctx.fillStyle = this.cor;
+    ctx.fillRect(this.x, this.y, this.tamanho, this.tamanho);
+  }
+}
+
+let quadrados = [];
+
+for (let i = 0; i < 1000; i++) {
+  quadrados.push(
+    new Quadrado(Math.random() * canvas.width, Math.random() * canvas.height, 10, "red")
+  );
+}
+
+for (let quadrado of quadrados) {
+  quadrado.desenhar();
+}
+```
+Com isso, agora temos uma tela cheia de quadrados vermelhos espalhados aleatoriamento. 
+![1000 quadrados vermelhos](/content/aprendendo_canvas_api_com_oop/canvasFinal.png)
+Se você estiver animado, você poderia criar quadrados de cores diferentes, ou talvez fazer eles se mexerem. Fica a cargo da sua imaginação!
