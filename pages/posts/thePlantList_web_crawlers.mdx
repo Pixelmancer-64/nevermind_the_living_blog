@@ -1,0 +1,54 @@
+import Post from "../../components/layouts/post";
+import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
+
+export const meta = {
+  date: "05/09/2022",
+  title:
+    "Como usar o scrapy para capturar dados de centenas de páginas diferentes",
+  body: "Recentemente tive a necessidade de pegar uma lista de nomes dentro de um site com vários links, e cada link desse me levava para uma página com ainda mais nomes. Pode parecer uma trabalho meio complicado, mas é surpreendente simples com a ajuda do scrapy",
+  url: "/banners/haha.png",
+  alt: "Generative art, Popcorn fractal",
+  publishedOn: "05/09/2022",
+  lastUpdatedOn: "",
+};
+
+export default ({ children }) => <Post>{children}</Post>;
+
+<Banner url={meta.url} alt={meta.alt} />
+# Por que o scrapy?
+<Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
+
+Recentemente comecei um projeto que envolve um cado de botânica, o nome dele é [YggdrasilProject](https://github.com/Sotiris64/YggdrasilProject) e basicamente vou utiliza-lo para cadastrar as plantas que tenho aqui em casa. Enfim, para começar o projeto eu primeiro precisava encontrar todas as espécies de plantas catalogadas para registrar qual é a espécie de cada planta daqui de casa. Até esse momento eu não sabia bem a quantidade de dados que essa empreitada geraria mas depois de terminar, consegui um total de 563.811 espécies.
+<br/>
+Mas de onde eu consegui esse tanto de planta? Infelizmente não achei uma API com esses dados, o que tornaria esse desafio bem mais fácil; o que eu achei foi um site chamado [The Plant List](http://www.theplantlist.org/) que, como o nome sugeri, é uma lista de plantas.
+<br/>
+Antes de entrar para o código, vamos entender como é a estrutura das páginas.
+1. indo para o [catálogo](http://www.theplantlist.org/1.1/browse/), vamos nos deparar com os quatro grupos do reino plantae: Angiosperma, Gimnosperma, Pteridófitas e Briófitas
+2. Clicando em qualquer um dos grupos, entramos na lista de famílias do respectivo grupo. Com uma simples query no sql podemos ver que o grupo Angiosperma tem 412 famílias, então já podemos esperar que esse grupo vai ser o que mais vai dar trabalho. Na imagem abaixo temos o número de famílias dos outros grupos: 
+![Número de famílias em cada grupo do reino plantae](/content/thePlantList_web_crawlers/query1.png)
+3. Clicando em qualquer uma das famílias, vamos encontrar todas os gêneros dessa família.
+![Número de gêneros em cada família de cada grupo do reino plante](/content/thePlantList_web_crawlers/query2.png)
+4. E finalmente, clicando em qualquer um dos gêneros, vamos encontrar a lista de todas as espécies desse gênero.  
+![Número de espécies de cada grupo do reino plante](/content/thePlantList_web_crawlers/query3.png)
+
+# Como obeter esses dados
+Em um mundo ideal, esse site teria uma API com todos esses dados, mas esse não é o caso. O site em si já foi transferido para o [WFO Plant List](hhttps://wfoplantlist.org/), mas ele aparentemente também não tem uma API ou um csv milagroso com os dados que eu quero. Enfim, o jeito é usar um web crawler para percorrer cada cada grupo, cada família desse grupo, cada gênero de cada família de cada grupo, e finalmente pegar cada spécie de cada gênero de cada família de cada grupo. Ufa! colocando desse jeito parece que foi um inferno fazer isso mas garanto que não foi tão complicado assim.
+
+# Usando o scrapy
+Scrapy é uma framework para python que ajuda imensamente a criar web crawlers. Eu consegui fazer todo o código que vou apresentar aqui lendo a documentação e lendo algumas coisas aleatórias no StackOverflow, não há necessidade de ver um curso só para aprender scrapy.
+
+## Instalação
+Como é de costume para qualquer pacote no python:
+<br/>
+*$ pip install scrapy*
+<br/>
+O scrapy já vai te dar uma comando para criar um novo projeto com todas as configurações prontas para você.
+<br/>
+*scrapy startproject tutorial*
+<br/>
+Isso vai criar uma pastinha com as configurações do scrapy e uma outra pasta onde você vai programar seus web crawlers (aqui chamados de "spiders"). A única coisa que vamos mexer no momento vai ser no setting.py dentro da pasta do projeto; adicione a seguinte linha de código *HTTPERROR_ALLOWED_CODES  =[404]* em qualquer parte do arquivo, para garantir que, se nossa spider se deparar com um erro 404 ela não vai parar de executar o programa (vai ser muito importante para esse projeto porque tem alguns links quebrados no site).
+
+# Começando o projeto
+Vamos concordar que para pegar os 4 grupos não há necessidade de fazer um programa kkkkkk, eu no caso só escrevi eles em um arquivo .csv, que pode ser encontrado [aqui](https://github.com/Sotiris64/WebCrawlers/tree/master/yggdrasil/Groups). Mas para pegar todas as famílias já há a necessidade da gente utilizar um webcrawler.
+<br/>
+
