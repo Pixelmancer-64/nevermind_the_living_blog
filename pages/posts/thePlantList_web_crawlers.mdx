@@ -19,36 +19,103 @@ export default ({ children }) => <Post>{children}</Post>;
 <Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
 
 Recentemente comecei um projeto que envolve um cado de botânica, o nome dele é [YggdrasilProject](https://github.com/Sotiris64/YggdrasilProject) e basicamente vou utiliza-lo para cadastrar as plantas que tenho aqui em casa. Enfim, para começar o projeto eu primeiro precisava encontrar todas as espécies de plantas catalogadas para registrar qual é a espécie de cada planta daqui de casa. Até esse momento eu não sabia bem a quantidade de dados que essa empreitada geraria mas depois de terminar, consegui um total de 563.811 espécies.
-<br/>
-Mas de onde eu consegui esse tanto de planta? Infelizmente não achei uma API com esses dados, o que tornaria esse desafio bem mais fácil; o que eu achei foi um site chamado [The Plant List](http://www.theplantlist.org/) que, como o nome sugeri, é uma lista de plantas.
-<br/>
-Antes de entrar para o código, vamos entender como é a estrutura das páginas.
-1. indo para o [catálogo](http://www.theplantlist.org/1.1/browse/), vamos nos deparar com os quatro grupos do reino plantae: Angiosperma, Gimnosperma, Pteridófitas e Briófitas
-2. Clicando em qualquer um dos grupos, entramos na lista de famílias do respectivo grupo. Com uma simples query no sql podemos ver que o grupo Angiosperma tem 412 famílias, então já podemos esperar que esse grupo vai ser o que mais vai dar trabalho. Na imagem abaixo temos o número de famílias dos outros grupos: 
-![Número de famílias em cada grupo do reino plantae](/content/thePlantList_web_crawlers/query1.png)
-3. Clicando em qualquer uma das famílias, vamos encontrar todas os gêneros dessa família.
-![Número de gêneros em cada família de cada grupo do reino plante](/content/thePlantList_web_crawlers/query2.png)
-4. E finalmente, clicando em qualquer um dos gêneros, vamos encontrar a lista de todas as espécies desse gênero.  
-![Número de espécies de cada grupo do reino plante](/content/thePlantList_web_crawlers/query3.png)
+
+<br />
+Mas de onde eu consegui esse tanto de planta? Infelizmente não achei uma API com
+esses dados, o que tornaria esse desafio bem mais fácil; o que eu achei foi um site
+chamado [The Plant List](http://www.theplantlist.org/) que, como o nome sugeri, é
+uma lista de plantas.
+<br />
+Antes de entrar para o código, vamos entender como é a estrutura das páginas. 1.
+indo para o [catálogo](http://www.theplantlist.org/1.1/browse/), vamos nos deparar
+com os quatro grupos do reino plantae: Angiosperma, Gimnosperma, Pteridófitas e Briófitas
+2. Clicando em qualquer um dos grupos, entramos na lista de famílias do respectivo
+grupo. Com uma simples query no sql podemos ver que o grupo Angiosperma tem 412 famílias,
+então já podemos esperar que esse grupo vai ser o que mais vai dar trabalho. Na imagem
+abaixo temos o número de famílias dos outros grupos: ![Número de famílias em cada
+grupo do reino plantae](/content/thePlantList_web_crawlers/query1.png) 3. Clicando
+em qualquer uma das famílias, vamos encontrar todas os gêneros dessa família. ![Número
+de gêneros em cada família de cada grupo do reino plante](/content/thePlantList_web_crawlers/query2.png)
+4. E finalmente, clicando em qualquer um dos gêneros, vamos encontrar a lista de
+todas as espécies desse gênero. ![Número de espécies de cada grupo do reino plante](/content/thePlantList_web_crawlers/query3.png)
 
 # Como obeter esses dados
-Em um mundo ideal, esse site teria uma API com todos esses dados, mas esse não é o caso. O site em si já foi transferido para o [WFO Plant List](hhttps://wfoplantlist.org/), mas ele aparentemente também não tem uma API ou um csv milagroso com os dados que eu quero. Enfim, o jeito é usar um web crawler para percorrer cada cada grupo, cada família desse grupo, cada gênero de cada família de cada grupo, e finalmente pegar cada spécie de cada gênero de cada família de cada grupo. Ufa! colocando desse jeito parece que foi um inferno fazer isso mas garanto que não foi tão complicado assim.
+
+Em um mundo ideal, esse site teria uma API com todos esses dados, mas esse não é o
+caso. O site em si já foi transferido para o [WFO Plant List](hhttps://wfoplantlist.org/), mas ele aparentemente também não tem uma API ou um csv milagroso com os dados que eu quero. Enfim, o jeito é usar um web crawler para percorrer cada cada grupo, cada família desse grupo, cada gênero de cada família de cada grupo, e finalmente pegar cada spécie de cada gênero de cada família de cada grupo. Ufa! colocando desse jeito parece que foi um inferno fazer isso mas garanto que não foi tão complicado assim.
 
 # Usando o scrapy
-Scrapy é uma framework para python que ajuda imensamente a criar web crawlers. Eu consegui fazer todo o código que vou apresentar aqui lendo a documentação e lendo algumas coisas aleatórias no StackOverflow, não há necessidade de ver um curso só para aprender scrapy.
+
+Scrapy é uma framework para python que ajuda imensamente a criar web crawlers. Eu
+consegui fazer todo o código que vou apresentar aqui lendo a documentação e lendo
+algumas coisas aleatórias no StackOverflow, não há necessidade de ver um curso só para
+aprender scrapy.
 
 ## Instalação
+
 Como é de costume para qualquer pacote no python:
-<br/>
+
+<br />
 *$ pip install scrapy*
-<br/>
-O scrapy já vai te dar uma comando para criar um novo projeto com todas as configurações prontas para você.
-<br/>
+<br />
+O scrapy já vai te dar uma comando para criar um novo projeto com todas as configurações
+prontas para você.
+<br />
 *scrapy startproject tutorial*
-<br/>
-Isso vai criar uma pastinha com as configurações do scrapy e uma outra pasta onde você vai programar seus web crawlers (aqui chamados de "spiders"). A única coisa que vamos mexer no momento vai ser no setting.py dentro da pasta do projeto; adicione a seguinte linha de código *HTTPERROR_ALLOWED_CODES  =[404]* em qualquer parte do arquivo, para garantir que, se nossa spider se deparar com um erro 404 ela não vai parar de executar o programa (vai ser muito importante para esse projeto porque tem alguns links quebrados no site).
+<br />
+Isso vai criar uma pastinha com as configurações do scrapy e uma outra pasta onde
+você vai programar seus web crawlers (aqui chamados de "spiders"). A única coisa
+que vamos mexer no momento vai ser no setting.py dentro da pasta do projeto; adicione
+a seguinte linha de código *HTTPERROR_ALLOWED_CODES =[404]* em qualquer parte do
+arquivo, para garantir que, se nossa spider se deparar com um erro 404 ela não vai
+parar de executar o programa (vai ser muito importante para esse projeto porque tem
+alguns links quebrados no site).
 
 # Começando o projeto
-Vamos concordar que para pegar os 4 grupos não há necessidade de fazer um programa kkkkkk, eu no caso só escrevi eles em um arquivo .csv, que pode ser encontrado [aqui](https://github.com/Sotiris64/WebCrawlers/tree/master/yggdrasil/Groups). Mas para pegar todas as famílias já há a necessidade da gente utilizar um webcrawler.
-<br/>
 
+Vamos concordar que para pegar os 4 grupos não há necessidade de fazer um programa
+kkkkkk, eu no caso só escrevi eles em um arquivo .csv, que pode ser encontrado [aqui]
+(https://github.com/Sotiris64/WebCrawlers/blob/master/yggdrasil/Groups/groups.csv).
+Mas para pegar todas as famílias já há a necessidade da gente utilizar um webcrawler.
+
+## Famílias
+
+Continua sendo poucos registros,_apenas_ 652. Não vai valer muito a pena eu explicar como é o funcionamento do scapy com esse exemplo. Se desejar o .csv com as famílias de cada grupo, é só acessar novamente meu [repositório]
+(https://github.com/Sotiris64/WebCrawlers/blob/master/yggdrasil/Families/).
+
+## Gêneros
+
+Agora as coisas começam a ficar interessantes. Para obter os gêneros vamos precisar acessar todas as famílias de cada grupo para que possamos coletar a lista de gêneros de cada família.
+<br/>
+Vamos começar importando o scrapy e classe que extende da _`scrapy.Spider`_. Vamos definir um nome e a url inicial onde o nosso crawler vai começar. Assim que ele obter a página inicial, o crawler (ou Spider, chame da forma que preferir), vai obter todos os matchs da query _`response.css('ul#nametree li i')`_, que vai retornar um array de elementos da página e, posteriormente, vamos acessar o texto dentro desses elementos.
+<br/>
+Vai ser um pouco complicado entender as próximas partes sem entender um pouco sobre o funcionamento do yeild, então recomendo ler um pouco sobre antes de prosseguir. Enfim, o próximo passo é iterar o array que obtemos do _`response.css()`_ e, para cada valor, vamos dar um "yeild" em um objeto com o nome (o texto dentro desse elemento html), e o id da família correspondente a esse gênero. Quando formos executar o comando para salvar o retorno do crawler em um arquivo ele vai pegar esse monte de objetos que estamos retornando pelo yeild e escrever no arquivo.
+<br/>
+Agora que começa o  
+
+```py genera.py
+import scrapy
+
+ Angiosperm = ['Acanthaceae', 'Achariaceae', 'Achatocarpaceae', 'Acoraceae', 'Actinidiaceae', 'Adoxaceae', 'Aextoxicaceae', 'Aizoaceae', 'Akaniaceae', 'Alismataceae', 'Alseuosmiaceae', 'Alstroemeriaceae', 'Altingiaceae', 'Amaranthaceae', 'Amaryllidaceae', 'Amborellaceae', 'Anacampserotaceae', 'Anacardiaceae', 'Anarthriaceae', 'Ancistrocladaceae', 'Anisophylleaceae', 'Annonaceae', 'Aphanopetalaceae', 'Aphloiaceae', 'Apiaceae', 'Apocynaceae', 'Apodanthaceae', 'Aponogetonaceae', 'Aquifoliaceae', 'Araceae', 'Araliaceae', 'Arecaceae', 'Argophyllaceae', 'Aristolochiaceae', 'Asparagaceae', 'Asteliaceae', 'Asteropeiaceae', 'Atherospermataceae', 'Austrobaileyaceae', 'Balanopaceae', 'Balanophoraceae', 'Balsaminaceae', 'Barbeuiaceae', 'Barbeyaceae', 'Basellaceae', 'Bataceae', 'Begoniaceae', 'Berberidaceae', 'Berberidopsidaceae', 'Betulaceae', 'Biebersteiniaceae', 'Bignoniaceae', 'Bixaceae', 'Blandfordiaceae', 'Bonnetiaceae', 'Boraginaceae', 'Boryaceae', 'Brassicaceae', 'Bromeliaceae', 'Brunelliaceae', 'Bruniaceae', 'Burmanniaceae', 'Burseraceae', 'Butomaceae', 'Buxaceae', 'Byblidaceae', 'Cabombaceae', 'Cactaceae', 'Calceolariaceae', 'Calophyllaceae', 'Calycanthaceae', 'Calyceraceae', 'Campanulaceae', 'Campynemataceae', 'Canellaceae', 'Cannabaceae', 'Cannaceae', 'Capparaceae', 'Caprifoliaceae', 'Cardiopteridaceae', 'Caricaceae', 'Carlemanniaceae', 'Caryocaraceae', 'Caryophyllaceae', 'Casuarinaceae', 'Celastraceae', 'Centrolepidaceae', 'Centroplacaceae', 'Cephalotaceae', 'Ceratophyllaceae', 'Cercidiphyllaceae', 'Chloranthaceae', 'Chrysobalanaceae', 'Circaeasteraceae', 'Cistaceae', 'Cleomaceae', 'Clethraceae', 'Clusiaceae', 'Colchicaceae', 'Columelliaceae', 'Combretaceae', 'Commelinaceae', 'Compositae', 'Connaraceae', 'Convolvulaceae', 'Coriariaceae', 'Cornaceae', 'Corsiaceae', 'Corynocarpaceae', 'Costaceae', 'Crassulaceae', 'Crossosomataceae', 'Ctenolophonaceae', 'Cucurbitaceae', 'Cunoniaceae', 'Curtisiaceae', 'Cyclanthaceae', 'Cymodoceaceae', 'Cynomoriaceae', 'Cyperaceae', 'Cyrillaceae', 'Cytinaceae', 'Daphniphyllaceae', 'Dasypogonaceae', 'Datiscaceae', 'Degeneriaceae', 'Diapensiaceae', 'Dichapetalaceae', 'Didiereaceae', 'Dilleniaceae', 'Dioncophyllaceae', 'Dioscoreaceae', 'Dipentodontaceae', 'Dipterocarpaceae', 'Dirachmaceae', 'Doryanthaceae', 'Droseraceae', 'Drosophyllaceae', 'Ebenaceae', 'Ecdeiocoleaceae', 'Elaeagnaceae', 'Elaeocarpaceae', 'Elatinaceae', 'Emblingiaceae', 'Ericaceae', 'Eriocaulaceae', 'Erythroxylaceae', 'Escalloniaceae', 'Eucommiaceae', 'Euphorbiaceae', 'Euphroniaceae', 'Eupomatiaceae', 'Eupteleaceae', 'Fagaceae', 'Flacourtiaceae', 'Flagellariaceae', 'Fouquieriaceae', 'Frankeniaceae', 'Garryaceae', 'Geissolomataceae', 'Gelsemiaceae', 'Gentianaceae', 'Geraniaceae', 'Gerrardinaceae', 'Gesneriaceae', 'Gisekiaceae', 'Gomortegaceae', 'Goodeniaceae', 'Goupiaceae', 'Grossulariaceae', 'Grubbiaceae', 'Guamatelaceae', 'Gunneraceae', 'Gyrostemonaceae', 'Haemodoraceae', 'Halophytaceae', 'Haloragaceae', 'Hamamelidaceae', 'Hanguanaceae', 'Haptanthaceae', 'Heliconiaceae', 'Helwingiaceae', 'Hernandiaceae', 'Himantandraceae', 'Huaceae', 'Humiriaceae', 'Hydatellaceae', 'Hydnoraceae', 'Hydrangeaceae', 'Hydrocharitaceae', 'Hydroleaceae', 'Hydrostachyaceae', 'Hypericaceae', 'Hypoxidaceae', 'Icacinaceae', 'Iridaceae', 'Irvingiaceae', 'Iteaceae', 'Ixioliriaceae', 'Ixonanthaceae', 'Joinvilleaceae', 'Juglandaceae', 'Juncaceae', 'Juncaginaceae',
+
+TIPO = 'A'
+ARRAYZAO = A
+
+class GeneraSpider(scrapy.Spider):
+    name = 'genera'
+    increment = 1
+    start_urls = [
+        'http://www.theplantlist.org/1.1/browse/'+TIPO+'/'+ARRAYZAO[0]+'/']
+
+    def parse(self, response):
+        families = response.css('ul#nametree li i')
+
+        for family in families:
+
+            yield {'name': family.css('::text').get(), 'family_id': self.increment + 0}
+
+        self.increment += 1
+
+        yield scrapy.Request('http://www.theplantlist.org/1.1/browse/'+TIPO+'/'+ARRAYZAO[self.increment-1])
+
+```
