@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
 export const ThemeSwitcher = styled.button`
-  border: 3px solid var(--text);
+  /* border: 3px solid var(--text); */
   color: var(--text);
-  padding: 4px;
-  background: url("/icons/favicon.png");
+  /* padding: 4px; */
   width: 32px;
   height: 32px;
+  background: var(--theme-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  /* & img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+  } */
 `;
 export const Header = styled.header`
   display: flex;

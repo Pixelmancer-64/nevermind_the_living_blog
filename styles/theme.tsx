@@ -1,6 +1,6 @@
 export const Theme = {
   dark: {
-    name: 'dark',
+    name: "dark",
     colors: {
       primary: "#d5043c",
       secondary: "#ada5e8",
@@ -17,7 +17,7 @@ export const Theme = {
     },
   },
   light: {
-    name: 'light',
+    name: "light",
     colors: {
       primary: "#d5043c",
       secondary: "#6858e2",
@@ -43,12 +43,14 @@ export const darkTheme = css`
   --tertiary: ${({ theme }) => theme.dark.colors.tertiary};
   --text: ${({ theme }) => theme.dark.colors.text};
   --background-primary: ${({ theme }) => theme.dark.colors.background.primary};
-  --background-secondary: ${({ theme }) => theme.dark.colors.background.secondary};
+  --background-secondary: ${({ theme }) =>
+    theme.dark.colors.background.secondary};
   --info: ${({ theme }) => theme.dark.colors.info};
   --sucess: ${({ theme }) => theme.dark.colors.sucess};
   --error: ${({ theme }) => theme.dark.colors.error};
   --alert: ${({ theme }) => theme.dark.colors.alert};
   --inverse: brightness(0) invert(1);
+  --theme-icon: url("/icons/moon.svg");
 `;
 
 export const lightTheme = css`
@@ -57,10 +59,12 @@ export const lightTheme = css`
   --tertiary: ${({ theme }) => theme.light.colors.tertiary};
   --text: ${({ theme }) => theme.light.colors.text};
   --background-primary: ${({ theme }) => theme.light.colors.background.primary};
-  --background-secondary: ${({ theme }) => theme.light.colors.background.secondary};
+  --background-secondary: ${({ theme }) =>
+    theme.light.colors.background.secondary};
   --info: ${({ theme }) => theme.light.colors.info};
   --sucess: ${({ theme }) => theme.light.colors.sucess};
   --error: ${({ theme }) => theme.light.colors.error};
   --alert: ${({ theme }) => theme.light.colors.alert};
   --inverse: brightness(0) invert(0);
+  --theme-icon: url("/icons/sun.svg");
 `;

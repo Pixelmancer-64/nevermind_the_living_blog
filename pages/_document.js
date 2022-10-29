@@ -33,6 +33,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="icon" href="/saturno[1589].png" type="image/x-icon" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
