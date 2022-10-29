@@ -23,32 +23,32 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
           <a>
             <LogoWrapper>
               <img src="/icons/favicon.png" />
-              <span>Lorem</span>
+              <span>Pixelmancer</span>
             </LogoWrapper>
           </a>
         </Link>
 
         <Navbar>
           <ul>
-            <li>
+            {/* <li>
               <Link href="/">
                 <a>latest</a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/">
                 <a>Posts</a>
               </Link>
             </li>
             <li>
-              <Link href="https://sotiris64.github.io/animations/">
+              <Link href="https://pixelmancer-64.github.io/animations/">
                 <a>Galery</a>
               </Link>
             </li>
           </ul>
         </Navbar>
 
-        <ThemeSwitcher onClick={() => toggleDarkMode()}>TEMA</ThemeSwitcher>
+        <ThemeSwitcher onClick={() => toggleDarkMode()}></ThemeSwitcher>
       </Header>
 
       {children}
@@ -57,7 +57,7 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
           <p>© 2020-present Hugo Billé Martins. All Rights Reserved.</p>
         </Ps>
         <RandomLinks>
-          <SocialMediaIcon href="https://github.com/Sotiris64">
+          <SocialMediaIcon href="https://github.com/Pixelmancer-64">
             <img src="/icons/github.svg" alt="github icon" />
           </SocialMediaIcon>
           <SocialMediaIcon href="https://www.instagram.com/_pixelmancer/">

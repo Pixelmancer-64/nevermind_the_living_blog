@@ -3,7 +3,7 @@ export const Theme = {
     name: 'dark',
     colors: {
       primary: "#d5043c",
-      secondary: "hsl(333deg, 100%, 52%)",
+      secondary: "#ada5e8",
       tertiary: "rgb(15, 73, 197)",
       text: "hsl(0deg, 0%, 100%)",
       background: {
@@ -20,7 +20,7 @@ export const Theme = {
     name: 'light',
     colors: {
       primary: "#d5043c",
-      secondary: "hsl(333deg, 100%, 52%)",
+      secondary: "#6858e2",
       tertiary: "rgb(15, 73, 197)",
       text: "#091540",
       background: {

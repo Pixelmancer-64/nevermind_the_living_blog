@@ -4,6 +4,9 @@ export const ThemeSwitcher = styled.button`
   border: 3px solid var(--text);
   color: var(--text);
   padding: 4px;
+  background: url("/icons/favicon.png");
+  width: 32px;
+  height: 32px;
 `;
 export const Header = styled.header`
   display: flex;

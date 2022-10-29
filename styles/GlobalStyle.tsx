@@ -57,10 +57,10 @@ body {
 }
 a {
     text-decoration: none;
-    color: inherit;
+    color: var(--primary);
     transition: 160ms ;
     &:hover{
-      color: var(--primary);
+      color: var(--secondary);
     }
 }
 img,
