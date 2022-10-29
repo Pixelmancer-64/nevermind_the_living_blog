@@ -41,8 +41,8 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
               </Link>
             </li>
             <li>
-              <Link href="https://pixelmancer-64.github.io/animations/">
-                <a>Galery</a>
+              <Link href="https://www.pixelmancer.com.br/animations/">
+                <a>Gallery</a>
               </Link>
             </li>
           </ul>
@@ -54,7 +54,7 @@ const Template = ({ children, toggleDarkMode }: TemplateProps) => {
       {children}
       <Footer>
         <Ps>
-          <p>© 2020-present Hugo Billé Martins. All Rights Reserved.</p>
+          <p>© 2022-present Hugo Billé Martins. All Rights Reserved.</p>
         </Ps>
         <RandomLinks>
           <SocialMediaIcon href="https://github.com/Pixelmancer-64">

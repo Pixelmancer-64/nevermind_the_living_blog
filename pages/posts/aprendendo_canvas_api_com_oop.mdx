@@ -32,11 +32,11 @@ em conjunto, podem formar qualquer desenho.
 <br />
 Porém, é óbvio que esses tipos de desenhos não são exatamente "humanos", costumam
 ser simétricos e "muito perfeitos", características de desenhos feitos usando código
-("conhecido também por Generative Art").
+(também conhecido como "Generative Art").
 <br />
 Um exemplo desses desenhos é o banner dessa publicação, que é um fractal feito utilizando
 o Canvas API, definitivamente muito perfeito para ser feito por uma pessoa. Se tiver
-interesse, recomendo acessar minha [galeria](https://sotiris64.github.io/animations)
+interesse, recomendo acessar minha [galeria](https://www.pixelmancer.com.br/animations)
 com todos os meus projetos utilizando o canvas.
 
 # Estrutura inicial
@@ -359,7 +359,12 @@ let quadrados = [];
 
 for (let i = 0; i < 1000; i++) {
   quadrados.push(
-    new Quadrado(Math.random() * canvas.width, Math.random() * canvas.height, 10, "red")
+    new Quadrado(
+      Math.random() * canvas.width,
+      Math.random() * canvas.height,
+      10,
+      "red"
+    )
   );
 }
 
@@ -367,6 +372,7 @@ for (let quadrado of quadrados) {
   quadrado.desenhar();
 }
 ```
-Com isso, agora temos uma tela cheia de quadrados vermelhos espalhados aleatoriamento. 
+
+Com isso, agora temos uma tela cheia de quadrados vermelhos espalhados aleatoriamento.
 ![1000 quadrados vermelhos](/content/aprendendo_canvas_api_com_oop/canvasFinal.png)
 Se você estiver animado, você poderia criar quadrados de cores diferentes, ou talvez fazer eles se mexerem. Fica a cargo da sua imaginação!

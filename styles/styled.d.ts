@@ -14,7 +14,7 @@ declare module "styled-components" {
           secondary: string;
         };
         info: string;
-        sucess: string;
+        success: string;
         error: string;
         alert: string;
       };
@@ -31,7 +31,7 @@ declare module "styled-components" {
           secondary: string;
         };
         info: string;
-        sucess: string;
+        success: string;
         error: string;
         alert: string;
       };

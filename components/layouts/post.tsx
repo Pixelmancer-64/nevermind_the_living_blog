@@ -7,6 +7,8 @@ import {
   Li,
   OuterOl,
   Summary,
+  Content_link_wrapper,
+  To_top
 } from "../styled/styled-post";
 import { HeadingH1, HeadingH2, P, A, Img } from "../styled/styled-mdx-tags";
 
@@ -17,9 +19,11 @@ interface ContentLinkProps {
 
 const ContentLink = ({ children, padding }: ContentLinkProps) => {
   return (
-    <a id={"ContentLink-" + children} href={"#" + children}>
-      <Li padding={padding}>{children}</Li>
-    </a>
+    <Content_link_wrapper>
+      <a id={"ContentLink-" + children} href={"#" + children}>
+        <Li padding={padding}>{children}</Li>
+      </a>
+    </Content_link_wrapper>
   );
 };
 
@@ -70,7 +74,7 @@ const components = {
   h2: HeadingH2,
   p: P,
   a: A,
-  img: Img
+  img: Img,
 };
 
 interface PostProps<P = any> {
@@ -90,6 +94,7 @@ const Post = ({ children }: PostProps) => {
         <MDXProvider components={components}>{children}</MDXProvider>
       </Content>
       <Aside headings={headings}></Aside>
+      {/* <To_top><img src="/icons/moon.svg"/></To_top> */}
     </Container>
   );
 };

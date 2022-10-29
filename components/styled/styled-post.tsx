@@ -58,15 +58,33 @@ interface LiProps {
   padding: number;
 }
 
+export const Content_link_wrapper = styled.div`
+  & a{
+    color: inherit;
+  }
+` 
+
 export const Li = styled.li<LiProps>`
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-light);
   padding-left: ${(p) => `${(p.padding - 1) * 16}px`};
-  opacity: 0.7;
+  opacity: 0.6;
   transition: opacity 400ms ease 0s;
 
   &:hover,
   &:focus {
     opacity: 1;
+    color: var(--info)
   }
 `;
+
+export const To_top = styled.div`
+  border: 3px solid white;
+  border-radius: 50%;
+  padding: 16px;
+  width: 50px;
+  position: absolute;
+  top: 95%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+`

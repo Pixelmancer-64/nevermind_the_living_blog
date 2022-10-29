@@ -18,7 +18,7 @@ export default ({ children }) => <Post>{children}</Post>;
 # Por que o scrapy?
 <Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
 
-Recentemente comecei um projeto que envolve um cado de botânica, o nome dele é [YggdrasilProject](https://github.com/Sotiris64/YggdrasilProject) e basicamente vou utiliza-lo para cadastrar as plantas que tenho aqui em casa. Enfim, para começar o projeto eu primeiro precisava encontrar todas as espécies de plantas catalogadas para registrar qual é a espécie de cada planta daqui de casa. Até esse momento eu não sabia bem a quantidade de dados que essa empreitada geraria mas depois de terminar, consegui um total de 563.811 espécies.
+Recentemente comecei um projeto que envolve um cado de botânica, o nome dele é [YggdrasilProject](https://github.com/pixelmancer-64/YggdrasilProject) e basicamente vou utiliza-lo para cadastrar as plantas que tenho aqui em casa. Enfim, para começar o projeto eu primeiro precisava encontrar todas as espécies de plantas catalogadas para registrar qual é a espécie de cada planta daqui de casa. Até esse momento eu não sabia bem a quantidade de dados que essa empreitada geraria mas depois de terminar, consegui um total de 563.811 espécies.
 
 <br />
 Mas de onde eu consegui esse tanto de planta? Infelizmente não achei uma API com
@@ -75,13 +75,13 @@ alguns links quebrados no site).
 
 Vamos concordar que para pegar os 4 grupos não há necessidade de fazer um programa
 kkkkkk, eu no caso só escrevi eles em um arquivo .csv, que pode ser encontrado [aqui]
-(https://github.com/Sotiris64/WebCrawlers/blob/master/yggdrasil/Groups/groups.csv).
+(https://github.com/pixelmancer-64/WebCrawlers/blob/master/yggdrasil/Groups/groups.csv).
 Mas para pegar todas as famílias já há a necessidade da gente utilizar um webcrawler.
 
 ## Famílias
 
 Continua sendo poucos registros,_apenas_ 652. Não vai valer muito a pena eu explicar como é o funcionamento do scapy com esse exemplo. Se desejar o .csv com as famílias de cada grupo, é só acessar novamente meu [repositório]
-(https://github.com/Sotiris64/WebCrawlers/blob/master/yggdrasil/Families/).
+(https://github.com/pixelmancer-64/WebCrawlers/blob/master/yggdrasil/Families/).
 
 ## Gêneros
 
@@ -133,7 +133,7 @@ class GeneraSpider(scrapy.Spider):
 
 ```
 
-Enfim, os arquivos csv podem ser encontrados [aqui](https://github.com/Sotiris64/WebCrawlers/tree/master/yggdrasil/Genera), você pode optar tanto pelos arquivos separados por grupo ou um único arquivo com todos os gêneros.
+Enfim, os arquivos csv podem ser encontrados [aqui](https://github.com/pixelmancer-64/WebCrawlers/tree/master/yggdrasil/Genera), você pode optar tanto pelos arquivos separados por grupo ou um único arquivo com todos os gêneros.
 
 ## Espécies
 
@@ -195,7 +195,7 @@ class SpeciesSpider(scrapy.Spider):
 Nesse aqui fiz até questão de ler um csv para obter os gêneros que eu já coletei, então é um uso mais avançado dessa ferramenta.
 
 <br />
-Como nos outros casos, o arquivo csv pode ser encontrado no meu [repositório](https://github.com/Sotiris64/WebCrawlers/tree/master/yggdrasil/Species)
+Como nos outros casos, o arquivo csv pode ser encontrado no meu [repositório](https://github.com/pixelmancer-64/WebCrawlers/tree/master/yggdrasil/Species)
 
 ## Como salvar o outup em um arquivo csv
 
@@ -208,7 +208,7 @@ Você inicia o crawler, escolhendo ele através do nome dele que definimos na li
 
 ## Considerações finais
 
-Bem, o que eu tinha para mostrar aqui era isso. Esse foi um projetinho muito legal de fazer; nunca imaginaria que teria que coletar tantos dados para meu objetivo principal, [Yggdrasil Project](https://github.com/Sotiris64/YggdrasilProject). Definitivamente foi uma forma bem prática de aprender scrapy e como utilizar esses dados para contruir um banco de dados.
+Bem, o que eu tinha para mostrar aqui era isso. Esse foi um projetinho muito legal de fazer; nunca imaginaria que teria que coletar tantos dados para meu objetivo principal, [Yggdrasil Project](https://github.com/pixelmancer-64/YggdrasilProject). Definitivamente foi uma forma bem prática de aprender scrapy e como utilizar esses dados para contruir um banco de dados.
 
 <br />
 Se você quiser o arquivo .sql do banco que criei com esses dados você pode acessar

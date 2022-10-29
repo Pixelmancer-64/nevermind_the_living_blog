@@ -57,12 +57,12 @@ const Home: NextPage = ({ posts }: any) => {
           <h2>Projetos</h2>
           <ul>
             <li>
-              <Link href="https://sotiris64.github.io/">
+              <Link href="https://www.pixelmancer.com.br/">
                 <a>Homepage</a>
               </Link>
             </li>
             <li>
-              <Link href="https://sotiris64.github.io/animations/">
+              <Link href="https://www.pixelmancer.com.br/animations/">
                 <a>Animations</a>
               </Link>
             </li>

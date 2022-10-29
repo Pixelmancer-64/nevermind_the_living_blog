@@ -131,7 +131,6 @@ body{
 
 .toggled{
     color: var(--info);
-
     li {
         opacity: 1;
     }
