@@ -21,6 +21,7 @@ const getStaticProps = async () => {
       return importMDX.meta;
     })
   );
+  console.log(posts)
   return {
     props: { posts },
   };
