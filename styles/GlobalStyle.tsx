@@ -113,7 +113,8 @@ html {
     scroll-behavior: smooth;
 }
 ul, ol{
-    list-style: none;
+    /* list-style: none; */
+    list-style-position: inside;
 }
 
 #__next{

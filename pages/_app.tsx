@@ -1,4 +1,4 @@
-import "@code-hike/mdx/dist/index.css"
+import "@code-hike/mdx/dist/index.css";
 
 import type { AppProps } from "next/app";
 import { Theme } from "../styles/theme";
@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import Template from "../components/layouts/template";
 import GlobalStyle from "../styles/GlobalStyle";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 class LocalStorage {
   static getData(name: string) {
@@ -68,6 +69,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             return true;
           }}
         >
+          <Head>
+            <title>Blog - Pixelmancer</title>
+          </Head>
           <Component {...pageProps} />
         </Template>
       </ThemeProvider>

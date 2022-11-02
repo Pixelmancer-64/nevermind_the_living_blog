@@ -39,6 +39,7 @@ export const AsideContainer = styled.aside`
 
 export const OuterOl = styled.ol`
   display: flex;
+  list-style: none;
   flex-direction: column;
   li {
     line-height: 1.1rem;

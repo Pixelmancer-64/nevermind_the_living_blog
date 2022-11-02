@@ -18,14 +18,26 @@ const Extra_Info_Container = styled.div`
   margin-bottom: 32px;
 `;
 
-export const Extra_Info = ({ publishedOn, lastUpdatedOn }: any) => {
+export const Extra_Info = ({
+  publishedOn,
+  lastUpdatedOn,
+  writtenBy = ["Hugo Billé Martins"],
+}: any) => {
   return (
     <Extra_Info_Container>
       <p>
         Published on <span>{publishedOn}</span>
         {lastUpdatedOn && <span> · Updated on {lastUpdatedOn}</span>}
       </p>
-      <p>Written by - Hugo Billé Martins</p>
+      <p>
+        Written by -{" "}
+        {writtenBy.map((e: string, index: number) => {
+          if (writtenBy.length == 1) return e;
+          if (index == writtenBy.length - 1) return e;
+          if (index == writtenBy.length - 2) return e + " and ";
+          return e + ", ";
+        })}
+      </p>
     </Extra_Info_Container>
   );
 };

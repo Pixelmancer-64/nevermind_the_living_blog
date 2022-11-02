@@ -32,7 +32,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Blog - Pixelmancer</title>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="icon" href="/saturno[1589].png" type="image/x-icon" />
           <link
