@@ -2,16 +2,16 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const H1 = styled.h1`
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   margin-top: 64px;
-  margin-bottom: 32px;
-  color: var(--terciary);
+  margin-bottom: 12px;
+  /* color: var(--tertiary); */
 `;
 
 export const H2 = styled.h2`
-  font-size: var(--font-size-3xl);
-  color: var(--terciary);
-  margin-top: 48px;
+  font-size: var(--font-size-2xl);
+  /* color: var(--tertiary); */
+  margin-top: 32px;
   margin-bottom: 8px;
 `;
 
@@ -22,6 +22,8 @@ const Image = styled.img`
   min-height: 100%;
   max-height: 100%;
   border-radius: 3px;
+  margin: 12px 0;
+
 `;
 
 export const Img = ({ src, alt }: any) => {
@@ -50,5 +52,6 @@ export const A = ({ href, children }: any) => {
 };
 
 export const P = styled.p`
-  font-size: var(--font-size-lg);
+  /* font-size: var(--font-size-lg); */
+  padding: 8px 0;
 `;

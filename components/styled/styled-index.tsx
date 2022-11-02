@@ -9,6 +9,7 @@ column-gap: 48px;
 `;
 export const Posts = styled.div``;
 export const Featured = styled.div`
+list-style: none;
 display: flex;
 flex-direction: column;
 gap: 4rem;

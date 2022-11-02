@@ -68,6 +68,10 @@ export const Navbar = styled.nav`
   a:hover {
     color: var(--primary);
   }
+  & ul {
+  list-style: none;
+
+  }
 `;
 
 export const Footer = styled.footer`
