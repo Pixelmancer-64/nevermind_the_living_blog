@@ -21,7 +21,7 @@ export default ({ children }) => <Post>{children}</Post>;
   writtenBy={["Hugo Billé Martins", "Ana Luísa Ferro"]}
 />
 
-_Se você caiu aqui de paraquedas, aqui vem um resuminho bem básico do que é o Django._ O Django é uma framework para a web que utiliza inteiramente a linguagem Python. Com o Django você pode construir páginas web inteiras com o auxílio de [Templates](https://docs.djangoproject.com/en/4.1/ref/templates/language/), APIs em modelo REST com o [Django REST framework](https://www.django-rest-framework.org/) (sim, uma framework dentro da framework) ou simplesmente desenvolver a comunicação com o banco de dados (e cria-lo por completo sem nunca escrever sequer uma linha de sql) com o [Django ORM](https://docs.djangoproject.com/en/4.1/topics/db/queries/). Enfim, é uma framework bem completa que pode ser utilizada de várias formas diferentes e em diversas situações, é muito provavelmente a framework mais versátil atualmente e por isso é tão fundamental dominar Django e Python.
+Se você caiu aqui de paraquedas, aqui vem um resuminho bem básico do que é o Django. O Django é uma framework para a web que utiliza inteiramente a linguagem Python. Com o Django você pode construir páginas web inteiras com o auxílio de [Templates](https://docs.djangoproject.com/en/4.1/ref/templates/language/), APIs em modelo REST com o [Django REST framework](https://www.django-rest-framework.org/) (sim, uma framework dentro da framework) ou simplesmente desenvolver a comunicação com o banco de dados (e cria-lo por completo sem nunca escrever sequer uma linha de sql) com o [Django ORM](https://docs.djangoproject.com/en/4.1/topics/db/queries/). Enfim, é uma framework bem completa que pode ser utilizada de várias formas diferentes e em diversas situações, é muito provavelmente a framework mais versátil atualmente e por isso é tão fundamental dominar Django e Python.
 
 # Pré-requisitos
 
@@ -37,23 +37,27 @@ No Windows você tem algumas opções:
 
 <br />
 ### Python
-1- [Anaconda](https://www.anaconda.com/), uma organização super legal que
+1. [Anaconda](https://www.anaconda.com/), uma organização super legal que
 administra e torna o processo de instalar diferentes versões do Python no Windows
 uma tarefa bem fácil. O software deles também inclui algumas outras soluções para
 utilização do Python como um servidor local para executar o Jupyter Notebooks, alguns
 pacotes pré instalados 
-2- Instalar do site oficial do [Python](https://www.python.org/downloads/windows/)
-3- Instalar pela própria Microsoft Store
+2. Instalar do site oficial do [Python](https://www.python.org/downloads/windows/)
+3. Instalar pela própria Microsoft Store
 ### MySQL
-1- [MySQL Workbench](https://www.mysql.com/products/workbench/), além de instalar MySQL Server, o próprio Workbench tem algumas funcionalidades muito boas (minha favorita é diagramação automática).
-2- Instalar na mão só o MySQL Server
-3- Sempre tem o MariaDB como alternativa
+1. [MySQL Workbench](https://www.mysql.com/products/workbench/), além de instalar MySQL Server, o próprio Workbench tem algumas funcionalidades muito boas (minha favorita é diagramação automática).
+2. Instalar na mão só o MySQL Server
+3. Sempre tem o MariaDB como alternativa
 
 ## Linux
 
 acaba sendo risório o quão fácil é o processo de instalação do linux se comparado ao Windows. Tudo o que acabei de falar pode ser resumido aos três seguintes comandos:
 
-_`sudo apt install python3`_, _`sudo apt install mariadb-server`_ e _`sudo apt install python3-pip`_
+_`sudo apt install python3`_
+<br/>
+_`sudo apt install mariadb-server`_
+<br/>
+_`sudo apt install python3-pip`_
 
 # Finalmente, Django
 
@@ -61,7 +65,82 @@ Se você deseja iniciar um projeto do zero, recomendo seguir e tutorial do próp
 
 Essa postagem em especial é direcionada a instalação de projetos em Django já criados, mas que precisam ser instalados em um servidor de produção ou na máquina do seu companheiro de equipe.
 
-## Clonando o repositório
+## Fork do repositório
 
-Amanhã eu continuo
+Sempre que você vai trabalhar em um repositório que não é seu (e você não é um colaborador), é necessário criar um fork, ou seja, uma cópia do repositório que será "seu". Criar um fork de um repositório é bem simples, você apenas precisa entrar na página do github do repositório e clicar em "Fork".
+[imagem foda]()
+[imagem foda]()
 
+## Clonando seu fork
+
+Agora que você tem um fork do repositório, você precisa baixar ele na sua máquina. Para isso, usamos o comando `git clone [endereço https do repositório]`. Para pegar esse endereço, você deverá clicar no botão "code" na página do seu repositório e copiar o endereço https. Lembre-se de clonar o repositório na pasta correta, eu pessoalmente gosto de colocar tudo relacionado à programação na pasta ~/dev (o sinalzinho de ~ significa "home do seu usuário", é o mesmo que digitar "/usuarios/[user]/home").
+
+## Instalando as dependências
+
+Os projetos escritos em python geralmente possuem um arquivo chamado requirements.txt, que guarda todos os pacotes que são utilizados no projeto. Se esse arquivo existir, você pode executar o comando `pip install -r requirements.txt` e todas as dependências do projeto serão instaladas. Se o arquivo não existir... ai realmente vai ser complicado instalar o que o projeto precisa.
+Sem o requirements.txt, você terá que instalar os pacotes que aparecerem como erro ao iniciar o projeto, então... recomenda-se fortemente que sempre crie o requirements.txt dos seus projetos em python.
+
+## envvars.yaml
+
+Um requisito essêncial de segurança para qualquer projeto são as variáveis de ambiente. Variáveis de ambiente incluem: senhas do banco de dados, usuário, nome do banco, endereço do banco, secret key, entre outra variáveis. São todos dados sensíveis que devem ser preservador a todo custo e são dependentes do ambiente que estão: desenvolvimento ou produção.
+Tem várias formas de guardar variáveis de ambiente: .env, .txt, .json, .toml, entre outros formatos. Pessoalmente, prefiro utilizar o formato .yaml, e será esse que ensinarei como integrar com o django
+Primeiramente, crie no root do seu projeto o arquivo ".envvars.yaml" (preste atenção no ponto antes do nome, isso significa que ele é um arquivo oculto). O template de dados que utilizo nos meus arquivos .yaml pode ser encontrado logo abaixo, fique a vontade de copiar e alterá-lo da forma que desejar.
+
+Lembrando que todos os passos relacionados a varáveis de ambiente são relacionados ao arquivo _`settings.py`_, que vamos entrar em detalhes mais tarde. Mas se você chegou a esse blog por indicação minha provavelmente você estará usando um projeto django com o settings.py configurado para receber o .envvars.yaml.
+``` yaml .envvars.yaml
+
+db_name: "hospital" # Este projeto foi pensando para suportar MySql ou MariaDB
+db_user: "root" # Usuário do banco com todas as permissões para a base de dados
+db_host: "localhost" # Onde o banco de dados está localizado
+db_pw: "123456" # A senha do respectivo usuário do banco
+django_secret_key: secretkey123456 # Insira sua django secret key
+debug_mode: True # Use True para DEBUG or False para PRODUCTION
+email_sistema: seu@email.com # E-mail utilizado para recuperação de senha
+email_pw: su@senha123 # Senha do email acima
+
+``` 
+
+## Como ler um arquivo .yaml
+
+Para ler esse arquivo .yaml podemos usar um programinha em python mesmo, sinta-se a vontade de copia-lo
+
+``` python envvars.py
+
+import yaml
+
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+
+def load_envvars(BASE_DIR):
+    try:
+        yaml_file=open("./.envvars.yaml", "r")        
+    except:
+        yaml_file=open(str(BASE_DIR.parent) + "/.envvars.yaml", "r")
+        
+    return yaml.load(yaml_file, Loader=Loader)
+
+```
+
+O _`load_envvars()`_ retornara um objeto com todas as propriedades escritas no root do seu projeto.
+
+## Finalmente podemos começar
+
+Com tudo isso em mãos, podemos criar o banco e inicar o projeto.
+
+Primeiramente, temos que criar o database e colocar o nome desse detabase no .envvars. Vamos supor que o nome do banco que você quer criar é *hospital*... você simplesmente executa _`create database hospital`_ e coloca hospital no seu db_name.
+
+Agora, com o banco criado, vamos executar 2 comandos do django. Para executar todos os comandos dessa framework devemos executar _`python manage.py [comando]`_. O arquivo manage.py pode ser encontrado no root do projeto e é ele que serve como intermediário para todos os comandos.
+
+O primeiro comando é o _`python manage.py makemigrations`_, que vai preparar os comandos sql para serem executados no banco. O segundo comando, _`python manage.py migrate`_, serve justamente para executar esses comandos.
+
+Se nenhum erro estorou na sua cara... parabéns!!! Você acabou de instalar seu primeiro projeto em Django! Se algo deu errado, tente sempre buscar os erros no Google ou no StackOverflow, a comunidade de Django e Python é imensa, muito provavelmente o erro que você está tendo já pode ter afeto outros mais programadores.
+
+## Iniciando o servidor
+
+Agora é a parte mais tranquila: inicar o servidor de desenvolvimento.
+
+O comando é bem simples, apenas: _`python manage.py runserver`_.
+
+O servidor será iniciado por padrão na porta 8000, então é só acessar localhost:8000 e começar a programar!
