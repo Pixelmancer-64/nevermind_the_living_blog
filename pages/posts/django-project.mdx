@@ -1,0 +1,67 @@
+import Post from "../../components/layouts/post";
+import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
+
+export const meta = {
+  date: "29/11/2022",
+  title: "Como funciona e como instalar um projecto em Django",
+  body: "Entre as muitas frameworks voltadas ao desenvolvimento web, o Django se destaca pela sua curva de aprendizado amigável, alta escalabilidade, integração com banco de dados, entre muitas outras qualidades. Nesse post, vou explicar como instalar um projeto em Django e sua estrutura",
+  url: "/banners/django-logo-negative.1d528e2cb5fb.png",
+  alt: "Django banner, white text in green background",
+  publishedOn: "",
+  lastUpdatedOn: "",
+};
+
+export default ({ children }) => <Post>{children}</Post>;
+
+<Banner url={meta.url} alt={meta.alt} />
+# O que é Django?
+<Extra_Info
+  publishedOn={meta.publishedOn}
+  lastUpdatedOn={meta.lastUpdatedOn}
+  writtenBy={["Hugo Billé Martins", "Ana Luísa Ferro"]}
+/>
+
+_Se você caiu aqui de paraquedas, aqui vem um resuminho bem básico do que é o Django._ O Django é uma framework para a web que utiliza inteiramente a linguagem Python. Com o Django você pode construir páginas web inteiras com o auxílio de [Templates](https://docs.djangoproject.com/en/4.1/ref/templates/language/), APIs em modelo REST com o [Django REST framework](https://www.django-rest-framework.org/) (sim, uma framework dentro da framework) ou simplesmente desenvolver a comunicação com o banco de dados (e cria-lo por completo sem nunca escrever sequer uma linha de sql) com o [Django ORM](https://docs.djangoproject.com/en/4.1/topics/db/queries/). Enfim, é uma framework bem completa que pode ser utilizada de várias formas diferentes e em diversas situações, é muito provavelmente a framework mais versátil atualmente e por isso é tão fundamental dominar Django e Python.
+
+# Pré-requisitos
+
+O mais importante de tudo é o Python. Dependendo da sua plataforma o processo de instalação pode variar mas o importante é instalar a versão mais atual do Python para garantir as os recursos mais atualizados.
+
+Junto ao Python vem o PIP, mas muito provavelmente se você já tem o Python, você também tem o gerenciador de pacotes mais utilizado da linguagem.
+
+E por último, o MySQL (ou MariaDB se você é mais de código aberto mesmo). De longe, o mais fácil de instalar é o MariaDB
+
+## Windows
+
+No Windows você tem algumas opções:
+
+<br />
+### Python
+1- [Anaconda](https://www.anaconda.com/), uma organização super legal que
+administra e torna o processo de instalar diferentes versões do Python no Windows
+uma tarefa bem fácil. O software deles também inclui algumas outras soluções para
+utilização do Python como um servidor local para executar o Jupyter Notebooks, alguns
+pacotes pré instalados 
+2- Instalar do site oficial do [Python](https://www.python.org/downloads/windows/)
+3- Instalar pela própria Microsoft Store
+### MySQL
+1- [MySQL Workbench](https://www.mysql.com/products/workbench/), além de instalar MySQL Server, o próprio Workbench tem algumas funcionalidades muito boas (minha favorita é diagramação automática).
+2- Instalar na mão só o MySQL Server
+3- Sempre tem o MariaDB como alternativa
+
+## Linux
+
+acaba sendo risório o quão fácil é o processo de instalação do linux se comparado ao Windows. Tudo o que acabei de falar pode ser resumido aos três seguintes comandos:
+
+_`sudo apt install python3`_, _`sudo apt install mariadb-server`_ e _`sudo apt install python3-pip`_
+
+# Finalmente, Django
+
+Se você deseja iniciar um projeto do zero, recomendo seguir e tutorial do próprio tutorial da [documentação do Django](https://docs.djangoproject.com/en/4.1/intro/tutorial01/); aqui tem a explicação detalhada, passo a passo, de como cada parte do projeto do django funciona e como cria-las pelo terminal.
+
+Essa postagem em especial é direcionada a instalação de projetos em Django já criados, mas que precisam ser instalados em um servidor de produção ou na máquina do seu companheiro de equipe.
+
+## Clonando o repositório
+
+Amanhã eu continuo
+
