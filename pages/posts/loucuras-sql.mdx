@@ -1,0 +1,78 @@
+import Post from "../../components/layouts/post";
+import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
+
+export const meta = {
+  date: "29/11/2022",
+  title: "Querys SQL que utilizei no meu estágio",
+  body: "Eu amo SQL, as querys são divertidas de serem elaboradas e executadas, sempre vejo elas como pequenas questões de lógica que podem ser resolvidas de diversas maneiras. Porém, utilizar essas querys no mundo real pode ser um pouco diferente do que aprendemos em cursos na internet e na própria escola. Nessa postagem, eu vou acumular com o tempo os comandos SQL que utilizei durante o meu estágio na Prefeitura de Nova Friburgo.",
+  url: "/banners/django-logo-negative.1d528e2cb5fb.png",
+  alt: "Django banner, white text in green background",
+  publishedOn: "",
+  lastUpdatedOn: "6/12/2022",
+};
+
+export default ({ children }) => <Post>{children}</Post>;
+
+<Banner url={meta.url} alt={meta.alt} />
+# SQL é muito legal
+<Extra_Info
+  publishedOn={meta.publishedOn}
+  lastUpdatedOn={meta.lastUpdatedOn}
+  writtenBy={["Hugo Billé Martins"]}
+/>
+
+Eu *amo* SQL. Além de ser  interessantísimo criar a estrutura do seu banco de dados (de forma inteligente), principalmente com a assistência de uma ORM, elaborar e executar querys no SQL também é algo que tenho paixão especial.
+
+Trabalhar com banco de dados é sempre uma mistura de estruturar o banco o mais rápido possível para que o processo de desenvolvimento comece logo mas também é um trabalho de paciência e planejamento; pensar em problemas futuros é a forma ideal de evitar dores de cabeça. O mesmo vale para as querys, você pode acabar com uma solução rápida e prática mas nem sempre é a sulução ideal, e as vezes a demanda para resolver um problema pode levar a resultados incoerentes que, aos olhos distraídos, podem parecer corretos.
+
+Todo o comando no sql é executado com um propósito, é um problema esperando para ser resolvido. Mesmo sendo ótimo "resolver" um problema rapidamente, o objetivo primário em resolver um problema é... resolve-lo corretamente.
+
+Enfim, chega de falar sobre como temos que tomar cuidado a executar querys no SQL e interpretar corretamente dados. O objetivo principal com essa postagem é contar sobre minhas aventurar no meu estágio, e registrar como resolvi os problemas envolvendo SQL e de quebra guardar esses comandos em um lugar permanente, porque alguns são extremamente úteis em situações diversas.
+
+# Escola de engermagem
+
+A estrutura do banco de dados pode ser encontrada no [github](https://github.com/smctinf/escola_enfermagem/blob/main/selecao/models.py), pretendo fazer a diagramação dela quando a sua estrutura já estiver mais desenvolvida.
+
+## Contexto
+O comando em questão foi executado para gerar a lista dos candidatos que passaram em um concurso público de uma escola de enfermagem. O edital que estruturou esse concurso possuia algumas condições:
+  1. Serão ofertadas vagas padrão e vagas reservadas para aqueles que se incluem em um ou mais dos  seguintes grupos: 
+    * Pessoa com deficiência 
+    * utodeclarado negro, pardo ou indígena
+    * renda bruta mensal igual ou inferior a 1,5 salário mínimo per capita
+    * cursou o ensino fundamental integralmente em escola pública 
+    * cursou o ensino médio integralmente em escola pública
+  2. Caso a pessoa desejar concorrer à vagas reservadas, ela passará a concorrer somente pelas vagas reservadas
+  3. A nota da prova é o fator primário de colocação do candidato
+  4. Em caso de empate entre dois ou mais candidatos concorrendo à vagas reservadas, o primeiro critério de desempate será sua "pontuação", de acordo com a quantidade de grupos em que se encaixa, por exemplo:
+    * Se o candidato for uma pessoa com deficiência, ela receberá um ponto.
+    * Se o candidato cursou o ensino médio e o ensino fundamental em escola pública, ele receberá dois pontos.
+    * E assim por diante...
+  5. Se um empate ocorrer entre candidatos das vagas não reservadas ou se ocorreu empate entre candidatos com a mesma nota e pontuação, o último critério de desempate será a idade dos candidatos.
+
+## O comando e desafios
+
+Temos alguns desafios para serem enfrentados, vamos separa-los em partes:
+1. descobrir o nome, nota obtida, idade e a pontuação de cada candidato
+3. calcular a pontuação do candidato
+2. ordernar o resultado de 3 formas diferentes:
+  1. Por nota
+  2. Caso primeiro empate, decidir por pontuação
+  3. Caso novo empate, decidir por idade, prioritarizando os mais novos
+
+
+``` sql enfermagem_resultados.sql
+
+select selecao_candidato.id, nome, nota,
+floor((LENGTH(concat(deficiencia, ensino_fundamental_publico, ensino_medio_publico, renda_bruta, autodeclaracao)) 
+ - LENGTH(REPLACE(concat(deficiencia, ensino_fundamental_publico, ensino_medio_publico, renda_bruta, autodeclaracao), 'S', '')))/LENGTH('S'))
+ as pontuação,
+ TIMESTAMPDIFF(YEAR, dt_nascimento, CURDATE()) as idade,
+ dt_nascimento
+from selecao_candidato
+left join selecao_nota on (selecao_candidato.id = selecao_nota.candidato_id)
+where floor((LENGTH(concat(deficiencia, ensino_fundamental_publico, ensino_medio_publico, renda_bruta, autodeclaracao)) 
+ - LENGTH(REPLACE(concat(deficiencia, ensino_fundamental_publico, ensino_medio_publico, renda_bruta, autodeclaracao), 'S', '')))/LENGTH('S')) = 0
+group by selecao_candidato.id
+order by nota desc, pontuação desc, idade;
+
+```
