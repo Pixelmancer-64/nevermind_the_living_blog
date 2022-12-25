@@ -20,6 +20,10 @@ color: var(--text);
 export const PopularContent = styled.div`
 color: var(--text);
 flex-grow: 1;
+ul {
+  margin-left: 8px;
+  list-style: none;
+}
 `;
 export const CategoryList = styled.ul`
 display: flex;

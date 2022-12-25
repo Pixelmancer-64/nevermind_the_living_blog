@@ -16,13 +16,15 @@ const TotalDarkness = styled.div.attrs((props) => ({
     width: 100%;
     height: 100%;
     position: fixed;
-    background: ${(props) => (props.isSwitchOn ? `radial-gradient(
+    background: ${(props) =>
+      props.isSwitchOn
+        ? `radial-gradient(
       circle 12vmax at var(--cursorX) var(--cursorY),
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.5) 80%,
       rgba(0, 0, 0, 1) 100%
-    )` : "black")};
-
+    )`
+        : "black"};
   }
 `;
 const Container = styled.main`
@@ -58,7 +60,28 @@ const Lighthouse = styled.div`
 `;
 
 const Switch = styled.button`
-  img{width: 64px}
+  img {
+    width: 64px;
+  }
+
+  @keyframes slidein {
+    25% {
+      transform: rotate(-15deg)
+    }
+
+    50% {
+      transform: rotate(15deg)
+
+    }
+
+    100% {
+      transform: rotate(0deg)
+    }
+  }
+
+  &:hover {
+    animation: 4s infinite ease slidein;
+  }
 `;
 
 const Canvas = ({ start }) => {
@@ -101,7 +124,7 @@ const Post = () => {
                 setSwitch(true);
               }}
             >
-              <img src="/icons/flashlight.svg"/>
+              <img src="/icons/flashlight.svg" />
             </Switch>
           </Lighthouse>
         )}

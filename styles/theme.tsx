@@ -3,6 +3,7 @@ export const Theme = {
     name: "dark",
     colors: {
       primary: "#d5043c",
+      primary_filter: "invert(19%) sepia(63%) saturate(5832%) hue-rotate(335deg) brightness(80%) contrast(110%)",
       secondary: "#67f2f4",
       tertiary: "rgb(15, 73, 197)",
       text: "hsl(0deg, 0%, 100%)",
@@ -20,6 +21,7 @@ export const Theme = {
     name: "light",
     colors: {
       primary: "#d5043c",
+      primary_filter: "invert(19%) sepia(63%) saturate(5832%) hue-rotate(335deg) brightness(80%) contrast(110%)",
       secondary: "#6858e2",
       tertiary: "rgb(15, 73, 197)",
       text: "#091540",
@@ -39,6 +41,7 @@ import { css } from "styled-components";
 
 export const darkTheme = css`
   --primary: ${({ theme }) => theme.dark.colors.primary};
+  --primary-filter: ${({ theme }) => theme.dark.colors.primary_filter};
   --secondary: ${({ theme }) => theme.dark.colors.secondary};
   --tertiary: ${({ theme }) => theme.dark.colors.tertiary};
   --text: ${({ theme }) => theme.dark.colors.text};
@@ -55,6 +58,7 @@ export const darkTheme = css`
 
 export const lightTheme = css`
   --primary: ${({ theme }) => theme.light.colors.primary};
+  --primary-filter: ${({ theme }) => theme.dark.colors.primary_filter};
   --secondary: ${({ theme }) => theme.light.colors.secondary};
   --tertiary: ${({ theme }) => theme.light.colors.tertiary};
   --text: ${({ theme }) => theme.light.colors.text};

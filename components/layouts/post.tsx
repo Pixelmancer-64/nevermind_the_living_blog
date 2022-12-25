@@ -8,9 +8,10 @@ import {
   OuterOl,
   Summary,
   Content_link_wrapper,
-  To_top
+  To_top,
 } from "../styled/styled-post";
 import { HeadingH1, HeadingH2, P, A, Img } from "../styled/styled-mdx-tags";
+import Head from "next/head";
 
 interface ContentLinkProps {
   children: any;
@@ -79,9 +80,10 @@ const components = {
 
 interface PostProps<P = any> {
   children: P;
+  meta: any;
 }
 
-const Post = ({ children }: PostProps) => {
+const Post = ({ children, meta }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
 
   useEffect(() => {
@@ -90,6 +92,10 @@ const Post = ({ children }: PostProps) => {
 
   return (
     <Container>
+      <Head>
+        <title>{meta.title} - Pixelmancer</title>
+      </Head>
+
       <Content>
         <MDXProvider components={components}>{children}</MDXProvider>
       </Content>

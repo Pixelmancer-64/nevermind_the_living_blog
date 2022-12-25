@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React from "react";
+import React, { useEffect } from "react";
 import PostsCell from "../components/PostCell";
 import Link from "next/link";
 import {
@@ -27,44 +27,40 @@ const getStaticProps = async () => {
   };
 };
 
+
 const Home: NextPage = ({ posts }: any) => {
+
+
+
   return (
     <Container>
       <Posts>
         <PostsCell posts={posts} />
       </Posts>
       <Featured>
-        {/* <TopCategories>
-          <h2>Projetos</h2>
-          <CategoryList>
-            <Category>
-              <Link href="/">React</Link>
-            </Category>
-            <Category>
-              <Link href="/">React</Link>
-            </Category>
-            <Category>
-              <Link href="/">React</Link>
-            </Category>
-            <Category>
-              <Link href="/">React</Link>
-            </Category>
-            <Category>
-              <Link href="/">React</Link>
-            </Category>
-          </CategoryList>
-        </TopCategories> */}
+
         <PopularContent>
           <h2>Projetos</h2>
           <ul>
             <li>
               <Link href="https://www.pixelmancer.com.br/">
-                <a>Homepage</a>
+                <a>Website</a>
               </Link>
             </li>
             <li>
               <Link href="https://www.pixelmancer.com.br/animations/">
                 <a>Animations</a>
+              </Link>
+            </li>
+
+            <li>
+              <Link href="https://pixelmancer.pythonanywhere.com/">
+                <a>CEFETalent!</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="https://github.com/Pixelmancer-64/YggdrasilProject">
+                <a>Yggdrasil Project</a>
               </Link>
             </li>
             <li>

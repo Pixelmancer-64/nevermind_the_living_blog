@@ -1,6 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import { Container, Post, ReadMore, Title, Banner } from "./styled/styled-PostCell";
+import {
+  Container,
+  Post,
+  ReadMore,
+  Title,
+  Banner,
+  Arrows,
+  Read_more_wrapper
+} from "./styled/styled-PostCell";
 
 interface Posts {
   posts: Array<any>;
@@ -17,7 +25,12 @@ export default function PostsCell({ posts }: Posts) {
                 <Title>{title}</Title>
                 {/* <Banner src={url}/> */}
                 <p>{body}</p>
-                <ReadMore>Read More</ReadMore>
+                <Read_more_wrapper>
+                  <ReadMore>Read More</ReadMore>
+                  <Arrows>
+                    <img src="icons/arrow_right.svg"/>
+                  </Arrows>
+                </Read_more_wrapper>
               </Post>
             </a>
           </Link>

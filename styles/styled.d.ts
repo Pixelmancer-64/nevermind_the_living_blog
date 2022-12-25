@@ -6,6 +6,7 @@ declare module "styled-components" {
       name: string,
       colors: {
         primary: string;
+        primary_filter: string;
         secondary: string;
         tertiary: string;
         text: string;
@@ -23,6 +24,7 @@ declare module "styled-components" {
       name: string,
       colors: {
         primary: string;
+        primary_filter: string;
         secondary: string;
         tertiary: string;
         text: string;
