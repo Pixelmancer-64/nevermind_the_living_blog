@@ -11,7 +11,11 @@ export const meta = {
   lastUpdatedOn: "",
 };
 
-export default ({ children }) => <Post>{children}</Post>;
+export default ({ children }) => <Post>{children}</Post>
+
+<Head>
+  <title>{meta.title}</title>
+</Head> 
 
 <Banner url={meta.url} alt={meta.alt} />
 # A evolução das plantas

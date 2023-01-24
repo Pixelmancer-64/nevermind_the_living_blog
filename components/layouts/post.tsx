@@ -80,10 +80,9 @@ const components = {
 
 interface PostProps<P = any> {
   children: P;
-  meta: any;
 }
 
-const Post = ({ children, meta }: PostProps) => {
+const Post = ({ children }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
 
   useEffect(() => {
@@ -92,9 +91,9 @@ const Post = ({ children, meta }: PostProps) => {
 
   return (
     <Container>
-      <Head>
+      {/* <Head>
         <title>{meta.title} - Pixelmancer</title>
-      </Head>
+      </Head> */}
 
       <Content>
         <MDXProvider components={components}>{children}</MDXProvider>

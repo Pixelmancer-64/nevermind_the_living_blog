@@ -1,17 +1,22 @@
 import Post from "../../components/layouts/post";
 import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
+import Head from "next/head";
 
 export const meta = {
   date: "29/11/2022",
   title: "Querys SQL que utilizei no meu estágio",
   body: "Eu amo SQL, as querys são divertidas de serem elaboradas e executadas, sempre vejo elas como pequenas questões de lógica que podem ser resolvidas de diversas maneiras. Porém, utilizar essas querys no mundo real pode ser um pouco diferente do que aprendemos em cursos na internet e na própria escola. Nessa postagem, eu vou acumular com o tempo os comandos SQL que utilizei durante o meu estágio na Prefeitura de Nova Friburgo.",
-  url: "/banners/django-logo-negative.1d528e2cb5fb.png",
+  url: "/banners/sql_meme.jpg",
   alt: "Django banner, white text in green background",
   publishedOn: "",
   lastUpdatedOn: "6/12/2022",
 };
 
-export default ({ children }) => <Post>{children}</Post>;
+export default ({ children }) => <Post>{children}</Post>
+
+<Head>
+  <title>{meta.title}</title>
+</Head> 
 
 <Banner url={meta.url} alt={meta.alt} />
 # SQL é muito legal
@@ -74,5 +79,47 @@ where floor((LENGTH(concat(deficiencia, ensino_fundamental_publico, ensino_medio
  - LENGTH(REPLACE(concat(deficiencia, ensino_fundamental_publico, ensino_medio_publico, renda_bruta, autodeclaracao), 'S', '')))/LENGTH('S')) = 0
 group by selecao_candidato.id
 order by nota desc, pontuação desc, idade;
+
+```
+
+# COVID
+
+``` sql consolidação.sql
+
+WITH latest_dt_ocorrencia AS (
+            SELECT paciente_id, MAX(dt_notificacao) AS latest_dt
+            FROM casos_ocorrencia
+            GROUP BY paciente_id
+        ), latest_dt_acompanhamento AS (
+            SELECT ocorrencia_id, MAX(dt_inclusao) AS latest_dt
+            FROM casos_acompanhamento
+            GROUP BY ocorrencia_id
+        )
+        SELECT DISTINCT
+        bairro_id,
+        sexo,
+        (SELECT casos_faixa_etaria.id FROM casos_faixa_etaria WHERE
+        (SELECT
+            YEAR(from_days(DATEDIFF(casos_paciente.dt_inclusao, dt_nascimento))) -
+            CASE
+                WHEN CAST(casos_paciente.dt_inclusao AS DATE) < CAST(dt_nascimento AS DATE) + INTERVAL '1' year THEN 1
+            ELSE 0
+            END) BETWEEN idade_inicio AND idade_fim) as faixa_etaria_id,
+        evolucao,
+        classificacao,
+        CASE
+        WHEN casos_internacao.id IS NOT NULL THEN 1
+        ELSE 0
+        END AS internado,
+        profissional_saude,
+        COUNT(DISTINCT casos_ocorrencia.id) as quantidade
+        FROM casos_ocorrencia
+        JOIN latest_dt_ocorrencia on casos_ocorrencia.paciente_id = latest_dt_ocorrencia.paciente_id and casos_ocorrencia.dt_notificacao = latest_dt_ocorrencia.latest_dt
+
+        JOIN casos_acompanhamento on casos_ocorrencia.id = casos_acompanhamento.ocorrencia_id
+        join latest_dt_acompanhamento on casos_acompanhamento.ocorrencia_id = latest_dt_acompanhamento.ocorrencia_id and casos_acompanhamento.dt_inclusao = latest_dt_acompanhamento.latest_dt
+        JOIN casos_paciente on casos_ocorrencia.paciente_id = casos_paciente.id
+        LEFT JOIN casos_internacao on casos_internacao.paciente_id = casos_paciente.id
+        GROUP BY bairro_id, sexo, faixa_etaria_id, evolucao, classificacao, internado;
 
 ```

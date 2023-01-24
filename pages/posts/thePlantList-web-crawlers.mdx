@@ -14,6 +14,10 @@ export const meta = {
 
 export default ({ children }) => <Post>{children}</Post>;
 
+<Head>
+  <title>{meta.title}</title>
+</Head> 
+
 <Banner url={meta.url} alt={meta.alt} />
 # Por que o scrapy?
 <Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />

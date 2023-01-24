@@ -1,0 +1,29 @@
+import Post from "../../components/layouts/post";
+import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
+import Head from "next/head";
+
+export const meta = {
+  date: "23/01/2023",
+  title: "Minha experiência como estagiário 'Fullstack'",
+  body: "Como é de costume em cursos técnicos, a conclusão do seu curso envolve a realização de estágio em alguma vaga relacionada ao seu currículo. No meu caso, cursando o Ensino Médio + Técnico em Informática no CEFET/RJ Nova Friburgo, acabei estagiando na Secretaria Municipal de Ciência e Tecnologia da minha cidade. Venho por meio dessa postagem descrever tudo o que aprendi durante minhas 400 horas de trabalho e o que consegui aplicar do meu aprendizado teorico na escola.",
+  url: "/banners/CEFET.png",
+  alt: "CEFET/RJ Nova Friburgo durante um dia após muita chuva, o que passa no meio do campus transbordou e criou uma espécie de lago",
+  publishedOn: "",
+  lastUpdatedOn: "",
+};
+
+export default ({ children }) => <Post>{children}</Post>
+
+<Head>
+  <title>{meta.title}</title>
+</Head> 
+
+<Banner url={meta.url} alt={meta.alt} />
+# Por que fazer estágio?
+<Extra_Info
+  publishedOn={meta.publishedOn}
+  lastUpdatedOn={meta.lastUpdatedOn}
+  writtenBy={["Hugo Billé Martins"]}
+/>
+
+Nada para se ver por aqui

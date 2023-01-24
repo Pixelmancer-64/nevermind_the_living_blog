@@ -13,6 +13,10 @@ export const meta = {
 
 export default ({ children }) => <Post meta={meta}>{children}</Post>;
 
+<Head>
+  <title>{meta.title}</title>
+</Head> 
+
 <Banner url={meta.url} alt={meta.alt} />
 # O que é o Canvas API?
 <Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />

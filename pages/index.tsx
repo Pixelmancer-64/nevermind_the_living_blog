@@ -12,7 +12,7 @@ import {
   TopCategories,
 } from "../components/styled/styled-index";
 
-const getStaticProps = async () => {
+const getServerSideProps = async () => {
   const files = require.context("./posts/", false, /.mdx$/);
   const posts = await Promise.all(
     files.keys().map(async (element: string) => {
@@ -75,5 +75,5 @@ const Home: NextPage = ({ posts }: any) => {
   );
 };
 
-export { getStaticProps };
+export { getServerSideProps };
 export default Home;
