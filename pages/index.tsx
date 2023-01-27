@@ -12,16 +12,16 @@ import {
   TopCategories,
 } from "../components/styled/styled-index";
 
-const getServerSideProps = async () => {
+const getStaticProps = async () => {
   const files = require.context("./posts/", false, /.mdx$/);
   const posts = await Promise.all(
     files.keys().map(async (element: string) => {
-      const importMDX = await files(element);
-      importMDX.meta.slug = element.slice(0, -4);
-      return importMDX.meta;
+      const {meta} = await files(element);
+      meta.slug = element.slice(0, -4);
+      return meta;
     })
   );
-  // console.log(posts)
+
   return {
     props: { posts },
   };
@@ -75,5 +75,5 @@ const Home: NextPage = ({ posts }: any) => {
   );
 };
 
-export { getServerSideProps };
+export { getStaticProps };
 export default Home;
