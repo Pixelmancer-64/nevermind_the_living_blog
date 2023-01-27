@@ -27,10 +27,7 @@ const getStaticProps = async () => {
   };
 };
 
-
 const Home: NextPage = ({ posts }: any) => {
-
-
 
   return (
     <Container>

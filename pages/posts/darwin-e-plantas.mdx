@@ -1,30 +1,20 @@
 import Post from "../../components/layouts/post";
-import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
-import Head from "next/head";
 
 export const meta = {
-  date: "05/09/2022",
+  slug: "long-blog-post",
   title: "Darwin e a evolução das plantas",
+  authors: ['pixelmancer'],
   body: "Durante o estudo da genética e da teoria evolutiva, somos levados a exemplos do reino animalia; afinal de contas, nós humanos somos animais, nada mais coerente do que estudarmos nossa própria genética. Nessa postagem vamos falar um pouco de nossos vizinhos do reino plantae e suas características gênicas e evolutivas",
-  url: "/banners/hortensia.jpeg",
-  alt: "Hortênsia, Hydrangea macrophylla",
-  publishedOn: "02/11/2022",
-  lastUpdatedOn: "",
+  banner: {
+    url: "/banners/hortensia.jpeg",
+    alt: "Hortênsia, Hydrangea macrophylla",
+  }
 };
 
-export default ({ children }) => <Post>{children}</Post>
+export default ({ children }) => <Post meta={meta}>{children}</Post>
 
-<Head>
-  <title>{meta.title}</title>
-</Head> 
-
-<Banner url={meta.url} alt={meta.alt} />
 # A evolução das plantas
-<Extra_Info
-  publishedOn={meta.publishedOn}
-  lastUpdatedOn={meta.lastUpdatedOn}
-  writtenBy={["Hugo Billé Martins", "Weslley Correa", "Maurício Pará"]}
-/>
+
 
 Sempre que estudamos evolução e genética na escola somos levados a estudar sobre nós mesmos, os homo sapiens, ou outros animais. Temos como exemplo clássico de evolução as girafas, que evoluíram durantes milhares de anos até que seus pescoços pudessem alcançar as mais altas árvores da savana africana. Os animais também recebem o olofote da evolução graças aos estudos de Charles Darwin nas ilhas Galápagos,
 

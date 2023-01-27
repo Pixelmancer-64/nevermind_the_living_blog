@@ -10,6 +10,8 @@ import {
   Content_link_wrapper,
   To_top,
 } from "../styled/styled-post";
+import { Banner, Extra_Info } from "../PostComponents";
+
 import { HeadingH1, HeadingH2, P, A, Img } from "../styled/styled-mdx-tags";
 import Head from "next/head";
 
@@ -78,11 +80,12 @@ const components = {
   img: Img,
 };
 
-interface PostProps<P = any> {
-  children: P;
+interface PostProps {
+  children: any;
+  meta: any
 }
 
-const Post = ({ children }: PostProps) => {
+const Post = ({ meta, children }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
 
   useEffect(() => {
@@ -91,13 +94,24 @@ const Post = ({ children }: PostProps) => {
 
   return (
     <Container>
-      {/* <Head>
-        <title>{meta.title} - Pixelmancer</title>
-      </Head> */}
+      <Head>
+        <title>{meta.title}</title>
+      </Head>
 
       <Content>
+
+      <Banner url={meta.banner.url} alt={meta.banner.alt} />
+
+      <Extra_Info
+        publishedOn={meta.publishedOn}
+        lastUpdatedOn={meta.lastUpdatedOn}
+        writtenBy={meta.authors}
+      />
+
         <MDXProvider components={components}>{children}</MDXProvider>
+
       </Content>
+
       <Aside headings={headings}></Aside>
       {/* <To_top><img src="/icons/moon.svg"/></To_top> */}
     </Container>

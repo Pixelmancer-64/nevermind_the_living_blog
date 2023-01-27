@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import authors from "../pages/posts/authors.json"
 
 const Image = styled.img`
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
@@ -21,8 +22,10 @@ const Extra_Info_Container = styled.div`
 export const Extra_Info = ({
   publishedOn,
   lastUpdatedOn,
-  writtenBy = ["Hugo Billé Martins"],
+  writtenBy,
 }: any) => {
+
+  console.log(writtenBy)
   return (
     <Extra_Info_Container>
       <p>
@@ -30,12 +33,15 @@ export const Extra_Info = ({
         {lastUpdatedOn && <span> · Updated on {lastUpdatedOn}</span>}
       </p>
       <p>
-        Written by -{" "}
-        {writtenBy.map((e: string, index: number) => {
-          if (writtenBy.length == 1) return e;
-          if (index == writtenBy.length - 1) return e;
-          if (index == writtenBy.length - 2) return e + " and ";
-          return e + ", ";
+        Written by - {writtenBy.map((author_key: string, index: number) => {
+          if(authors.hasOwnProperty(author_key)) {
+            const author = authors[author_key];
+
+            if (writtenBy.length == 1) return author.name;
+            if (index == writtenBy.length - 1) return author.name;
+            if (index == writtenBy.length - 2) return author.name + " & ";
+            return author.name + ", ";
+          }
         })}
       </p>
     </Extra_Info_Container>

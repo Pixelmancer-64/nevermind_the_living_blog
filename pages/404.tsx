@@ -2,7 +2,20 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { start, animate } from "../components/movingEyes";
 
-const TotalDarkness = styled.div.attrs((props) => ({
+interface TotalDarknessProps {
+  mouse: {
+    x: string;
+    y: string;
+  };
+  isSwitchOn: boolean;
+
+}
+
+interface Canvas_interface {
+  start: () => void;
+}
+
+const TotalDarkness = styled.div.attrs((props: TotalDarknessProps) => ({
   style: {
     "--cursorX": props.mouse.x,
     "--cursorY": props.mouse.y,
@@ -16,7 +29,7 @@ const TotalDarkness = styled.div.attrs((props) => ({
     width: 100%;
     height: 100%;
     position: fixed;
-    background: ${(props) =>
+    background: ${(props: TotalDarknessProps) =>
       props.isSwitchOn
         ? `radial-gradient(
       circle 12vmax at var(--cursorX) var(--cursorY),
@@ -84,27 +97,33 @@ const Switch = styled.button`
   }
 `;
 
-const Canvas = ({ start }) => {
+
+
+const Canvas = ({ start }: Canvas_interface) => {
   useEffect(start, []);
   return <ReallyCanvas></ReallyCanvas>;
 };
 
 const Post = () => {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState({ x: '', y: '' });
   const [isSwitchOn, setSwitch] = useState(false);
 
   useEffect(() => {
-    function update(e) {
+    function update(e:{x: number; y: number}) {
       const x = `${e.x}px`;
       const y = `${e.y}px`;
       animate({ x: e.x, y: e.y });
       setMouse({ x, y });
     }
 
-    try {
-      document.querySelector("header").remove();
-      document.querySelector("footer").remove();
-    } catch {}
+    const header = document.querySelector("header") 
+    const footer = document.querySelector("footer")
+
+    if(header && footer) {
+      header.remove()
+      footer.remove()
+    }
+
 
     document.addEventListener("mousemove", update);
   }, []);
