@@ -1,30 +1,21 @@
 import Post from "../../components/layouts/post";
-import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
-import Head from "next/head";
 
 export const meta = {
-  date: "29/11/2022",
+  slug: "loucuras-sql",
   title: "Querys SQL que utilizei no meu estágio",
+  authors: ['pixelmancer'],
   body: "Eu amo SQL, as querys são divertidas de serem elaboradas e executadas, sempre vejo elas como pequenas questões de lógica que podem ser resolvidas de diversas maneiras. Porém, utilizar essas querys no mundo real pode ser um pouco diferente do que aprendemos em cursos na internet e na própria escola. Nessa postagem, eu vou acumular com o tempo os comandos SQL que utilizei durante o meu estágio na Prefeitura de Nova Friburgo.",
   url: "/banners/sql_meme.jpg",
+  banner: {
   alt: "Django banner, white text in green background",
   publishedOn: "",
-  lastUpdatedOn: "6/12/2022",
+  }
 };
 
-export default ({ children }) => <Post>{children}</Post>
+export default ({ children }) => <Post meta={meta}>{children}</Post>
 
-<Head>
-  <title>{meta.title}</title>
-</Head> 
 
-<Banner url={meta.url} alt={meta.alt} />
 # SQL é muito legal
-<Extra_Info
-  publishedOn={meta.publishedOn}
-  lastUpdatedOn={meta.lastUpdatedOn}
-  writtenBy={["Hugo Billé Martins"]}
-/>
 
 Eu *amo* SQL. Além de ser  interessantísimo criar a estrutura do seu banco de dados (de forma inteligente), principalmente com a assistência de uma ORM, elaborar e executar querys no SQL também é algo que tenho paixão especial.
 

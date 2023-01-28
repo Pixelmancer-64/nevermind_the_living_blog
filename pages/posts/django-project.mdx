@@ -1,37 +1,20 @@
 import Post from "../../components/layouts/post";
-import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
-import Head from "next/head";
-
----
-slug: mdx-blog-post
-title: Mostrando como usar o docusaurus
-authors: [analuisaferro]
-tags: [programação]
----
 
 export const meta = {
-  date: "29/11/2022",
+  slug: "django-project",
   title: "Como funciona e como instalar um projecto em Django",
+  authors: ['pixelmancer'],
   body: "Entre as muitas frameworks voltadas ao desenvolvimento web, o Django se destaca pela sua curva de aprendizado amigável, alta escalabilidade, integração com banco de dados, entre muitas outras qualidades. Nesse post, vou explicar como instalar um projeto em Django e sua estrutura",
+  banner: {
   url: "/banners/django-logo-negative.1d528e2cb5fb.png",
   alt: "Django banner, white text in green background",
-  publishedOn: "",
-  lastUpdatedOn: "",
+  }
 };
 
-export default ({ children }) => <Post>{children}</Post>;
+export default ({ children }) => <Post meta={meta}>{children}</Post>
 
-<Head>
-  <title>{meta.title}</title>
-</Head> 
 
-<Banner url={meta.url} alt={meta.alt} />
 # O que é Django?
-<Extra_Info
-  publishedOn={meta.publishedOn}
-  lastUpdatedOn={meta.lastUpdatedOn}
-  writtenBy={["Hugo Billé Martins", "Ana Luísa Ferro"]}
-/>
 
 Se você caiu aqui de paraquedas, aqui vem um resuminho bem básico do que é o Django. O Django é uma framework para a web que utiliza inteiramente a linguagem Python. Com o Django você pode construir páginas web inteiras com o auxílio de [Templates](https://docs.djangoproject.com/en/4.1/ref/templates/language/), APIs em modelo REST com o [Django REST framework](https://www.django-rest-framework.org/) (sim, uma framework dentro da framework) ou simplesmente desenvolver a comunicação com o banco de dados (e cria-lo por completo sem nunca escrever sequer uma linha de sql) com o [Django ORM](https://docs.djangoproject.com/en/4.1/topics/db/queries/). Enfim, é uma framework bem completa que pode ser utilizada de várias formas diferentes e em diversas situações, é muito provavelmente a framework mais versátil atualmente e por isso é tão fundamental dominar Django e Python.
 

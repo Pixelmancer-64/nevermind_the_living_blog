@@ -51,7 +51,6 @@ export const OuterOl = styled.ol`
 `;
 
 export const Summary = styled.span`
-  color: var(--tertiary);
   font-size: var(--font-size-2xl);
 `;
 
@@ -66,8 +65,6 @@ export const Content_link_wrapper = styled.div`
 ` 
 
 export const Li = styled.li<LiProps>`
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-light);
   padding-left: ${(p) => `${(p.padding - 1) * 16}px`};
   opacity: 0.6;
   transition: opacity 400ms ease 0s;

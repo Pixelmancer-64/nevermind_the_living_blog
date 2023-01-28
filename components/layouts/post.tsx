@@ -8,13 +8,10 @@ import {
   OuterOl,
   Summary,
   Content_link_wrapper,
-  To_top,
 } from "../styled/styled-post";
 import { Banner, Extra_Info } from "../PostComponents";
-
 import { HeadingH1, HeadingH2, P, A, Img } from "../styled/styled-mdx-tags";
 import Head from "next/head";
-
 interface ContentLinkProps {
   children: any;
   padding: number;
@@ -88,10 +85,18 @@ interface PostProps {
 const Post = ({ meta, children }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
 
+
+
   useEffect(() => {
     setHeadings([...document.querySelectorAll("h1, h2, h3, h4, h5, h6")]);
   }, []);
 
+  // const file_path = "/path/to/your/file"
+
+  // const ctime = os.path.getctime(file_path)
+
+  // const mtime = os.path.getmtime(file_path)
+  
   return (
     <Container>
       <Head>
@@ -102,11 +107,11 @@ const Post = ({ meta, children }: PostProps) => {
 
       <Banner url={meta.banner.url} alt={meta.banner.alt} />
 
-      <Extra_Info
+      {/* <Extra_Info
         publishedOn={meta.publishedOn}
         lastUpdatedOn={meta.lastUpdatedOn}
         writtenBy={meta.authors}
-      />
+      /> */}
 
         <MDXProvider components={components}>{children}</MDXProvider>
 

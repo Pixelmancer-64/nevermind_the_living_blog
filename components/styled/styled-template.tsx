@@ -22,8 +22,6 @@ export const Header = styled.header`
   padding: 0 32px;
   align-items: center;
   color: var(--text);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-medium);
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -41,14 +39,13 @@ export const Header = styled.header`
 export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   color: var(--text);
+  font-weight: bold;
+  font-size: 1.5rem;
   & img {
     width: 50px;
     filter: var(--inverse);
-  }
-  & span {
-    font-size: var(--font-size-3xl);
   }
   & a {
     color: inherit;
@@ -58,9 +55,11 @@ export const LogoWrapper = styled.div`
 export const Navbar = styled.nav`
   flex-grow: 1;
   vertical-align: middle;
+  font-size: 1.2rem;
   ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 32px;
   }
   a {
     color: inherit;

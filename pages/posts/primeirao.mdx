@@ -1,28 +1,20 @@
 import Post from "../../components/layouts/post";
-import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
-import Head from "next/head";
 
 export const meta = {
-  date: "08/08/2022",
+  slug: "primeirao",
   title: "A primeira postagem",
+  authors: ['pixelmancer'],
   body: "Apesar da construção desse blog ter começado mês passado, eu até agora não tinha parado para testar como seria realmente escrever uma publicação por completo. Nessa primeira postagem eu testo exatamente isso",
-  url: "/banners/teste.png",
-  alt: "Generative art, IFS Fractal Dream",
-  publishedOn: "08/08/2022",
-  lastUpdatedOn: "",
+  banner: {
+    url: "/banners/teste.png",
+    alt: "Generative art, IFS Fractal Dream",
+  }
 };
 
-export default ({ children }) => <Post>{children}</Post>;
+export default ({ children }) => <Post meta={meta}>{children}</Post>
 
-<Head>
-  <title>{meta.title}</title>
-</Head> 
 
-<Banner url={meta.url} alt={meta.alt} />
 # Olha, minha primeira publicação :p
-<Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
-
-<br />
 
 **Finalmente!** eu consegui fazer essa parada funcionar. Ainda não sei o que vai acontecer
 com o meu site do [GITHUB PAGES](https://www.pixelmancer.com.br) mas provavelmente vou juntar

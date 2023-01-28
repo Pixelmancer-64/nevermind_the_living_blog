@@ -1,27 +1,23 @@
 import Post from "../../components/layouts/post";
-import { Banner, Extra_Info } from "../../components/PostComponents.tsx";
-import Head from "next/head";
+
 
 export const meta = {
-  date: "05/09/2022",
+  slug: "thePlantList-web-crawlers",
   title:
     "Como usar o scrapy para capturar dados de centenas de páginas diferentes",
+  authors: ['pixelmancer'],
   body: "Recentemente tive a necessidade de pegar uma lista de nomes dentro de um site com vários links, e cada link desse me levava para uma página com ainda mais nomes. Pode parecer uma trabalho meio complicado, mas é surpreendente simples com a ajuda do scrapy",
+  banner: {
   url: "/banners/haha.png",
   alt: "Generative art, Popcorn fractal",
-  publishedOn: "05/09/2022",
-  lastUpdatedOn: "29/10/2022",
+  }
 };
 
-export default ({ children }) => <Post>{children}</Post>;
 
-<Head>
-  <title>{meta.title}</title>
-</Head> 
+export default ({ children }) => <Post meta={meta}>{children}</Post>
 
-<Banner url={meta.url} alt={meta.alt} />
+
 # Por que o scrapy?
-<Extra_Info publishedOn={meta.publishedOn} lastUpdatedOn={meta.lastUpdatedOn} />
 
 Recentemente comecei um projeto que envolve um cado de botânica, o nome dele é [YggdrasilProject](https://github.com/pixelmancer-64/YggdrasilProject) e basicamente vou utiliza-lo para cadastrar as plantas que tenho aqui em casa. Enfim, para começar o projeto eu primeiro precisava encontrar todas as espécies de plantas catalogadas para registrar qual é a espécie de cada planta daqui de casa. Até esse momento eu não sabia bem a quantidade de dados que essa empreitada geraria mas depois de terminar, consegui um total de 563.811 espécies.
 

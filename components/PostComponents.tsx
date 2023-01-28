@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import authors from "../pages/posts/authors.json"
+import authors from "../pages/posts/authors.json";
 
 const Image = styled.img`
   border-radius: Max(0px, Min(0.375rem, calc((100vw - 4px - 100%) * 9999))) /
@@ -19,13 +19,7 @@ const Extra_Info_Container = styled.div`
   margin-bottom: 32px;
 `;
 
-export const Extra_Info = ({
-  publishedOn,
-  lastUpdatedOn,
-  writtenBy,
-}: any) => {
-
-  console.log(writtenBy)
+export const Extra_Info = ({ publishedOn, lastUpdatedOn, writtenBy }: any) => {
   return (
     <Extra_Info_Container>
       <p>
@@ -33,15 +27,15 @@ export const Extra_Info = ({
         {lastUpdatedOn && <span> · Updated on {lastUpdatedOn}</span>}
       </p>
       <p>
-        Written by - {writtenBy.map((author_key: string, index: number) => {
-          if(authors.hasOwnProperty(author_key)) {
-            const author = authors[author_key];
+        Written by -{" "}
+        {writtenBy.map((author_key: string, index: number) => {
+           // @ts-ignore: Unreachable code error
+          const author = authors[author_key];
 
-            if (writtenBy.length == 1) return author.name;
-            if (index == writtenBy.length - 1) return author.name;
-            if (index == writtenBy.length - 2) return author.name + " & ";
-            return author.name + ", ";
-          }
+          if (writtenBy.length == 1) return author.name;
+          if (index == writtenBy.length - 1) return author.name;
+          if (index == writtenBy.length - 2) return author.name + " & ";
+          return author.name + ", ";
         })}
       </p>
     </Extra_Info_Container>
