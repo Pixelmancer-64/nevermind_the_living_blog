@@ -16,5 +16,53 @@ export default ({ children }) => <Post meta={meta}>{children}</Post>
 
 # Por que fazer estágio?
 
+Fazer estágio pode ser uma boa ideia para você que ainda não sabe exatamente o que quer fazer da vida, principalmente se você for um estudante. O estágio que me refiro aqui no caso é direcionado para estudantes do ensino médio/univerdade que não possuem a perspectiva de trabalhar por 8 horas diárias. No meu caso, o meu estágio foi executado por um perído de aproximadamente 7 meses, onde metade 2/3 das minhas 400 horas foram cumpridas em expedientes de 3+ horas por dia, 3 dias por semana, e o resto em expedientes de 6+ horas, 5 dias por dia. 
 
-Nada para se ver por aqui
+O meu ensino médio também contempla o ensino técnico de Informática, o que significava que em duas dias da semana eu possuia aulas até às 18:00, imposibilitando a realização do estágio durante a semana toda.
+
+Bem, além de descobrir uma área que você tenha interesse, o estágio é importantíssimo para aprender a como se portar no local de trabalho e como aplicar o teórico no prático. Eu por exemplo já estudo por conta própria, sem depender do currículo da minha escola, e desenvolvo alguns projetos no meu tempo livre e, posso falar por experiência própria, que nenhum curso na Udemy ou vídeo no Youtube vai te preparar para como é realmente trabalhar com prazos e com demandas, ainda mais no setor público.
+
+# O que eu aprendi?
+
+## Tecnologias
+
+* Python
+* MariaDB / SQL
+* Django
+* Shell script 
+* SSH
+* Apache
+* Github
+* Asana
+* Trello
+* CertBot
+* Figma
+
+## Python
+
+Eu já conhecia Python antes do estágio e já utilizava frequentemente a linguagem para fazer alguns projetos para geração de [fractais](https://github.com/Pixelmancer-64/PythonIFS) e [processamento de imagens](https://github.com/Pixelmancer-64/imageTools), mas nunca tinha usado com tal profundidade até esse momento.
+
+Utilizamos o framework [Django](https://www.djangoproject.com/) em todos os sistemas desenvolvidos e, até então, eu desconhecia o uso da linguagem Python no campo do desenvolvimento web. Apesar do minha familiaridade com a linguagem, que vai além do CEFET/RJ (essa linguagem não foi lecionada durante minha estadia na escola), eu possuia maior confiança com Javascript, Rust, C++ e PHP.
+
+Então, logo no primeiro dia, já enfrentei o meu primeiro *choque de cultura*, conhecendo um novo mundo que me aguardava, um mundo esse que era familiar, mas mesmo assim diferente.
+
+## MariaDB / SQL
+
+O MySQL é o gerenciador de banco de dados relacionais mais popular do mundo, mas não faz muito tempo ele foi adquirido e incorporado pela Oracle, o que restringiu em parte o uso dessa ferramenta para grandes projetos. O [MariaDB](https://mariadb.org/) é a alternativa [open-source](https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto) do MySQL Server e foi exatamente essa tecnologia que é usada no servidor de banco de dados dos nossos sistemas. 
+
+A diferença entre MySQL e MariaDB é pontual, basicamente idênticos. Vale ressaltar que a linguagem continua a mesma, consultas ao banco de dados são feitas por SQL. Na escola temos sim algumas matérias sobre diagramação, SQL e configuração do servidor MySQL que me ajudaram na hora de trabalhar com alguns projetos.
+
+Eu gosto muito de banco de dados e tenho certo conhecimento sobre SQL, o que me permitiu a transitar algums sistemas, que utilizavam Python para consultar nossos bancos de dados, para consultas utilizando SQL. Essa mudança foi muito bem-vinda pelo ganho de desempenho e espaço no servidor; algumas funcionalidades de alguns sites levavam cerca de meia hora para carregarem, e agora levavam questão de segundos.
+
+## Django
+
+Falando mais especialmente do Django, é uma das tecnologias que mais me divertir a aprender. Ela utiliza o modelo MVC, mas apesar do modelo ele altera o nome das "partes " do projeto em si, e possui um fluxo de trabalho bem parecido com outras frameworks.
+
+Django foi mais uma das coisas que aprendi diretamente com a prático e a leitura da sua[documentação](https://docs.djangoproject.com/en/4.1/). Já estou acostumado a aprender dessa maneira, como foi o caso do Typescript e Rust, mas foi impressionantemente fácil compreender e me adaptar à ferramenta.
+
+## Shell script
+
+Utilizei muito brevemente mas vale a menção. No servidor de banco de dados, utilizavam uma rotina de backups que era executada todo dia, durante a noite, para gerar um backup para cada sistema instalado no servidor. O código não era muito conveniente então aprendi um pouquinho de Shell script para alterar o comando já lá existente e melhorar a rotina de backups do servidor.
+
+
+
