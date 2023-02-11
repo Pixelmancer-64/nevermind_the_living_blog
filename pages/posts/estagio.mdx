@@ -136,11 +136,16 @@ A Casa do Trabalhador localiza-se na antiga rodoviária urbana, no mesmo espaço
 
 Participei da implementação da identidade visual do sistema e criei uma série de funcionalidades no sistema. Esse projeto é especialmente recompensador de trabalhar devido ao bom diálogo estabelecido entre a Casa do Trabalhador e a secretaria, além de ser um projeto utilizado por milhares de pessoas, até mesmo de municípios vizinhos.
 
-Fiquei responsável por implementar uma funcionalidade de filtro ao pesquisar por vagas e criação de uma painel administrativo para os servidores da Casa do Trabalhador, que inclui: Listagem de todos os candidatos, pesquisa de candidatos por cpf ou nome, geração de um arquivo CSV com o email de todos os candidatos e criação indicadores (gráficos) dinâmicos com dados relevantes para a administração da Casa. 
+Fiquei responsável por implementar funcionalidades de filtro ao pesquisar por vagas e criação de uma painel administrativo para os servidores da Casa do Trabalhador. Algumas das funcionalidades desse painel incluem: listagem e filtragem de todos os candidatos, pesquisa de candidatos por cpf ou nome e criação de indicadores (gráficos) dinâmicos com dados relevantes para a administração da Casa do Trabalhador e o poder público. 
 
 ## Google sheets script
 
 Por pedido da Alessandra, responsável pela administração dos estágios disponibilizados pela Prefeitura de Nova Friburgo e conveniados, criei um script no Google Forms utilizando javascript para enviar um email para seu email pessoal e o da própria secretaria avisando o termino do convênio entre a instituição e a prefeitura. A elaboração e execução desse projeto durou cerca de 1 horas mas foi uma surpressa muito bem vinda; desconhecia a possibilidade de criar scripts no Google Sheets utilizando javascript, a linguagem que possuo maior domínio, e essas poucas linhas de código estão sendo utilizadas pela alessandra até hoje para avisa-la a respeito de eventuais renovações de convênio.
+
+## Sistema de chamados TI
+
+Esse sistema já existia antes da minha chegada e foi pensado para o uso interno na prefeitura, visando facilitar o processo de abrir chamados para o setor de TI. Não tive muita necessidade de mexer no projeto por muito tempo mas sem dúvidas foi algo interessante para enter melhor as necessidades internas de uma prefeitura.
+
 
 ## Backup automático dos bancos de dados
 
@@ -150,9 +155,44 @@ Quando comecei a explorar o servidor onde as aplicações estavam armazenadas me
 
 Um dos outros projetos que desenvolvemos para a Secretaria de Turismo. Surgiu de uma demanda de migrar o registro de ocupação hoteleira e cadastro de hotéis no município, de uma planilha do excel para um sistema web. O sistema então seria responsável por cadastrar, registrar, processar e disponibilizar dados e informações a respito dos hostéis e ocupação hoteleira de Nova Friburgo.
 
+## Sistema de cursos livres UERJ
+
+O desenvolvimento desse sistema logo depois do meu ingresso como estagiário na secretaria. Surgiu de um convênio da UERJ com a secretaria e buscava a implementação de um sistema de cadastramento de cursos e administração de turmas para o Polo de Cursos da UERJ Nova Friburgo. O sistema foi desenvolvido em pouco tempo devido a colaboração da equipe toda nesse projeto, o que agilizou o desenvolvimento. Nesse ponto ainda não tinha muita familiaridade do fluxo de desenvolvimento com o Django, mas já possuia muita experiência com Python devido a alguns projetos que desenvolvi em casa usando a linguagem. 
+
+Devido a minha experiência com banco de dados, logo apontei algumas falhas que a modelagemm do banco possuia e que podiam dificultar o desenvolvimento futuro do sistema, e começos a pensar em maneiras de reemplementar o sistema sem afetar usuários já existentes. Porém, depois de alguns meses o sistema ficou um pouco mais de lado devido a exigências que surgiram ao longo do ano e o interesse do Polo de cursos da UERJ pelo projeto também vou diminuindo.
+
+Sem dúvidas, além de projetar um projeto sólido e funcional desde o início visando sempre os benefícios ao longo prazo, é necessário desenvolver um prótótipo mínimo viável (MVP) o mais rápido possível para que o cliente possa se manter engajado e interessado pelo sistema e começar a levantar suas próprias demandas e ideias para melhorar o projeto.
+
 ## Cevest
 
-O CEVEST [INSERIR LINK AQUI]() é um projeto da SECRETARIA DE Ciência, Tecnologia, Inovação e Educação Profissionalizante e Superior que disponibiliza cursos de costura e corte gratuitamente. O CEVEST foi implementado durante a administração da Dra. Saudade Braga, mas o sistema online começou a ser utilizado a partir de 2019. O sistema faz a 
+O CEVEST [INSERIR LINK AQUI]() é um projeto da SECRETARIA DE Ciência, Tecnologia, Inovação e Educação Profissionalizante e Superior que disponibiliza cursos de costura e corte gratuitamente. O CEVEST foi implementado durante a administração da Dra. Saudade Braga, mas o sistema online começou a ser utilizado a partir de 2019. O sistema auxilia na pré-matrícula, alocação automática de candidatos e administração de turmas e alunos. Como eu trabalhava na mesma sala de muitos dos servidores que administravam o CEVEST, logo cedo ouvi reclamações e problemas presentes no sistema que dificultavam a alocação de aulas, gerava confusão entre os intrutores e alunos e muitas vezes era demasiadamente lento. 
+
+A ideia de recriar o sistema já era pensada e projetada por mim e meu supervisor. Porém, o CEVEST possui aulas o ano inteiro e uma transição durante o qualquer momento do ano seria uma tarefa no mínimo incoveniente, mas era uma realidade que deveria ser enfrentada em algum momento.
+
+Como medida paleativa, fiquei responsável por levantar as necessidades para o novo sistema e aplicar o máximo de reparos no sistema já existente, buscando facilitar e dinamizar o trabalho dos administradores do CEVEST. Como essa tarefa era algo constante, ou seja, sempre havia alguma coisa para fazer toda semana em relação ao sistema, optei por estudar e entender o sistema por completo, criando uma certa "documentação" guia para não somente eu, mas também para o Luis Eduardo e a Ana Luísa. 
+
+A elaboração da construção desses comentários sobre o sistema acabaram me levando em uma longa jornada de uma semana levantando problemas, falhas no sistemas e novas ideias para o sistema atual e uma futura nova plataforma para o CEVEST. Como o projeto era um "trem já em andamento", reparar os trilhos enquanto o trem andava era uma tarefa delicada e precisava de extrema atenção, porém foi uma experiência muito agregadora por ensinar a necessidade que muitos sistemas vão demandar durante sua vida, além de conhecer e considerar os problemas e cuidados a serem tomados enquanto trabalhando em sistemas já em funcionamento e possuem tantos dados sensíveis.
+
+Apesar dos constantes melhorias, refatoração de código legado [INSERIR LINK AQUI]() e implementação de ideias novas, a criação de uma plataforma nova cabou sendo necessidade urgente no começo do ano de 2023, quando um grande número de interessados de candaditam a cursos que começam juntamente ao início das aulas da rede pública de ensino. Fiquei responsável pela criação completa do sistema, utilizando do meu conhecimento e familiaridade com o sistema do CEVEST e dos cursos livres da UERJ. Pelo escopo e potencial do sistema, ele passou a ser uma plataforma de capacitação não apenas para o CEVEST, mas também cursos de outras secretarias e instituições. Também havia a necessidade da divulgação de eventos e palestras para o público, que também contaria com listas de inscrição que falitariam no momento da publicação, divulgação e inscrição nesses eventos. 
+
+## Sistema de obras públicas 
+
+Com o intuito de entrar em conformidade com o [projeto de lei](https://sapl.armacaodosbuzios.rj.leg.br/materia/1533) que estabelece a obrigatoriedade de inserção de QR Codes em obras públicas com o objetivo de transparecer aos cidadãos o progresso e o gasto de obras públicas na cidade. Diferente de outros projetos, que foram relativamente simples de implementar e projetar, o sistema de obras públicas envolveu interpretar as informações de um edital enviado para o meu supervisor Luis Eduardo. Tendo o auxílio de outros servidores públicos, implementados uma versão MVP do projeto em pouco tempo e satisfazia as condições do edital. Infelizmente o projeto não foi utilizado por motivos que desconheço mas foi uma experiência muito interessante.
+
+
+## Mapeamento cultural
+
+O sistema de mapeamento cultural foi uma demanda trazida pela Secretaria de Cultura que tem como objetivo cadastrar os artistas, produtores culturais e grupos culturais do município. Esse mapeamento auxiliaria o poder público a contratar artistas locais para eventos, auxiliar a coleta de dados a respeito da diversidade artística e cultural do municpipio e prover dados para a tomada de decisões e criação de leis públicas visando a manutenção da cultura e arte em Nova Friburgo.
+
+Fiquei responsável pela modelagem de parte do banco de dados, correção de alguns erros em algumas etapas do cadastro de pessoas jurídicas, cadastro inicial de um grande número de artistas que já eram registrados em uma planilha de excel e envio automático de emails para os cadastrados.
+
+## Escola de Enfermagem
+
+O site criado para a Escola de Enfermagem Nossa Srª de Fátima surgiu como demanda visando facilitar o processo de cadastro, ensalamento e classificação dos candidatos inscritos através do mesmo site. Fiquei responsável pelo desenvolvimento para que completo do sistema, usando o edital publicado do concurso e recebendo demandas da diretora da escola para a elaboração do sistema em conformidade com o edital.Além do cadastramento dos candidatos, fui responsável por criar o algoritmo para o ensalamento dos candidatos no local da prova e pelo o algoritmo que determinava a classificação dos candidatos do concurso. 
+
+O edital estipulava um sistema de vagas reservadas e critérios de desempate baseados em alguns critérios, entro em mais detalhes sobre esse algoritmo na minha postagem sobre [INSERIR LINK AQUI]().
+
+
 
 
 # Aprendizados e atividades variadas
@@ -170,5 +210,6 @@ O CEVEST [INSERIR LINK AQUI]() é um projeto da SECRETARIA DE Ciência, Tecnolog
 * Trabalho em equipe e divisão de tarefas
 * Reuniões e trabalho remoto
 * Comportamento e ética no local de trabalho
-
+* Responsabilidade com os dados
+* Rio Inovation Week
 
