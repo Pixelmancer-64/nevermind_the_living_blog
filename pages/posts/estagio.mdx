@@ -100,11 +100,9 @@ O Figma é utilizado para a criação de wireframes e desenvolvimento do design 
 * Sistema de obras públicas
 * Mapeamento cultural
 * Escola de Enfermagem
-* Sistema de ordem de serviço para a iluminação pública
+* Sistema de ordem de serviço para a iluminação públicas
 * Painel Covid
 * Cursos Livres
-* SUPERAPP
-* Portal centralizador de sistemas
 
 ## Primeiras considerações
 
@@ -140,7 +138,7 @@ Fiquei responsável por implementar funcionalidades de filtro ao pesquisar por v
 
 ## Google sheets script
 
-Por pedido da Alessandra, responsável pela administração dos estágios disponibilizados pela Prefeitura de Nova Friburgo e conveniados, criei um script no Google Forms utilizando javascript para enviar um email para seu email pessoal e o da própria secretaria avisando o termino do convênio entre a instituição e a prefeitura. A elaboração e execução desse projeto durou cerca de 1 horas mas foi uma surpressa muito bem vinda; desconhecia a possibilidade de criar scripts no Google Sheets utilizando javascript, a linguagem que possuo maior domínio, e essas poucas linhas de código estão sendo utilizadas pela alessandra até hoje para avisa-la a respeito de eventuais renovações de convênio.
+Por pedido da Alessandra, responsável pela administração dos estágios disponibilizados pela Prefeitura de Nova Friburgo e conveniados, criei um script no Google Forms utilizando javascript para enviar um email para seu email pessoal e o da própria secretaria avisando o termino do convênio entre a instituição e a prefeitura. A elaboração e execução desse projeto durou cerca de 1 horas mas foi uma surpresa muito bem vinda; desconhecia a possibilidade de criar scripts no Google Sheets utilizando javascript, a linguagem que possuo maior domínio, e essas poucas linhas de código estão sendo utilizadas pela alessandra até hoje para avisa-la a respeito de eventuais renovações de convênio.
 
 ## Sistema de chamados TI
 
@@ -190,26 +188,54 @@ Fiquei responsável pela modelagem de parte do banco de dados, correção de alg
 
 O site criado para a Escola de Enfermagem Nossa Srª de Fátima surgiu como demanda visando facilitar o processo de cadastro, ensalamento e classificação dos candidatos inscritos através do mesmo site. Fiquei responsável pelo desenvolvimento para que completo do sistema, usando o edital publicado do concurso e recebendo demandas da diretora da escola para a elaboração do sistema em conformidade com o edital.Além do cadastramento dos candidatos, fui responsável por criar o algoritmo para o ensalamento dos candidatos no local da prova e pelo o algoritmo que determinava a classificação dos candidatos do concurso. 
 
-O edital estipulava um sistema de vagas reservadas e critérios de desempate baseados em alguns critérios, entro em mais detalhes sobre esse algoritmo na minha postagem sobre [INSERIR LINK AQUI]().
+O edital estipulava um sistema de vagas reservadas e critérios de desempate baseados em alguns critérios; entro em mais detalhes sobre esse algoritmo na minha postagem sobre [INSERIR LINK AQUI](). Analisar as demandas de um edital e aplica-las corretamente foi um desafio e me trouxe uma nova perspectiva sobre o meu trabalho, deixando claro como o meu trabalho pode afetar a vida de centenas ou milhares de pessoas. Essa nova perspectiva também me fez perceber a seriedade e importância dos dados que manejo, sendo necessário compromisso, seriedade e responsabilidade na forma como eles são geridos.
 
+## Sistema de ordem de serviço para a iluminação públicas
 
+O sistema de ordem de serviço visava criar um sistema de almoxarifado e abertura de chamados para exigências envolvendo a iluminação pública do município. Inicialmente eu desenvolveria esse sistema por conta própria, mas o surgimento de novas exigências em outros projetos trouxe a necessidade de dividir o trabalho com meus colegas.
+
+## Painel Covid
+
+Acho que todos nós friburguenses consultamos em algum momento o sistema de covid durante a pandemia para consultar o total de casos confirmados e óbitos em Nova Friburgo, observando atentamente aos gráficos e os dados apresentados no painel. Quando fiquei encarregado de cuidaar desse sistema senti novamente o sentimento de extrema responsabilidade que um trabalho como esse exige, envolvendo a exibição de dados importantíssimos para o público e a saúde pública.
+
+O desenvolvimento do sistema foi logo no começo da pandemia, muito antes de mesmo sonhar em ser estagiário da prefeitura. Devido a falta de dados e informações sobre a COVID 19 durante aquele período, o sistema não foi preparado para a enxurrada de dados que ele recebeu e, gradualmente, foi se tornando cada vez mais lento. Fiquei encarregado de refatorar o sistema, levantando novas exigências para o sistema e, principalmente, tornando o sistema mais rápido e eficiente. 
+
+Na primeira semana de desenvolvimento, passei por cada função do sistema, buscando compreender o sistema e levantar potenciais melhorias. Um ponto chave para a melhoria do sistema era transitar de um sistema totalmente escrito em Python, uma lingaguem rápida e fácil para desenvolvimento de software mas de baixa performance. Para consulta de banco de dados em SQL, o ideal é utilizar a próprima lingaguem SQL para fazer consultas. Como já tenho grande familiaridade e conhecimento com o SQL, subistitui muitas funções escritas em Python por SQL, melhorando tremendamente a performance do sistema; funcionalidades que antes levavam cerca de uma hora para para serem executadas agora levam menos de um minuto.
+
+Saber os pontos fracos e fortes de uma tecnologia e reconhecer o momento certo de empregar e misturar métodos diferentes é uma habilidade indispensável para um programador.  
+
+## Cursos Livres
+
+Como discutido anteriormente, o sistema do CEVEST possui diversos problemas e necessitava de atenção. Com o objetivo de resolver de uma vez os tais dificuldades e abrir portas para novas oportunidades de integração de cursos, fiquei responsável pela criação de uma plataforma para divulgação de cursos, palestras e eventos disponibilizados pela Prefeitura Municipal de Nova Friburgo e parceiros conveniados. 
+
+Antes do desenvolvimento, houve um processo de levantamento de exigências, melhorias e novas demandas para o sistema, levando em consideração não apenas o público do CEVEST mas também novas oportunidades. O processo de desenvolvimento foi interessante e expecionalmente divertido, provavelmente devido ser o meu último projeto desenvolvido como estagiário, já experiente e confiante com toda a arquitetura e funcionamento da framework e a lingaguem python, além do conhecimento adicional adiquirido relativo a lógica de programação.
+
+Esse sistema possui um potencial gigantesco e possui diversas funcionalidades úteis para administração de turmas e aulas. Já apresentei o sistema para uma série de futuros usuários e administradores do sistema e recebi muitos comentários positivos. Espero continuar trabalhando com esse sistema futuramente por conta própria e aprimora-lo para outros tipos de necessidades.
 
 
 # Aprendizados e atividades variadas
 
-* Cadastramento de alunos no CEVEST
 * Avaliação e levantamento de orçamento para computadores
-* Levantamento de demandas
-* Avaliação de demandas e implementação
-* Manutenção e desenvolvimento após a versão 1.0
 * Fala em público
-* Reunião com superiores (secretário e prefeito)
-* Breve estadia pela cidade inteligente
-* Aprendizado do processo de licitação de equipamento
-* Planejamento e elaboração de projetos
-* Trabalho em equipe e divisão de tarefas
-* Reuniões e trabalho remoto
-* Comportamento e ética no local de trabalho
-* Responsabilidade com os dados
 * Rio Inovation Week
+
+## Avaliação e levantamento de orçamento para computadores
+
+Sendo um técnico em informática, você está fadado a consertar o computador dos seus familiares. Não sendo uma surpresa, esse tipo de serviço também me foi solicitado no meu estágio; a minha sorte é que eu gosto muito de desmontar eletrônicos e tenho experiência com montagem de computadores e diagnóstico. Nessa pequena missão eu fiquei responsável por avaliar cerca de 10 computadores diferentes e fazer um levantamento das peças e reparos necessários.
+
+## Fala em público
+
+Me considero uma pessoa tímida, tenho certa dificuldade em falar em público sem preparo prévio, o que pode ser um problema na hora de apresentar projetos em desenvolvimento e opinar sobre novas demandas e ideias que surgem durante o diálogo. *Sem dúvidas*, o estágio me ajudou extremamente com esse problema, me preparando para esses tipos de situação de trabalho, principalmente durante reuniões com superiores.
+
+Manter a calma e não perder seu raciocínio em momentos de estresse são habilidades importantíssimas para o desenvolvimento da fala em público. Creio eu que o ponto mais peculiar que estive durante o meu estágio foi durante uma reunião com o prefeito de Nova Friburgo, algo que não estava muito preparado e acabou colocando meu preparo ao teste.
+
+## Rio Inovation Week 2022
+
+Devido a um convênio com o SEBRAE, a secretaria recebeu alguns ingressos para o evento e fui convidado para ir ao Rio de Janeiro visitar esse evento de tecnologia por um dia. A exposição incluia uma série de estandes com diversos projetos inovadores para diversas áreas da sociedade, incluindo o agronegócio, saúde, transporte, entre outros...
+
+O evento também demonstrou como a área da programação é cheia de oportunidades de emprego; em diversos estandes os representates dos projetos demonstravam interesse em contratar e fazer acordos com programadores, buscando uma equipe que pudesse desenvolver ou melhorar seus projetos.
+
+Para mim, o ponto alto foi encontrar um projeto sobre arte de código aberto, o que é meio absurdo para mim porque é um hobbie que possuo por dois anos no momento da publicação dessa postagem. Foi surreal ver como algo que eu faço no meu tempo livre para praticar minhas habilidades de lógica e matemática em um evento de inovação e tecnologia. Se tiver interesse em ver meus projetos, é só acessar minha página [INSERIR LINK AQUI]().
+
+
 
