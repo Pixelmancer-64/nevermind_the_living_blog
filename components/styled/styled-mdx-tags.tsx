@@ -13,6 +13,12 @@ export const H2 = styled.h2`
   margin-bottom: 8px;
 `;
 
+export const H3 = styled.h3`
+  /* color: var(--tertiary); */
+  margin-top: 32px;
+  margin-bottom: 8px;
+`;
+
 const Image = styled.img`
   margin: auto;
   min-width: 100%;
@@ -39,6 +45,10 @@ export const HeadingH1 = ({ children }: any) => {
 
 export const HeadingH2 = ({ children }: any) => {
   return <H2 id={children}>{children}</H2>;
+};
+
+export const HeadingH3 = ({ children }: any) => {
+  return <H3 id={children}>{children}</H3>;
 };
 
 export const A = ({ href, children }: any) => {
