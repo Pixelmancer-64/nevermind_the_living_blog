@@ -3,15 +3,32 @@ import Post from "../../components/layouts/post";
 export const meta = {
   slug: "aprendendo-canvas-api-com-oop",
   title: "Aprendendo a atulizar o Canvas API com OOP",
-  authors: ['pixelmancer'],
+  authors: ["pixelmancer"],
   body: "O Canvas API é uma ferramenta poderosa que poucos dominam. Além de ser útil para fazer desenhos e 'Generative Art', ela também é uma ótima forma de aprender a programar utilizando conceitos de programação orientada a objetos",
   banner: {
     url: "/banners/sandpiles.png",
     alt: "Generative art, Sandpiles fractal",
-  }
+  },
 };
 
-export default ({ children }) => <Post meta={meta}>{children}</Post>
+export default ({ children, file_meta }) => {
+  let merged_meta = {...meta, ...file_meta}
+  return <Post meta={merged_meta}>{children}</Post>;
+};
+
+export const getStaticProps = async () => {
+  const fs = require('fs');
+  const files = require.context("./", false, /.mdx$/);
+  const post = `./${meta.slug}.mdx`
+  const file = await files(post)
+  const file_meta = file.meta
+  const stats = fs.statSync(files.resolve(post));
+  file_meta.created_at = stats.birthtime?.toISOString();
+  file_meta.last_updated_at = stats.mtime?.toISOString();
+  return {
+    props: { file_meta },
+  };
+};
 
 O Canvas API permite de maneira muito fácil criar desenhos
 tanto em 2D quanto em 3D. Esse tutorial pretende apenas

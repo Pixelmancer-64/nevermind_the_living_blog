@@ -17,12 +17,13 @@ interface Posts {
 export default function PostsCell({ posts }: Posts) {
   return (
     <Container>
-      {posts.map(({ title, body, slug, url }) => {
+      {posts.map(({ title, body, slug, created_at }) => {
         return (
           <Link href={`/posts/${slug}`} key={slug}>
             <a>
               <Post>
                 <Title>{title}</Title>
+                {created_at}
                 {/* <Banner src={url}/> */}
                 <p>{body}</p>
                 <Read_more_wrapper>

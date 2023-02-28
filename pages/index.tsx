@@ -13,11 +13,18 @@ import {
 } from "../components/styled/styled-index";
 
 const getStaticProps = async () => {
+  const fs = require('fs');
+
   const files = require.context("./posts/", false, /.mdx$/);
   const posts = await Promise.all(
     files.keys().map(async (element: string) => {
       const {meta} = await files(element);
       meta.slug = element.slice(0, -4);
+
+      const stats = fs.statSync(files.resolve(element));
+      meta.created_at = stats.birthtime?.toISOString();
+      // meta.modified_at = stats.modifiedAt?.toISOString();
+      
       return meta;
     })
   );

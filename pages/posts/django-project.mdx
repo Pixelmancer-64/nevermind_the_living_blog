@@ -11,8 +11,24 @@ export const meta = {
   }
 };
 
-export default ({ children }) => <Post meta={meta}>{children}</Post>
+export default ({ children, file_meta }) => {
+  let merged_meta = {...meta, ...file_meta}
+  return <Post meta={merged_meta}>{children}</Post>;
+};
 
+export const getStaticProps = async () => {
+  const fs = require('fs');
+  const files = require.context("./", false, /.mdx$/);
+  const post = `./${meta.slug}.mdx`
+  const file = await files(post)
+  const file_meta = file.meta
+  const stats = fs.statSync(files.resolve(post));
+  file_meta.created_at = stats.birthtime?.toISOString();
+  file_meta.last_updated_at = stats.mtime?.toISOString();
+  return {
+    props: { file_meta },
+  };
+};
 
 # O que é Django?
 

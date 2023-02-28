@@ -82,20 +82,16 @@ interface PostProps {
   meta: any
 }
 
+
 const Post = ({ meta, children }: PostProps) => {
   const [headings, setHeadings] = useState<any[]>([]);
-
-
 
   useEffect(() => {
     setHeadings([...document.querySelectorAll("h1, h2, h3, h4, h5, h6")]);
   }, []);
 
-  // const file_path = "/path/to/your/file"
-
-  // const ctime = os.path.getctime(file_path)
-
-  // const mtime = os.path.getmtime(file_path)
+  const created_at = new Date(meta.created_at).toLocaleDateString()
+  const last_updated_at = new Date(meta.last_updated_at).toLocaleDateString()
   
   return (
     <Container>
@@ -105,13 +101,13 @@ const Post = ({ meta, children }: PostProps) => {
 
       <Content>
 
-      <Banner url={meta.banner.url} alt={meta.banner.alt} />
+        <Banner url={meta.banner.url} alt={meta.banner.alt} />
 
-      {/* <Extra_Info
-        publishedOn={meta.publishedOn}
-        lastUpdatedOn={meta.lastUpdatedOn}
+        <Extra_Info
+        publishedOn={created_at}
+        lastUpdatedOn={last_updated_at}
         writtenBy={meta.authors}
-      /> */}
+      />
 
         <MDXProvider components={components}>{children}</MDXProvider>
 
