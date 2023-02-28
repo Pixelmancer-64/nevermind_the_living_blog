@@ -3,14 +3,15 @@ import Post from "../../components/layouts/post";
 export const meta = {
   slug: "estagio",
   title: "Minha experiência como estagiário 'Fullstack'",
-  authors: ['pixelmancer'],
+  authors: ["pixelmancer"],
   body: "Como é de costume em cursos técnicos, a conclusão do seu curso envolve a realização de estágio em alguma vaga relacionada ao seu currículo. No meu caso, cursando o Ensino Médio + Técnico em Informática no CEFET/RJ Nova Friburgo, acabei estagiando na Secretaria Municipal de Ciência e Tecnologia da minha cidade. Venho por meio dessa postagem descrever tudo o que aprendi durante minhas 400 horas de trabalho e o que consegui aplicar do meu aprendizado teórico na escola.",
   banner: {
-  url: "/banners/CEFET.png",
-  alt: "CEFET/RJ Nova Friburgo durante um dia após muita chuva, o que passa no meio do campus transbordou e criou uma espécie de lago",
-  }
+    url: "/banners/CEFET.png",
+    alt: "CEFET/RJ Nova Friburgo durante um dia após muita chuva, o que passa no meio do campus transbordou e criou uma espécie de lago",
+  },
 };
 
+<<<<<<< HEAD
 export default ({ children, file_meta }) => {
   let merged_meta = {...meta, ...file_meta}
   return <Post meta={merged_meta}>{children}</Post>;
@@ -29,216 +30,204 @@ export const getStaticProps = async () => {
     props: { file_meta },
   };
 };
+=======
+export default ({ children }) => <Post meta={meta}>{children}</Post>;
+>>>>>>> bac9b00d63714eabd40d4e3aef502e842173f3f3
 
 # Por que fazer estágio?
 
-Fazer estágio pode ser uma boa ideia para você que ainda não sabe exatamente o que quer fazer da vida, principalmente se você for um estudante. O estágio que me refiro aqui no caso é direcionado para estudantes do ensino médio/universidade que não possuem a perspectiva de trabalhar por 8 horas diárias. No meu caso, o meu estágio foi executado por um período de aproximadamente 7 meses, onde metade 2/3 das minhas 400 horas foram cumpridas em expedientes de 3+ horas por dia, 3 dias por semana, e o resto em expedientes de 6 horas, 5 dias por dia. 
+Fazer estágio pode ser uma boa ideia para você que ainda não sabe exatamente qual carreira seguir, principalmente se você for um estudante. O estágio que me refiro aqui é direcionado para estudantes do ensino médio/universidade que não possuem a perspectiva de trabalhar por 8 horas diárias.
+No meu caso, o meu estágio foi executado por um período de aproximadamente 8 meses, onde metade das minhas 400 horas foram cumpridas em expedientes de 3+ horas por dia, 3 dias por semana, e o restante em expedientes de 6 horas, 5 dias por dia.
 
-O meu ensino médio também contempla o ensino técnico de Informática, o que significava que em duas dias da semana eu possuía aulas até às 18:00, impossibilitando a realização do estágio durante a semana toda.
+O meu ensino médio também contempla o ensino técnico de Informática, o que significava que em dois dias da semana eu possuía aulas até às 18:00, impossibilitando a realização do estágio durante a semana toda. Apesar de ser um ritmo bem cansativo, com certeza vale a pena ter essa experiência.
 
-Bem, além de descobrir uma área que você tenha interesse, o estágio é importantíssimo para aprender como se portar no local de trabalho e como aplicar o teórico no prático. Eu por exemplo já estudo por conta própria, sem depender do currículo da minha escola, e desenvolvo alguns projetos no meu tempo livre e, posso falar por experiência própria, que nenhum curso na Udemy ou vídeo no Youtube vai te preparar para o mundo real, trabalhando com prazos e demandas, ainda mais no *setor público!*.
+Além de descobrir uma área que você potencialmente possa ter interesse, o estágio é importantíssimo para aprendizados diversos que vão além do aspecto técnico do seu estágio, como se portar no local de trabalho e como aplicar o teórico no prático. Eu por exemplo já estudo por conta própria, sem depender do currículo da minha escola, e desenvolvo alguns projetos no meu tempo livre e, posso falar por experiência própria, que nenhum curso na Udemy ou vídeo no Youtube vai te preparar para o mundo real, trabalhando com prazos e demandas, especialmente para o _setor público!_.
 
 # O que eu aprendi?
 
+A seguir, vou falar um pouco sobre as tecnologias que utilizei e entrar em detalhes como alguns projetos desenvolvidos por mim durante o meu estágio me impactaram tanto como profissional, quanto como pessoa.
+
 ## Tecnologias
 
-As tecnologias usadas no meu estágio englobam tanto gerenciadores de banco de dados, linguagens de programação, servidores, plataformas de gerenciamento de trabalho, entre outras categorias. Antes do meu estágio eu programava primariamente em Javascript, principalmente pelo meu conhecimento de React, Node e Next. Porém, posso olhar agora para trás e observar o escopo de novas tecnologias e antigas tecnologias em que me aprofundei ainda mais.
+As tecnologias usadas no meu estágio englobam tanto gerenciadores de banco de dados, linguagens de programação, servidores, plataformas de gerenciamento de trabalho, entre outras categorias. Antes do meu estágio eu programava primariamente em Javascript, principalmente pelo meu conhecimento em React, Node e Next. Porém, posso agora olhar para trás e observar o escopo de novas tecnologias e antigas tecnologias em que me aprofundei ainda mais.
 
-## Python
+### Python
 
-Eu já conhecia Python antes do estágio e já utilizava frequentemente a linguagem para fazer alguns projetos para geração de [fractais](https://github.com/Pixelmancer-64/PythonIFS) e [processamento de imagens](https://github.com/Pixelmancer-64/imageTools), mas nunca tinha usado com tal profundidade até esse momento.
+Eu já conhecia Python antes do meu estágio e já utilizava frequentemente a linguagem para fazer alguns projetos para geração de [fractais](https://github.com/Pixelmancer-64/PythonIFS) e [processamento de imagens](https://github.com/Pixelmancer-64/imageTools), mas nunca tinha usado com tal profundidade até esse momento.
 
-Utilizamos o framework [Django](https://www.djangoproject.com/) em todos os sistemas desenvolvidos e, até então, eu desconhecia o uso da linguagem Python no campo do desenvolvimento web. Apesar do minha familiaridade com a linguagem, que vai além do CEFET/RJ (essa linguagem não foi lecionada durante minha estadia na escola), eu possuía maior confiança com Javascript, Rust, C++ e PHP.
+Utilizamos o framework [Django](https://www.djangoproject.com/) em todos os sistemas desenvolvidos e, até então, eu desconhecia o uso do Python no campo de desenvolvimento web. Apesar do minha familiaridade com a linguagem, que vai além do CEFET/RJ (essa linguagem não foi lecionada durante minha estadia na escola), eu possuía maior confiança com Javascript, Rust, C++ e PHP.
 
-Então, logo no primeiro dia, já enfrentei o meu primeiro *choque de cultura*, conhecendo um novo mundo que me aguardava, um mundo esse que era familiar, mas mesmo assim diferente.
+Então, logo no primeiro dia, já enfrentei o meu primeiro _choque de cultura_, conhecendo um novo mundo que me aguardava, um mundo esse que era familiar, mas mesmo assim diferente.
 
-## MariaDB / SQL
+### MariaDB / SQL
 
-O MySQL é o gerenciador de banco de dados relacionais mais popular do mundo, mas não faz muito tempo ele foi adquirido e incorporado pela Oracle, o que restringiu em parte o uso dessa ferramenta para grandes projetos. O [MariaDB](https://mariadb.org/) é a alternativa [open-source](https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto) do MySQL Server e foi exatamente essa tecnologia que é usada no servidor de banco de dados dos nossos sistemas. 
+O MySQL é o gerenciador de banco de dados relacionais mais popular do mundo mas, não faz muito tempo, ele foi adquirido e incorporado pela Oracle, o que restringiu em parte o uso dessa ferramenta para grandes projetos. O [MariaDB](https://mariadb.org/) é a alternativa [open-source](https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto) do MySQL Server e foi exatamente essa tecnologia que é usada no servidor de banco de dados dos nossos sistemas.
 
-A diferença entre MySQL e MariaDB é pontual, basicamente idênticos. Vale ressaltar que a linguagem continua a mesma, consultas ao banco de dados são feitas por SQL. Na escola temos sim algumas matérias sobre diagramação, SQL e configuração do servidor MySQL que me ajudaram na hora de trabalhar com alguns projetos.
+A diferença entre MySQL e MariaDB é pontual, basicamente idênticos. Vale ressaltar que a linguagem continua a mesma, consultas ao banco de dados são feitas por SQL. Na escola temos algumas matérias sobre diagramação, SQL e configuração do servidor MySQL que me ajudaram na hora de trabalhar com alguns projetos.
 
-Eu gosto muito de banco de dados e tenho certo conhecimento sobre SQL, o que me permitiu a transitar alguns sistemas, que utilizavam Python para consultar nossos bancos de dados, para consultas utilizando SQL. Essa mudança foi muito bem-vinda pelo ganho de desempenho e espaço no servidor; algumas funcionalidades de alguns sites levavam cerca de meia hora para carregarem, e agora levavam questão de segundos.
+Eu gosto muito de banco de dados e tenho certo conhecimento sobre SQL, o que me permitiu transitar alguns sistemas, que utilizavam Python para consultar nossos bancos de dados, em favor de consultas diretas através do SQL. Essa mudança foi muito bem-vinda, tanto pelo ganho de desempenho quanto pelo espaço em servidor salvo; algumas funcionalidades de alguns sistemas levavam cerca de meia hora para carregarem, e agora levavam questão de segundos.
 
-## Django
+### Django
 
-Falando mais especialmente do Django, é uma das tecnologias que mais me divertir a aprender. Ela utiliza o modelo MVC, mas apesar do modelo ele altera o nome das "partes " do projeto em si, e possui um fluxo de trabalho bem parecido com outras frameworks.
+Django é uma das tecnologias que mais me diverti aprendendo. Ela utiliza o modelo MVC, mas apesar de utilizar o modelo ele altera alguns nomes (ex. o que o Django considera como "view" seria o correspondente ao "Controller" no moedelo MVC).
 
 Django foi mais uma das coisas que aprendi diretamente com a prático e a leitura da sua[documentação](https://docs.djangoproject.com/en/4.1/). Já estou acostumado a aprender dessa maneira, como foi o caso do Typescript e Rust, mas foi impressionantemente fácil compreender e me adaptar à ferramenta.
 
-## Shell script
+### Shell script
 
-Utilizei muito brevemente mas vale a menção. No servidor de banco de dados, utilizavam uma rotina de backups que era executada todo dia, durante a noite, para gerar um backup para cada sistema instalado no servidor. O código não era muito conveniente então aprendi um pouquinho de Shell script para alterar o comando já lá existente e melhorar a rotina de backups do servidor.
+Utilizei muito brevemente mas vale a menção. No nosso servidor, havia uma rotina de backups que era executada todo dia, durante a meia noite, para gerar um backup para cada sistema instalado no servidor. O código não era muito conveniente então aprendi um pouquinho de Shell script para alterar o comando existente e deixa-lo mais prático de se usar.
 
-## Apache server
+### Apache server
 
-Apesar da introdução que o ensino técnico ofereceu a respeito da configuração e manutenção de servidores apache, o estágio proporcionou uma visão completamente diferente do processo de criação de arquivos de configuração e emissão de certificados ssl utilizando o certbot. Acessar o servidor através do SSH foi inicialmente um desafio, devido a ausência de interface e limitações de formas mais modernas de editores de texto. Utilizar o servidor remotamente proporcionou um ganho de conhecimento imenso, abrangendo questões como: SSH, paths absolutos e relativos, permissões e responsabilidade ao utilizar o superusuário, versionamento utilizando o github e utilização de comandos do terminal linux para manipulação de arquivos e diretórios.
+Apesar da introdução que o ensino técnico ofereceu em relação a configuração e manutenção de servidores apache, o estágio proporcionou uma visão completamente diferente do processo de criação de arquivos de configuração, registro de domínios e DNS e emissão de certificados ssl utilizando o certbot. 
 
-## Github
+### SSH
 
-O Github é uma ferramenta essencial para todo programador. De forma geral, pode ser chamado de banco de dados para repositórios de projetos, mas também pode ser considerado como uma rede social para programadores. Seu uso se resume a armazenar na nuvem todo o código desenvolvido localmente por várias pessoas em um só lugar, facilitando a manutenção de grandes codebases gerenciadas por diversos programadores. Apesar do conhecimento já extenso que possuía antes do estágio (já utilizava o github diariamente por 2 anos), trabalhar em junção com outras pessoas e compreender como resolver conflitos no momento de juntar duas branchs foram habilidades que adquiri durante meu período durante a secretaria.
+Acessar o servidor através do SSH foi inicialmente um desafio, devido a ausência de interface gráfica e limitações de formas modernas de editar texto. Utilizar o servidor remotamente proporcionou um ganho de conhecimento imenso, abrangendo questões como: SSH, paths absolutos e relativos, permissões e responsabilidade ao utilizar o superusuário, versionamento utilizando o github e utilização de comandos do terminal linux para manipulação de arquivos e diretórios.
 
-## Trello
+### Github
 
-O meu supervisor, o programador Luis Eduardo "e-salarini" Cordeiro Salarini, é um ávido usuário de post-it. Pensando no impacto ambiental e no custo elevado desse material tão essencial para a vida organizada no espaço de trabalho, ele introduziu o método "Kanban" de organização e passou a utilizar o site Trello para gerenciar os projetos desenvolvidos na secretaria. Porém, após o uso da plataforma por 3 semanas, optamos por retornar ao uso de post-its devido a estrutura do Trello, que muitas vezes passava a ser a parte mais cansativa do trabalho; muitas vezes nos encontrávamos gastando mais tempo classificando e explicando as tarefas que realizamos do que efetivamente fazendo elas. O retorno ao meio físico do método Kanban foi bem recebido por mim, meu supervisor e a única outra programadora e membro de equipe, Ana Luísa Ferro. 
+O Github é uma ferramenta essencial para todo programador. De forma geral, pode ser chamado de banco de armazenamento para repositórios, mas também pode ser considerado como uma rede social para programadores. 
+Seu uso se resume a armazenar na nuvem todos os projetos desenvolvidos localmente por várias pessoas em um só lugar, facilitando a manutenção de grandes codebases gerenciados por diversos programadores. Apesar do conhecimento já extenso que possuía antes do estágio (já utilizava o github diariamente fazia 2 anos), acabei aprendendo como trabalhar em junção com outras pessoas no mesmo projeto e como resolver conflitos no momento de juntar branchs.
 
-## Asana
+### Trello
 
-Após utilizar os post-its por 2 meses, um servidor público da secretaria de TI nos introduziu a plataforma Asana, que mudou completamente a forma como gerenciamos nossos projetos. Seguindo também a ideia do Kanban, o Asana possui várias colunas que armazenam as tarefas dependendo da sua categoria e marca-las como concluídas é tão simples quanto clicar um botão. Foi uma mudança bem-vinda por nós três e agilizou a criação, acompanhamento e conclusão das tarefas, sendo até uma ferramenta útil para conferir quais tarefas e exigências já haviam sido cumpridas.
+O meu supervisor, o programador Luis Eduardo "e-salarini" Cordeiro Salarini, é um ávido usuário de post-its. Pensando no impacto ambiental e no custo elevado desse material tão essencial para a vida organizada no espaço de trabalho, ele introduziu o método "Kanban" de organização e passou a utilizar o site Trello para gerenciar os projetos desenvolvidos na secretaria. 
+Porém, após o uso da plataforma por 3 semanas, optamos por retornar ao uso de post-its devido a estrutura do Trello, que muitas vezes passava a ser a parte mais cansativa do trabalho; muitas vezes nos encontrávamos gastando mais tempo classificando e explicando as tarefas que realizamos durante o dia do que efetivamente fazendo elas.
 
-## Figma
+### Asana
 
-O Figma é utilizado para a criação de wireframes e desenvolvimento do design de páginas web e outros elementos gráficos. No nosso caso, o Figma foi utilização unicamente para o desenvolvimento web, mas o domínio da ferramenta também auxilia em outras áreas de design.
+Após utilizar os post-its por 2 meses, um servidor público da secretaria de TI nos introduziu a plataforma Asana, que mudou completamente a forma como gerenciamos nossos projetos. Seguindo também a ideia do Kanban, o Asana possui várias colunas que armazenam as tarefas dependendo da sua categoria, mas diferente do Trello, o Asana é bem mais polido e minimalista (apenas o essencial, exatamente o que queríamos).
+Foi uma mudança muito bem-vinda por nós três (Sim, além de mim e Luis, a nossa equipe contava com apenas mais uma estagiária: Ana Luísa "neptae" Ferro) e agilizou a criação, acompanhamento e conclusão das tarefas, sendo até uma ferramenta útil para conferir quais tarefas e exigências já haviam sido cumpridas.
 
+### Figma
 
-# Projetos
+O Figma é utilizado para a criação de wireframes e desenvolvimento do design de páginas web e outros elementos gráficos. No nosso caso, o Figma foi utilizado exclusicamente para o desenvolvimento web, mas o domínio da ferramenta também auxilia em outras áreas de design.
 
-* Natal
-* Carnaval
-* Casa do trabalhador
-* Senhas de turismo
-* Google sheets script
-* Backup automático dos bancos de dados
-* Cadastro rede hoteleira
-* Cevest
-* Sistema de chamados TI
-* Sistema de cursos livres UERJ
-* Sistema de obras públicas
-* Mapeamento cultural
-* Escola de Enfermagem
-* Sistema de ordem de serviço para a iluminação públicas
-* Painel Covid
-* Cursos Livres
+## Projetos
 
-## Primeiras considerações
+Os projetos a seguir não seguem uma ordem cronológica, somente em casos onde a ordem é explicitamente mencionada. Como muitos desses projetos começaram a ser desenvolvimentos ao mesmo tempo e paralelamente, é difícil precisar o momento exato em que alguns dos fatos que vou mencionar nos próximos tópicos ocorreram.
 
-Os tópicos a seguir não seguem a ordem cronológica, somente em casos onde a ordem cronológica são explicitamente mencionados. Como muitos desses projetos começaram a serem desenvolvimentos ao mesmo tempo e ocorreram em paralelo, é difícil precisar o momento exato em que alguns dos momentos que vou mencionar nos próximos tópicos ocorreram.
+### Natal e Carnaval
 
-## Natal e Carnaval
+O sistema de Natal e carnaval é desenvolvido como uma parceria da nossa secretaria com a Secretaria de Turismo, sendo necessário uma nova iteração do sistema para cada ano do evento. Como chegamos na secretaria no final de março, o sistema de Carnaval já havia sido publicado e finalizado. Como primeiro projeto ficamos responsáveis por desenvolver o sistema do Natal e preparar o sistema do Carnaval para o ano seguinte.
 
-O sistema de Natal e carnaval é desenvolvido como uma parceria da nossa secretaria com a Secretaria de Turismo, sendo necessário uma nova iteração do sistema para cada ano do evento. Como chegamos na secretaria no final de março, o sistema de Carnaval já havia sido publicado e finalizado. Como primeiro projeto ficamos responsáveis por desenvolver o sistema do Natal e preparar o sistema do Carnaval para o ano seguinte. 
+O primeiro mês de estágio foi um pouco exigente devido a série de adaptações que aconteceram durante um curto período. Nesse período, estávamos nos adaptando a um novo local de trabalho, sem um espaço fixo devido a falta de espaço, nos relacionando com novas pessoas (que no futuro se tornariam amizades para a vida toda), utilizando uma framework desconhecida, e uma biblioteca muito pouco explorada por nós, o bootstrap. Um outro ponto que dificultou o desenvolvimento desse site foi a demanda do sistema durante o meio do ano, que não se alinhou com o período de desenvolvimento do projeto municipal do evento de Natal; essa falta de sincronia acabou acarretando em alguns erros de comunicação e revisões de última hora. Um outro fator que também poderia ter sido interessante de aplicar nesse primeiro sistema seria a criação de um wireframe e design na plataforma Figma antes da aplicação e desenvolvimento dele na web.
 
-O primeiro mês de estágio foi um pouco exigente devido a série de adaptações que aconteceram durante um curto período. Nesse período, estávamos nos adaptando a um novo local de trabalho, sem um espaço físico devido a falta de espaço, nos relacionando com novas pessoas (que no futuro se tornariam em amizades para a vida toda), utilizando uma framework desconhecida, o Django, e uma biblioteca muito pouco explorada por nós, o bootstrap. Um outro ponto que dificultou o desenvolvimento desse site foi a demanda do sistema durante o meio do ano, que não se alinhou com o período de desenvolvimento do projeto municipal do evento de Natal; essa falta de sincronia acabou acarretando alguns erros de comunicação e revisões no site de última hora. Um outro fator que também poderia ter sido interessante de aplicar nesse primeiro sistema seria a criação de um wireframe e design na plataforma Figma antes da aplicação e desenvolvimento dele na web.
+O projeto do Natal foi muito marcante, principalmente por ter sido o primeiro desenvolvido. Além disso, o site de Natal foi divulgado por todo o município e ficou disponível em uma série de QrCodes espalhados pela cidade. A divulgação massiva de um projeto que enfrentou tantas dificuldades no seu desenvolvimento foi um pouco difícil de raciocinar no começo, mas também compreendemos os erros e acertos que tivemos com esse primeiro teste. No total, foram mais de 5 mil de pessoas diferentes durante o decorrer da semana de Natal em Nova Friburgo.
 
-O projeto do Natal foi muito marcante, principalmente por ter sido o primeiro desenvolvido. Além disso, o site de Natal foi divulgado por todo o município e ficou disponível em uma série de Qr codes espalhados pela cidade. A divulgação massiva de um projeto que enfrentou tantas dificuldades no seu desenvolvimento foi um pouco difícil de raciocinar no começo, mas também compreendemos os erros e acertos que tivemos com esse primeiro teste. No total, foram mais de 5 mil de pessoas diferentes durante o decorrer da semana de Natal em Nova Friburgo.
+Já o sistema do Carnaval, que já possuía uma estrutura do ano passado, apenas precisava de algumas mudanças; fiquei responsável pela implementação do novo sistema para o calendário de eventos e melhoria na responsividade para dispositivos móveis.
 
-Já o sistema do Carnaval, que já possuía uma estrutura do ano passado, apenas precisava de algumas mudanças; no meu caso, fiquei responsável pela implementação do novo sistema para o calendário de eventos e melhoria na responsividade para dispositivos móveis. 
+### Senhas de Turismo
 
-## Senhas de Turismo
+O sistema de senhas de turismo, carinhosamente apelidado de "sistema de senhas" ou mesmo "senhas" pela nossa equipe de 3 pessoas, é destinado para o cadastro e controle de grupos turísticos na cidade. O objetivo do sistema é emitir senhas para transportes turísticos e contabilizar a quantidade de turistas em Nova Friburgo, conhecendo também sua cidade de origem, itinerário, guia turístico responsável, entre outros dados coletados pelo sistema durante o cadastro. O sistema já existia antes da minha chegada na secretaria porém possuía alguns problemas em relação ao cadastramento de usuários.
 
-O sistema de senhas de turismo, carinhosamente apelidado de "sistema de senhas" ou mesmo "senhas" pela nossa equipe de 3 pessoas, é destinado para o cadastro e controle de grupos turísticos na cidade. O objetivo do sistema é emitir senhas para transportes turísticos e contabilizar a quantidade de turistas em Nova Friburgo, conhecendo também sua cidade de origem, itinerário, guia turístico responsável, entre outros dados coletados pelo sistema durante o cadastro. O sistema já existia antes da minha chegada na secretaria porém possuía alguns problemas em relação ao cadastramento de usuários. 
+Minha primeira missão com o sistema foi resolver tais problemas e melhorar a modelagem do banco de dados, que não seguia uma estrutura de [banco de dados normalizado](https://medium.com/@diegobmachado/normaliza%C3%A7%C3%A3o-em-banco-de-dados-5647cdf84a12). Ao analisar o sistema mais de perto, descobri mais alguns erros e, como uma forma de melhorar o sistema e proporcionar uma forma de aprendizado mais prática e dinâmica, eu e meu supervisor decidimos que seria uma boa ideia eu ficar responsável pela [refatoração](https://pt.wikipedia.org/wiki/Refatora%C3%A7%C3%A3o) do sistema.
 
-Minha primeira missão com o sistema foi resolver tais problemas e melhorar a modelagem do banco de dados, que não seguia uma estrutura de banco de dados normalizado [INSERIR LINK AQUI](). Ao analisar o sistema mais de perto, descobri mais alguns erros e, como uma forma de melhorar o sistema e proporcionar uma forma de aprendizado mais prática e dinâmica, eu e meu supervisor decidimos que seria uma boa ideia eu ficar responsável por refatorar [INSERIR LINK AQUI]() o sistema.
+Após o término do período de refatoração, que levou cerca de duas semanas, eu já estava confortável com a estrutura e funcionamento do framework Django e já compreendia as peculiaridades e funcionalidades do sistema. Como parte do processo, fiquei responsável por refazer algumas partes de [código legado ](https://pt.stackoverflow.com/questions/107722/o-que-%C3%A9-um-c%C3%B3digo-legado), o que foi uma experiência nova e se tornaria recorrente durante o estágio. Compreender o código de um outro programador é sempre um desafio; assim como nas linguagens verbais, na programação temos um certo "sotaque", cada pessoa tem um jeito específico de escrever as instruções que deseja emitir para o computador.
 
-Após o término do período de refatoração do sistema, que levou cerca de duas semanas, eu já estava confortável com a estrutura e funcionamento do framework Django e já compreendia as peculiaridades e funcionalidades do sistema. Como parte da refatoração, fiquei responsável por refazer algumas partes de código legado [INSERIR LINK AQUI](), o que foi uma experiência nova e se tornaria recorrente durante o estágio. Compreender o código de um outro programador é sempre um desafio; assim como nas linguagens verbais, na programação temos um certo "sotaque", cada pessoa tem um jeito específico de escrever as instruções que deseja emitir para o computador.
+Além da refatoração, fiquei responsável por implementar novas funcionalidades no sistema, como por exemplo implementar a geração de senhas para grupos turísticos para o Pico da Caledônia.
 
-Além da refatoração, fiquei responsável por implementar novas funcionalidades ao sistema, como por exemplo implementar a geração de senhas para grupos turísticos para o Pico da Caledônia.
+### Casa do Trabalhador
 
-## Casa do Trabalhador
-
-A Casa do Trabalhador localiza-se na antiga rodoviária urbana, no mesmo espaço onde a secretaria se encontra, e seu objetivo consiste na divulgação de vagas de emprego em Nova Friburgo e encaminhamento de candidatos até as empresas que divulgaram suas vagas na Casa do Trabalhador. O projeto já existia a algum tempo mas o cadastramento online apenas começou em setembro de 2022.
+A Casa do Trabalhador localiza-se na antiga rodoviária urbana, no mesmo espaço onde a secretaria se encontra, e seu objetivo consiste na divulgação de vagas de emprego em Nova Friburgo e encaminhamento de candidatos até as empresas que divulgam suas vagas na Casa do Trabalhador. O projeto já existia a algum tempo mas o cadastramento online apenas começou em setembro de 2022.
 
 Participei da implementação da identidade visual do sistema e criei uma série de funcionalidades no sistema. Esse projeto é especialmente recompensador de trabalhar devido ao bom diálogo estabelecido entre a Casa do Trabalhador e a secretaria, além de ser um projeto utilizado por milhares de pessoas, até mesmo de municípios vizinhos.
 
-Fiquei responsável por implementar funcionalidades de filtro ao pesquisar por vagas e criação de uma painel administrativo para os servidores da Casa do Trabalhador. Algumas das funcionalidades desse painel incluem: listagem e filtragem de todos os candidatos, pesquisa de candidatos por cpf ou nome e criação de indicadores (gráficos) dinâmicos com dados relevantes para a administração da Casa do Trabalhador e o poder público. 
+Fiquei responsável por implementar funcionalidades de filtro ao pesquisar por vagas e criação de uma painel administrativo para os servidores da Casa do Trabalhador. 
 
-## Google sheets script
+### Google sheets script
 
-Por pedido da Alessandra, responsável pela administração dos estágios disponibilizados pela Prefeitura de Nova Friburgo e conveniados, criei um script no Google Forms utilizando javascript para enviar uma mensagem para seu e-mail pessoal e o da própria secretaria avisando o término do convênio entre a instituição e a prefeitura. A elaboração e execução desse projeto durou cerca de 1 horas mas foi uma surpresa muito bem-vinda; desconhecia a possibilidade de criar scripts no Google Sheets utilizando javascript, a linguagem que possuo maior domínio, e essas poucas linhas de código estão sendo utilizadas pela Alessandra até hoje para avisa-la a respeito de eventuais renovações de convênio.
-
-## Sistema de chamados TI
-
-Esse sistema já existia antes da minha chegada e foi pensado para o uso interno na prefeitura, visando facilitar o processo de abrir chamados para o setor de TI. Não tive muita necessidade de mexer no projeto por muito tempo mas sem dúvidas foi algo interessante para entender melhor as necessidades internas de uma prefeitura.
+Por pedido da Alessandra, responsável pela administração dos estágios disponibilizados pela Prefeitura de Nova Friburgo e conveniados, criei um script no Google Sheets utilizando javascript para enviar uma mensagem para seu e-mail pessoal e o da própria secretaria, avisando o término do convênio entre uma instituição e a prefeitura. A elaboração e execução desse projeto durou cerca de 1 horas mas foi uma surpresa muito bem-vinda; desconhecia a possibilidade de criar scripts no Google Sheets utilizando javascript, a linguagem que possuo maior domínio, e essas poucas linhas de código estão sendo utilizadas pela Alessandra até hoje para avisa-la a respeito de eventuais renovações de convênio.
 
 
-## Backup automático dos bancos de dados
+### Backup automático dos bancos de dados
 
-Quando comecei a explorar o servidor onde as aplicações estavam armazenadas me deparei com um arquivo em shell script responsável pela realização do backup dos bancos de dados. Um pequeno inconveniente desse código era a necessidade de copiá-lo e modificá-lo sempre que um novo sistema era adicionado ao servidor. Modifiquei a estrutura da pasta de backups e o funcionamento do script para automaticamente, e mais seguramente, executar todos os backups do sistema automaticamente, sem necessitar adicionar novos arquivos sempre que um novo sistema fosse criado. Essa pequena missão me ensinou que sempre existe uma forma melhor de executar uma tarefa, e faz parte do processo de manutenção e desenvolvimento de software olhar para trás e pensar em novas maneiras de aprimorar funcionalidades já implementadas, por você ou por outros programadores.
+Quando comecei a explorar o servidor onde as aplicações estavam armazenadas me deparei com um arquivo em shell script responsável pela realização do backup dos bancos de dados. Um pequeno inconveniente desse código era a necessidade de copiá-lo e modificá-lo sempre que um novo sistema era adicionado ao servidor. Modifiquei a estrutura da pasta de backups e o funcionamento do script para automaticamente, e de forma mais segura, executar todos os backups do sistema automaticamente, sem a necessidade de adicionar novos arquivos sempre que um novo sistema fosse criado. Essa pequena missão me ensinou que sempre existe uma forma melhor de executar uma tarefa e, faz parte do processo de manutenção e desenvolvimento de software olhar para trás e pensar em novas maneiras de aprimorar funcionalidades já implementadas, por você ou por outros programadores.
 
-## Cadastro rede hoteleira
+### Cadastro rede hoteleira
 
-Um dos outros projetos que desenvolvemos para a Secretaria de Turismo. Surgiu de uma demanda de migrar o registro de ocupação hoteleira e cadastro de hotéis no município, de uma planilha do Excel para um sistema web. O sistema então seria responsável por cadastrar, registrar, processar e disponibilizar dados e informações a respeito dos hotéis e ocupação hoteleira de Nova Friburgo.
+Um dos outros projetos que desenvolvemos para a Secretaria de Turismo. Surgiu de uma demanda de migrar o registro de ocupação hoteleira e cadastro de hotéis no município, de uma planilha do Excel, para um sistema web. O sistema então seria responsável por cadastrar, registrar, processar e disponibilizar dados e informações a respeito dos hotéis e ocupação hoteleira em Nova Friburgo.
 
-## Sistema de cursos livres UERJ
+### Sistema de cursos livres UERJ
 
-O desenvolvimento desse sistema logo depois do meu ingresso como estagiário na secretaria. Surgiu de um convênio da UERJ com a secretaria e buscava a implementação de um sistema de cadastramento de cursos e administração de turmas para o Polo de Cursos da UERJ Nova Friburgo. O sistema foi desenvolvido em pouco tempo devido a colaboração da equipe toda nesse projeto, o que agilizou o desenvolvimento. Nesse ponto ainda não tinha muita familiaridade do fluxo de desenvolvimento com o Django, mas já possuía muita experiência com Python devido a alguns projetos que desenvolvi em casa usando a linguagem. 
+O desenvolvimento desse sistema começou logo depois do meu ingresso como estagiário na secretaria. Surgiu de um convênio da UERJ com a secretaria e buscava a implementação de um sistema de cadastramento de cursos e administração de turmas para o Polo de Cursos UERJ Nova Friburgo. O sistema foi desenvolvido em pouco tempo devido a colaboração da equipe toda nesse projeto, o que agilizou o desenvolvimento. Nesse ponto ainda não tinha muita familiaridade do fluxo de desenvolvimento do Django, mas já possuía muita experiência com Python devido a alguns projetos que desenvolvi em casa usando a linguagem.
 
-Devido a minha experiência com banco de dados, logo apontei algumas falhas que a modelagem do banco possuía e que podiam dificultar o desenvolvimento futuro do sistema, e começos a pensar em maneiras de reimplementar o sistema sem afetar usuários já existentes. Porém, depois de alguns meses o sistema ficou um pouco mais de lado devido a exigências que surgiram ao longo do ano e o interesse do Polo de cursos da UERJ pelo projeto também vou diminuindo.
+Devido a minha experiência com banco de dados, logo apontei algumas falhas que a modelagem do banco possuía e que podiam dificultar o desenvolvimento futuro do sistema, e começos a pensar em maneiras de reimplementar o sistema sem afetar usuários já existentes. Porém, depois de alguns meses o sistema ficou um pouco mais de lado devido a exigências que surgiram ao longo do ano e o interesse do Polo de cursos da UERJ pelo projeto também foi diminuindo.
 
-Sem dúvidas, além de projetar um projeto sólido e funcional desde o início visando sempre os benefícios ao longo prazo, é necessário desenvolver um protótipo mínimo viável (MVP) o mais rápido possível para que o cliente possa se manter engajado e interessado pelo sistema e começar a levantar suas próprias demandas e ideias para melhorar o projeto.
+Sem dúvidas, além de projetar um projeto sólido e funcional desde o início, visando sempre os benefícios ao longo prazo, é necessário desenvolver um protótipo mínimo viável (MVP) o mais rápido possível para que o cliente possa se manter engajado e interessado pelo sistema e começar a levantar suas próprias demandas e ideias para melhorar o projeto.
 
-## Cevest
+### Cevest
 
-O CEVEST [INSERIR LINK AQUI]() é um projeto da SECRETARIA DE Ciência, Tecnologia, Inovação e Educação Profissionalizante e Superior que disponibiliza cursos de costura e corte gratuitamente. O CEVEST foi implementado durante a administração da Dra. Saudade Braga, mas o sistema online começou a ser utilizado a partir de 2019. O sistema auxilia na pré-matrícula, alocação automática de candidatos e administração de turmas e alunos. Como eu trabalhava na mesma sala de muitos dos servidores que administravam o CEVEST, logo cedo ouvi reclamações e problemas presentes no sistema que dificultavam a alocação de aulas, gerava confusão entre os instrutores e alunos e muitas vezes era demasiadamente lento. 
+O [CEVEST](https://cevest.pmnf.rj.gov.br/) é um projeto da Secretaria de Ciência, Tecnologia, Inovação e Educação Profissionalizante e Superior que disponibiliza cursos de costura e corte gratuitamente. O CEVEST foi implementado durante a administração da Dra. Saudade Braga, mas o sistema online começou a ser utilizado a partir de 2019. O sistema auxilia na pré-matrícula, alocação automática de candidatos e administração de turmas e alunos. Como eu trabalhava na mesma sala de muitos dos servidores que administravam o CEVEST, logo cedo ouvi reclamações e problemas presentes no sistema que dificultavam a alocação de aulas, gerava confusão entre os instrutores e alunos e muitas vezes era demasiadamente lento.
 
-A ideia de recriar o sistema já era pensada e projetada por mim e meu supervisor. Porém, o CEVEST possui aulas o ano inteiro e uma transição durante o qualquer momento do ano seria uma tarefa no mínimo inconveniente, mas era uma realidade que deveria ser enfrentada em algum momento.
+A ideia de recriar o sistema já era pensada e projetada por mim e meu supervisor. Porém, o CEVEST possui aulas o ano inteiro e uma transição durante qualquer momento do ano seria uma tarefa no mínimo inconveniente, mas era uma realidade que deveria ser enfrentada em algum momento.
 
-Como medida paliativa, fiquei responsável por levantar as necessidades para o novo sistema e aplicar o máximo de reparos no sistema já existente, buscando facilitar e dinamizar o trabalho dos administradores do CEVEST. Como essa tarefa era algo constante, ou seja, sempre havia alguma coisa para fazer toda semana em relação ao sistema, optei por estudar e entender o sistema por completo, criando uma certa "documentação" guia para não somente eu, mas também para o Luis Eduardo e a Ana Luísa. 
+Como medida paliativa, fiquei responsável por levantar as necessidades para o novo sistema e aplicar o máximo de reparos possíveis no sistema já existente, buscando facilitar e dinamizar o trabalho dos administradores do CEVEST. Como essa tarefa era algo constante, ou seja, sempre havia alguma coisa para fazer toda semana em relação ao sistema, optei por estudar e entender o sistema por completo, criando uma certa "documentação" guia não somente para mim, mas também para o Luis Eduardo e a Ana Luísa.
 
-A elaboração da construção desses comentários sobre o sistema acabou me levando em uma longa jornada de uma semana levantando problemas, falhas no sistemas e novas ideias para o sistema atual e uma futura nova plataforma para o CEVEST. Como o projeto era um "trem já em andamento", reparar os trilhos enquanto o trem andava era uma tarefa delicada e precisava de extrema atenção, porém foi uma experiência muito agregadora por ensinar a necessidade que muitos sistemas vão demandar durante sua vida, além de conhecer e considerar os problemas e cuidados a serem tomados enquanto trabalhando em sistemas já em funcionamento e possuem tantos dados sensíveis.
+A elaboração da construção desses comentários sobre o sistema acabou me levando em uma longa jornada de levantamento de problemas, falhas no sistemas e novas ideias para o sistema atual e uma futura nova plataforma para o CEVEST. Como o projeto era um "trem já em andamento", reparar os trilhos enquanto o trem andava era uma tarefa delicada e precisava de extrema atenção, porém foi uma experiência muito agregadora por ensinar a necessidade que muitos sistemas vão demandar durante sua vida, além de conhecer e considerar os problemas e cuidados a serem tomados enquanto trabalhando em sistemas já em funcionamento e que possuem tantos dados sensíveis.
 
-Apesar dos constantes melhorias, refatoração de código legado [INSERIR LINK AQUI]() e implementação de ideias novas, a criação de uma plataforma nova acabou sendo necessidade urgente no começo do ano de 2023, quando um grande número de interessados se candidata a cursos que começam juntamente ao início das aulas da rede pública de ensino. Fiquei responsável pela criação completa do sistema, utilizando do meu conhecimento e familiaridade com o sistema do CEVEST e dos cursos livres da UERJ. Pelo escopo e potencial do sistema, ele passou a ser uma plataforma de capacitação não apenas para o CEVEST, mas também cursos de outras secretarias e instituições. Também havia a necessidade da divulgação de eventos e palestras para o público, que também contaria com listas de inscrição que faltaram no momento da publicação, divulgação e inscrição nesses eventos. 
+Apesar das constantes melhorias, refatoração de código e implementação de ideias novas, a criação de uma plataforma nova acabou sendo necessidade urgente no começo do ano de 2023, quando um grande número de interessados se candidataria a cursos que começam juntamente ao início das aulas da rede pública de ensino. Fiquei responsável pela criação completa do sistema, utilizando do meu conhecimento e familiaridade com o sistema do CEVEST e dos cursos livres da UERJ. 
+Pelo escopo e potencial do sistema, ele passou a ser uma plataforma de capacitação não apenas para o CEVEST, mas também cursos de outras secretarias e instituições. Também surgiu a necessidade da divulgação de eventos e palestras para o público, que contaria com listas de inscrição e descrição do assuntos tratados durante os eventos.
 
-## Sistema de obras públicas 
+### Sistema de obras públicas
 
-Com o intuito de entrar em conformidade com o [projeto de lei](https://sapl.armacaodosbuzios.rj.leg.br/materia/1533) que estabelece a obrigatoriedade de inserção de QR Codes em obras públicas com o objetivo de transparecer aos cidadãos o progresso e o gasto de obras públicas na cidade. Diferente de outros projetos, que foram relativamente simples de implementar e projetar, o sistema de obras públicas envolveu interpretar as informações de um edital enviado para o meu supervisor Luis Eduardo. Tendo o auxílio de outros servidores públicos, implementados uma versão MVP do projeto em pouco tempo e satisfazia as condições do edital. Infelizmente o projeto não foi utilizado por motivos que desconheço mas foi uma experiência muito interessante.
+Com o intuito de entrar em conformidade com o [projeto de lei](https://sapl.armacaodosbuzios.rj.leg.br/materia/1533) que estabelece a obrigatoriedade de inserção de QRCodes em obras públicas com o objetivo de transparecer aos cidadãos o progresso e gastos de obras públicas na cidade. Diferente de outros projetos, que foram relativamente simples de implementar e projetar, o sistema de obras públicas envolveu interpretar as informações de um edital enviado para o meu supervisor. Tendo o auxílio de outros servidores públicos, implementados uma versão MVP do projeto em pouco tempo que satisfazia as condições do edital. Infelizmente o projeto não foi utilizado por motivos que desconheço mas foi uma experiência muito interessante.
 
-
-## Mapeamento cultural
+### Mapeamento cultural
 
 O sistema de mapeamento cultural foi uma demanda trazida pela Secretaria de Cultura que tem como objetivo cadastrar os artistas, produtores culturais e grupos culturais do município. Esse mapeamento auxiliaria o poder público a contratar artistas locais para eventos, auxiliar a coleta de dados a respeito da diversidade artística e cultural do município e prover dados para a tomada de decisões e criação de leis públicas visando a manutenção da cultura e arte em Nova Friburgo.
 
 Fiquei responsável pela modelagem de parte do banco de dados, correção de alguns erros em algumas etapas do cadastro de pessoas jurídicas, cadastro inicial de muitos artistas que já eram registrados em uma planilha de Excel e envio automático de e-mails para os cadastrados.
 
-## Escola de Enfermagem
+### Escola de Enfermagem
 
-O site criado para a Escola de Enfermagem Nossa Sr.ª de Fátima surgiu como demanda visando facilitar o processo de cadastro, ensalamento e classificação dos candidatos inscritos através do mesmo site. Fiquei responsável pelo desenvolvimento para que completo do sistema, usando o edital publicado do concurso e recebendo demandas da diretora da escola para a elaboração do sistema em conformidade com o edital. Além do cadastramento dos candidatos, fui responsável por criar o algoritmo para o ensalamento dos candidatos no local da prova e pelo algoritmo que determinava a classificação dos candidatos do concurso. 
+O site criado para a Escola de Enfermagem Nossa Sr.ª de Fátima surgiu visando facilitar o processo de cadastro, ensalamento e classificação dos candidatos inscritos no edital publicado pela prefeitura. Fiquei responsável pelo desenvolvimento quase completo do sistema, usando o edital publicado do concurso e recebendo demandas da diretora da escola para a elaboração do sistema em conformidade com o edital. Além do cadastramento dos candidatos, fui responsável por criar o algoritmo para o ensalamento dos candidatos no local da prova e pelo algoritmo que determinava a classificação dos candidatos do concurso.
 
-O edital estipulava um sistema de vagas reservadas e critérios de desempate baseados em alguns critérios; entro em mais detalhes sobre esse algoritmo na minha postagem sobre [INSERIR LINK AQUI](). Analisar as demandas de um edital e aplicá-las corretamente foi um desafio e me trouxe uma nova perspectiva sobre o meu trabalho, deixando claro como o meu trabalho pode afetar a vida de centenas ou milhares de pessoas. Essa nova perspectiva também me fez perceber a seriedade e importância dos dados que manejo, sendo necessário compromisso, seriedade e responsabilidade na forma como eles são geridos.
+O edital estipulava um sistema de vagas reservadas e critérios de desempate baseados em alguns critérios; entro em mais detalhes sobre esse algoritmo na minha postagem sobre [querys SQL avançadas](https://blog.pixelmancer.com.br/posts/loucuras-sql#Escola%20de%20engermagem). Analisar as demandas de um edital e aplicá-las corretamente foi um desafio e me trouxe uma nova perspectiva sobre o meu trabalho, deixando claro como o meu trabalho pode afetar a vida de centenas ou mesmo milhares de pessoas. Essa nova perspectiva também me fez perceber a seriedade e importância dos dados que manejo, sendo necessário compromisso, seriedade e responsabilidade na forma como eles são geridos.
 
-## Sistema de ordem de serviço para a iluminação públicas
+### Sistema de ordem de serviço para a iluminação públicas
 
 O sistema de ordem de serviço visava criar um sistema de almoxarifado e abertura de chamados para exigências envolvendo a iluminação pública do município. Inicialmente eu desenvolveria esse sistema por conta própria, mas o surgimento de novas exigências em outros projetos trouxe a necessidade de dividir o trabalho com meus colegas.
 
-## Painel Covid
+### Painel Covid
 
 Acho que todos nós friburguenses consultamos em algum momento o sistema de covid durante a pandemia para consultar o total de casos confirmados e óbitos em Nova Friburgo, observando atentamente aos gráficos e os dados apresentados no painel. Quando fiquei encarregado de cuidar desse sistema senti novamente o sentimento de extrema responsabilidade que um trabalho como esse exige, envolvendo a exibição de dados importantíssimos para o público e a saúde pública.
 
-O desenvolvimento do sistema foi logo no começo da pandemia, muito antes de mesmo sonhar em ser estagiário da prefeitura. Devido a falta de dados e informações sobre a COVID 19 durante aquele período, o sistema não foi preparado para a enxurrada de dados que ele recebeu e, gradualmente, foi se tornando cada vez mais lento. Fiquei encarregado de refatorar o sistema, levantando novas exigências para o sistema e, principalmente, tornando o sistema mais rápido e eficiente. 
+O desenvolvimento do sistema foi logo no começo da pandemia, muito antes mesmo de eu começar a sonhar em ser estagiário. Devido a falta de dados e informações sobre a COVID 19 durante aquele período, o sistema não foi preparado para a enxurrada de dados que ele recebeu e, gradualmente, foi se tornando cada vez mais lento. Fiquei encarregado de refatorar o sistema, levantando novas exigências para o sistema e, principalmente, tornando o sistema mais rápido e eficiente.
 
-Na primeira semana de desenvolvimento, passei por cada função do sistema, buscando compreender o sistema e levantar potenciais melhorias. Um ponto chave para a melhoria do sistema era transitar de um sistema totalmente escrito em Python, uma linguagem rápida e fácil para desenvolvimento de software mas de baixa performance. Para consulta de banco de dados em SQL, o ideal é utilizar a própria linguagem SQL para fazer consultas. Como já tenho grande familiaridade e conhecimento com o SQL, substitui muitas funções escritas em Python por SQL, melhorando tremendamente a performance do sistema; funcionalidades que antes levavam cerca de uma hora para serem executadas agora levam menos de um minuto.
+Na primeira semana de desenvolvimento, passei por cada funcionalidade do sistema, buscando compreender o sistema e levantar potenciais melhorias. Um ponto chave para a melhoria do sistema foi transitar de um projeto totalmente escrito em Python, uma linguagem fácil de se programar mas de baixa performance, para um sistema que realiza consulas ao banco de dados em SQL, uma lingagem feita para exatamente esse tipo de trabalho. Como já tenho grande familiaridade e conhecimento com o SQL, substitui muitas funções escritas em Python por SQL, melhorando tremendamente a performance do sistema; funcionalidades que antes levavam cerca de uma hora para serem executadas agora levam menos de um minuto.
 
-Saber os pontos fracos e fortes de uma tecnologia e reconhecer o momento certo de empregar e misturar métodos diferentes é uma habilidade indispensável para um programador.  
+Saber os pontos fracos e fortes de uma tecnologia e reconhecer o momento certo de empregar e misturar métodos diferentes é uma habilidade indispensável para um programador.
 
-## Cursos Livres
+### Cursos Livres
 
-Como discutido anteriormente, o sistema do CEVEST possui diversos problemas e necessitava de atenção. Com o objetivo de resolver de uma vez os tais dificuldades e abrir portas para novas oportunidades de integração de cursos, fiquei responsável pela criação de uma plataforma para divulgação de cursos, palestras e eventos disponibilizados pela Prefeitura Municipal de Nova Friburgo e parceiros conveniados. 
+Como discutido anteriormente, o sistema do CEVEST possui diversos problemas e necessitava de atenção. Com o objetivo de resolver de uma vez as tais dificuldades e abrir portas para novas oportunidades de integração de cursos, fiquei responsável pela criação de uma plataforma para divulgação de cursos, palestras e eventos disponibilizados pela Prefeitura Municipal de Nova Friburgo e parceiros conveniados.
 
-Antes do desenvolvimento, houve um processo de levantamento de exigências, melhorias e novas demandas para o sistema, levando em consideração não apenas o público do CEVEST mas também novas oportunidades. O processo de desenvolvimento foi interessante e excepcionalmente divertido, provavelmente devido ser o meu último projeto desenvolvido como estagiário, já experiente e confiante com toda a arquitetura e funcionamento da framework e a linguagem Python, além do conhecimento adicional adquirido relativo a lógica de programação.
+Antes do desenvolvimento, houve um processo de levantamento de exigências, melhorias e novas demandas para o sistema, levando em consideração não apenas o público do CEVEST mas também novas oportunidades. O processo de desenvolvimento foi interessante e excepcionalmente divertido, provavelmente por ser o meu último projeto desenvolvido como estagiário, já experiente e confiante com toda a arquitetura e funcionamento do framework Django, além do conhecimento adicional adquirido relativo a lógica de programação.
 
-Esse sistema possui um potencial gigantesco e possui diversas funcionalidades úteis para administração de turmas e aulas. Já apresentei o sistema para uma série de futuros usuários e administradores do sistema e recebi muitos comentários positivos. Espero continuar trabalhando com esse sistema futuramente por conta própria e aprimorá-lo para outros tipos de necessidades.
+Esse sistema possui um potencial gigantesco e diversas funcionalidades úteis para administração de turmas e aulas. Já apresentei o sistema para uma série de futuros usuários e administradores do sistema e recebi muitos comentários positivos. Espero continuar trabalhando com esse sistema futuramente por conta própria e aprimorá-lo para outros tipos de necessidades.
 
+## Aprendizados e atividades variadas
 
-# Aprendizados e atividades variadas
+- Avaliação e levantamento de orçamento para computadores
+- Fala em público
+- Rio Inovation Week
 
-* Avaliação e levantamento de orçamento para computadores
-* Fala em público
-* Rio Inovation Week
-
-## Avaliação e levantamento de orçamento para computadores
+### Avaliação e levantamento de orçamento para computadores
 
 Sendo um técnico em informática, você está fadado a consertar o computador dos seus familiares. Não sendo uma surpresa, esse tipo de serviço também me foi solicitado no meu estágio; a minha sorte é que eu gosto muito de desmontar eletrônicos e tenho experiência com montagem de computadores e diagnóstico. Nessa pequena missão eu fiquei responsável por avaliar cerca de 10 computadores diferentes e fazer um levantamento das peças e reparos necessários.
 
-## Fala em público
+### Fala em público
 
-Me considero uma pessoa tímida, tenho certa dificuldade em falar em público sem preparo prévio, o que pode ser um problema na hora de apresentar projetos em desenvolvimento e opinar sobre novas demandas e ideias que surgem durante o diálogo. *Sem dúvidas*, o estágio me ajudou extremamente com esse problema, me preparando para esses tipos de situação de trabalho, principalmente durante reuniões com superiores.
+Me considero uma pessoa tímida, tenho certa dificuldade de falar em público sem preparo prévio, o que pode ser um problema na hora de apresentar projetos em desenvolvimento e opinar sobre novas demandas e ideias que surgem durante um diálogo. *Sem dúvidas*, o estágio me ajudou extremamente com esse problema, me preparando para esses tipos de situação de trabalho, principalmente durante reuniões com superiores.
 
-Manter a calma e não perder seu raciocínio em momentos de estresse são habilidades importantíssimas para o desenvolvimento da fala em público. Creio eu que o ponto mais peculiar que estive durante o meu estágio foi durante uma reunião com o prefeito de Nova Friburgo, algo que não estava muito preparado e acabou colocando meu preparo ao teste.
+Manter a calma e não perder seu raciocínio em momentos de estresse são habilidades importantíssimas para o desenvolvimento da fala em público. Creio eu que o ponto mais peculiar que estive durante o meu estágio foi durante uma reunião com o prefeito de Nova Friburgo, algo que eu não estava muito preparado e acabou colocando meu treinamento ao teste.
 
-## Rio Inovation Week 2022
+### Rio Inovation Week 2022
 
 Devido a um convênio com o SEBRAE, a secretaria recebeu alguns ingressos para o evento e fui convidado para ir ao Rio de Janeiro visitar esse evento de tecnologia por um dia. A exposição incluía uma série de estandes com diversos projetos inovadores para diversas áreas da sociedade, incluindo o agronegócio, saúde, transporte, entre outros...
 
 O evento também demonstrou como a área da programação é cheia de oportunidades de emprego; em diversos estandes os representantes dos projetos demonstravam interesse em contratar e fazer acordos com programadores, buscando uma equipe que pudesse desenvolver ou melhorar seus projetos.
 
-Para mim, o ponto alto foi encontrar um projeto sobre arte de código aberto, o que é meio absurdo para mim porque é um obbie que possuo por dois anos no momento da publicação dessa postagem. Foi surreal ver como algo que eu faço no meu tempo livre para praticar minhas habilidades de lógica e matemática em um evento de inovação e tecnologia. Se tiver interesse em ver meus projetos, é só acessar minha página [INSERIR LINK AQUI]().
+Para mim, o ponto alto foi encontrar um projeto sobre arte de código aberto, o que é meio absurdo para mim porque é um hobbie que eu comecei a praticar faz 2 anos. Foi surreal ver como algo que eu faço no meu tempo livre para praticar minhas habilidades de lógica de programaçãp e matemática estava em exposição um evento de inovação e tecnologia. Se tiver interesse em ver meus projetos, é só acessar minha página de [projetos de arte generativa](https://www.pixelmancer.com.br/animations/).

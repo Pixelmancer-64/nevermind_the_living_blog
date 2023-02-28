@@ -10,7 +10,7 @@ import {
   Content_link_wrapper,
 } from "../styled/styled-post";
 import { Banner, Extra_Info } from "../PostComponents";
-import { HeadingH1, HeadingH2, P, A, Img } from "../styled/styled-mdx-tags";
+import { HeadingH1, HeadingH2, HeadingH3, P, A, Img } from "../styled/styled-mdx-tags";
 import Head from "next/head";
 interface ContentLinkProps {
   children: any;
@@ -72,6 +72,7 @@ const Aside = ({ headings = [] }: AsideProps) => {
 const components = {
   h1: HeadingH1,
   h2: HeadingH2,
+  h3: HeadingH3,
   p: P,
   a: A,
   img: Img,

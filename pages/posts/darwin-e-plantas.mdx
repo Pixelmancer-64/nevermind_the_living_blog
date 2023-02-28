@@ -25,7 +25,6 @@ export const getStaticProps = async () => {
   const stats = fs.statSync(files.resolve(post));
   file_meta.created_at = stats.birthtime?.toISOString();
   file_meta.last_updated_at = stats.mtime?.toISOString();
-  console.log(stats)
   return {
     props: { file_meta },
   };

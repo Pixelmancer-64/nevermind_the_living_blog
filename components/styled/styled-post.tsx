@@ -65,7 +65,7 @@ export const Content_link_wrapper = styled.div`
 ` 
 
 export const Li = styled.li<LiProps>`
-  padding-left: ${(p) => `${(p.padding - 1) * 16}px`};
+  padding-left: ${(p) => `${(p.padding) * 8}px`};
   opacity: 0.6;
   transition: opacity 400ms ease 0s;
 
