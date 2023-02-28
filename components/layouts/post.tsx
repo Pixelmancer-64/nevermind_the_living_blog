@@ -91,8 +91,8 @@ const Post = ({ meta, children }: PostProps) => {
     setHeadings([...document.querySelectorAll("h1, h2, h3, h4, h5, h6")]);
   }, []);
 
-  const created_at = new Date(meta.created_at).toLocaleDateString()
-  const last_updated_at = new Date(meta.last_updated_at).toLocaleDateString()
+  const created_at = meta.created_at
+  const last_updated_at = meta.last_updated_at
   
   return (
     <Container>
@@ -101,7 +101,6 @@ const Post = ({ meta, children }: PostProps) => {
       </Head>
 
       <Content>
-
         <Banner url={meta.banner.url} alt={meta.banner.alt} />
 
         <Extra_Info

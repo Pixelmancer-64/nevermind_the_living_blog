@@ -1,5 +1,5 @@
 import Post from "../../components/layouts/post";
-
+import {get_file_meta} from "../../components/PostFunctions.tsx"
 
 export const meta = {
   slug: "thePlantList-web-crawlers",
@@ -13,36 +13,22 @@ export const meta = {
   }
 };
 
+export const getStaticProps = () => get_file_meta(meta)
 
 export default ({ children, file_meta }) => {
   let merged_meta = {...meta, ...file_meta}
   return <Post meta={merged_meta}>{children}</Post>;
 };
 
-export const getStaticProps = async () => {
-  const fs = require('fs');
-  const files = require.context("./", false, /.mdx$/);
-  const post = `./${meta.slug}.mdx`
-  const file = await files(post)
-  const file_meta = file.meta
-  const stats = fs.statSync(files.resolve(post));
-  file_meta.created_at = stats.birthtime?.toISOString();
-  file_meta.last_updated_at = stats.mtime?.toISOString();
-  return {
-    props: { file_meta },
-  };
-};
-
 # Por que o scrapy?
 
 Recentemente comecei um projeto que envolve um cado de botânica, o nome dele é [YggdrasilProject](https://github.com/pixelmancer-64/YggdrasilProject) e basicamente vou utiliza-lo para cadastrar as plantas que tenho aqui em casa. Enfim, para começar o projeto eu primeiro precisava encontrar todas as espécies de plantas catalogadas para registrar qual é a espécie de cada planta daqui de casa. Até esse momento eu não sabia bem a quantidade de dados que essa empreitada geraria mas depois de terminar, consegui um total de 563.811 espécies.
 
-<br />
 Mas de onde eu consegui esse tanto de planta? Infelizmente não achei uma API com
 esses dados, o que tornaria esse desafio bem mais fácil; o que eu achei foi um site
 chamado [The Plant List](http://www.theplantlist.org/) que, como o nome sugeri, é
 uma lista de plantas.
-<br />
+
 Antes de entrar para o código, vamos entender como é a estrutura das páginas. 1.
 indo para o [catálogo](http://www.theplantlist.org/1.1/browse/), vamos nos deparar
 com os quatro grupos do reino plantae: Angiosperma, Gimnosperma, Pteridófitas e Briófitas
