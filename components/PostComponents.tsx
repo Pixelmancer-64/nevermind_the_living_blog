@@ -19,22 +19,38 @@ const Extra_Info_Container = styled.div`
   margin-bottom: 32px;
 `;
 
-export const Extra_Info = ({ publishedOn, lastUpdatedOn, writtenBy }: any) => {
+interface Author {
+  name: string;
+  title: string;
+  url: string;
+  image_url: string;
+}
+
+interface Extra_info {
+  created_at: string;
+  last_updated_at: string;
+  written_by: Array<keyof typeof authors>;
+}
+
+export const Extra_Info = ({
+  created_at,
+  last_updated_at,
+  written_by,
+}: Extra_info) => {
   return (
     <Extra_Info_Container>
       <p>
-        Published on <span>{publishedOn}</span>
-        {lastUpdatedOn && <span> · Updated on {lastUpdatedOn}</span>}
+        Published on <span>{created_at}</span>
+        {last_updated_at && <span> · Updated on {last_updated_at}</span>}
       </p>
       <p>
         Written by -{" "}
-        {writtenBy.map((author_key: string, index: number) => {
-           // @ts-ignore: Unreachable code error
-          const author = authors[author_key];
+        {written_by.map((key, index: number) => {
+          const author:Author = authors[key];
 
-          if (writtenBy.length == 1) return author.name;
-          if (index == writtenBy.length - 1) return author.name;
-          if (index == writtenBy.length - 2) return author.name + " & ";
+          if (written_by.length == 1) return author.name;
+          if (index == written_by.length - 1) return author.name;
+          if (index == written_by.length - 2) return author.name + " & ";
           return author.name + ", ";
         })}
       </p>
@@ -42,6 +58,11 @@ export const Extra_Info = ({ publishedOn, lastUpdatedOn, writtenBy }: any) => {
   );
 };
 
-export const Banner = ({ url, alt = "banner image" }: any) => {
+interface Banner {
+  url: string;
+  alt: string;
+}
+
+export const Banner = ({ url, alt = "banner image" }: Banner) => {
   return <Image src={url} alt={alt}></Image>;
 };

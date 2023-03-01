@@ -10,8 +10,10 @@ import {
   Read_more_wrapper
 } from "./styled/styled-PostCell";
 
+import {Post_Interface} from "./layouts/post"
+
 interface Posts {
-  posts: Array<any>;
+  posts: Array<Post_Interface>;
 }
 
 export default function PostsCell({ posts }: Posts) {

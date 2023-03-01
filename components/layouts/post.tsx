@@ -1,5 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import {
   AsideContainer,
   Container,
@@ -10,10 +10,19 @@ import {
   Content_link_wrapper,
 } from "../styled/styled-post";
 import { Banner, Extra_Info } from "../PostComponents";
-import { HeadingH1, HeadingH2, HeadingH3, P, A, Img } from "../styled/styled-mdx-tags";
+import {
+  HeadingH1,
+  HeadingH2,
+  HeadingH3,
+  P,
+  A,
+  Img,
+} from "../styled/styled-mdx-tags";
 import Head from "next/head";
+import authors from "../../pages/posts/authors.json";
+
 interface ContentLinkProps {
-  children: any;
+  children: ReactElement;
   padding: number;
 }
 
@@ -27,8 +36,24 @@ const ContentLink = ({ children, padding }: ContentLinkProps) => {
   );
 };
 
+export interface Meta {
+  slug: string;
+  title: string;
+  authors: Array<keyof typeof authors>;
+  body: string;
+  banner: {
+    url: string;
+    alt: string;
+  };
+}
+
+export interface Post_Interface extends Meta {
+  created_at: string;
+  last_updated_at: string;
+}
+
 interface AsideProps {
-  headings: any[];
+  headings: Array<HTMLElement>;
 }
 
 const Aside = ({ headings = [] }: AsideProps) => {
@@ -60,7 +85,7 @@ const Aside = ({ headings = [] }: AsideProps) => {
               padding={parseInt(e.localName.charAt(1))}
               key={`${e.localName}-${index}`}
             >
-              {e.innerText}
+              <p>{e.innerText}</p>
             </ContentLink>
           );
         })}
@@ -79,21 +104,21 @@ const components = {
 };
 
 interface PostProps {
-  children: any;
-  meta: any
+  children: ReactElement;
+  meta: Post_Interface;
 }
 
-
 const Post = ({ meta, children }: PostProps) => {
-  const [headings, setHeadings] = useState<any[]>([]);
+  const [headings, setHeadings] = useState<Array<HTMLElement>>([]);
 
   useEffect(() => {
-    setHeadings([...document.querySelectorAll("h1, h2, h3, h4, h5, h6")]);
+    const headingElements = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    setHeadings([...headingElements] as Array<HTMLElement>);
   }, []);
 
-  const created_at = meta.created_at
-  const last_updated_at = meta.last_updated_at
-  
+  const created_at = meta.created_at;
+  const last_updated_at = meta.last_updated_at;
+
   return (
     <Container>
       <Head>
@@ -104,11 +129,12 @@ const Post = ({ meta, children }: PostProps) => {
         <Banner url={meta.banner.url} alt={meta.banner.alt} />
 
         <Extra_Info
-        publishedOn={created_at}
-        lastUpdatedOn={last_updated_at}
-        writtenBy={meta.authors}
-      />
+          created_at={created_at}
+          last_updated_at={last_updated_at}
+          written_by={meta.authors}
+        />
 
+        {/* @ts-ignore */}
         <MDXProvider components={components}>{children}</MDXProvider>
 
       </Content>

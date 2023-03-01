@@ -30,28 +30,28 @@ const Image = styled.img`
 
 `;
 
-export const Img = ({ src, alt }: any) => {
+export const Img = ({ src, alt }: {src: string ; alt: string }) => {
   return (
     <>
       <Image src={src} alt={alt} />
-      {/* <span>{alt}</span> */}
     </>
   );
 };
 
-export const HeadingH1 = ({ children }: any) => {
+export const HeadingH1 = ({ children }: {children: string }) => {
   return <H1 id={children}>{children}</H1>;
 };
 
-export const HeadingH2 = ({ children }: any) => {
+export const HeadingH2 = ({ children }: {children: string }) => {
   return <H2 id={children}>{children}</H2>;
 };
 
-export const HeadingH3 = ({ children }: any) => {
+export const HeadingH3 = ({ children }: {children: string }) => {
   return <H3 id={children}>{children}</H3>;
 };
 
-export const A = ({ href, children }: any) => {
+export const A = ({ href, children }: {href: string ; children: string  }) => {
+
   return (
     <Link href={href}>
       <a>§{children}</a>

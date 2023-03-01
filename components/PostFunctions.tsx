@@ -1,4 +1,6 @@
-export const get_file_meta = async (meta: any) => {
+import {Meta} from "./layouts/post"
+
+export const get_file_meta = async (meta: Meta) => {
   const path = require('path')
   const fs = require('fs');
   const files = require.context("/pages/posts/", false, /.mdx$/);

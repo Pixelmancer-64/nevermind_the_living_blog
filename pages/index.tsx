@@ -11,6 +11,7 @@ import {
   Posts,
   TopCategories,
 } from "../components/styled/styled-index";
+import { Post_Interface } from "../components/layouts/post";
 
 const getStaticProps = async () => {
   const files = require.context("./posts/", false, /.mdx$/);
@@ -26,7 +27,11 @@ const getStaticProps = async () => {
   };
 };
 
-const Home: NextPage = ({ posts }: any) => {
+interface Home_Interface{
+  posts: Array<Post_Interface>
+}
+
+const Home = ({ posts }: Home_Interface) => {
 
   return (
     <Container>

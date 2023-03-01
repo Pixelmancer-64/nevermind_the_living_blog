@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReactElement } from "react";
 import {
   Footer,
   Header,
@@ -10,8 +11,8 @@ import {
   ThemeSwitcher,
 } from "../styled/styled-template";
 
-interface TemplateProps<P = any> {
-  children: P;
+interface TemplateProps {
+  children: Array<ReactElement>;
   toggleDarkMode(): boolean;
 }
 
