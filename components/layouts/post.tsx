@@ -22,15 +22,15 @@ import Head from "next/head";
 import authors from "../../pages/posts/authors.json";
 
 interface ContentLinkProps {
-  children: ReactElement;
+  text: string;
   padding: number;
 }
 
-const ContentLink = ({ children, padding }: ContentLinkProps) => {
+const ContentLink = ({ text, padding }: ContentLinkProps) => {
   return (
     <Content_link_wrapper>
-      <a id={"ContentLink-" + children} href={"#" + children}>
-        <Li padding={padding}>{children}</Li>
+      <a id={"ContentLink-" + text} href={"#" + text}>
+        <Li padding={padding}>{text}</Li>
       </a>
     </Content_link_wrapper>
   );
@@ -84,9 +84,8 @@ const Aside = ({ headings = [] }: AsideProps) => {
             <ContentLink
               padding={parseInt(e.localName.charAt(1))}
               key={`${e.localName}-${index}`}
-            >
-              <p>{e.innerText}</p>
-            </ContentLink>
+              text={e.innerText}
+            />
           );
         })}
       </OuterOl>
@@ -136,7 +135,6 @@ const Post = ({ meta, children }: PostProps) => {
 
         {/* @ts-ignore */}
         <MDXProvider components={components}>{children}</MDXProvider>
-
       </Content>
 
       <Aside headings={headings}></Aside>
