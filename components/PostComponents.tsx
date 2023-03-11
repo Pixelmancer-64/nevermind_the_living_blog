@@ -39,10 +39,10 @@ export const Extra_Info = ({
 }: Extra_info) => {
   return (
     <Extra_Info_Container>
-      <p>
+      {/* <p>
         Published on <span>{created_at}</span>
         {last_updated_at && <span> · Updated on {last_updated_at}</span>}
-      </p>
+      </p> */}
       <p>
         Written by -{" "}
         {written_by.map((key, index: number) => {
